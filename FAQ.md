@@ -1,14 +1,5 @@
-## **Q: How do I get the beta version of Retro Music?**
-You can opt-in for the beta build by clicking on this link: https://play.google.com/apps/testing/code.name.monkey.retromusic
-
-___
-
-## **Q: How to restore my purchases?**
-Make sure to switch and use your account in the Play Store app through which you purchased before installing Retro Music. The Google account used to install the app is also used to purchase/restore the pro license.
-
-If you've already installed the app, remove all other accounts except the one from which you purchased premium, and then restore the purchase.
-
-___
+## **Q: How do I get the beta version of Music?**
+All versions of Music are available at GitHub, including the pre-releases.
 
 ## Q: **How do I use offline synced lyrics?**
 There are three methods for adding offline synced lyrics in Retro Music.
@@ -140,7 +131,7 @@ ___
 ___
 
 ## **Q: How to export playlist?**
-- ***From Retro Music:***
+- ***From Music:***
 
 Head to the playlists tab > tap on the three-dot menu on the playlist you want to export > save as a file.
 
@@ -148,10 +139,8 @@ Head to the playlists tab > tap on the three-dot menu on the playlist you want t
 
 In your built-in music player, there should be an option to save that playlist as a file. Save them and import them from the file manager by opening it into retro music.
 
-> Note that such playlist must be of your offline music only since retro music is an offline music player, not an online music player. So if your playlist is of online music, it can't be opened on other offline players nor can be exported
+> Note that such playlist must be of your offline music only since Music is an offline music player, not an online music player. So if your playlist is of online music, it can't be opened on other offline players nor can be exported
 ___
 
 ## **Q: How to restore/import playlist?**
-Retro Music will automatically detect any playlist file when that playlist file is stored in internal storage/Playlist. However, if it doesn't, just open any "File manager" and open that playlist file with Retro Music.
-
-For restoring playlists successfully, the location of songs must be the same in both the "Playlist" file and in your storage. For example, If your music is in "Internal storage/Music" and the playlist file has songs location "Internal storage/Songs". Then it will not be going to work since both these locations are different.
+Music will open a file picker menu, where you can select your playlist file and import by simply click it.
