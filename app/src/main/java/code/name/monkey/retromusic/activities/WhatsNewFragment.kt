@@ -98,7 +98,7 @@ class WhatsNewFragment : BottomSheetDialogFragment() {
         }
         setChangelogRead(requireContext())
         binding.tgFab.setOnClickListener {
-            openUrl(Constants.TELEGRAM_CHANGE_LOG)
+            openUrl(Constants.CHANGELOG)
         }
         binding.tgFab.accentColor()
         binding.tgFab.shrink()
