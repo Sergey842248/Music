@@ -21,6 +21,7 @@ import code.name.monkey.retromusic.db.PlaylistWithSongs
 import code.name.monkey.retromusic.db.toSongs
 import code.name.monkey.retromusic.dialogs.AddToPlaylistDialog
 import code.name.monkey.retromusic.dialogs.DeletePlaylistDialog
+import code.name.monkey.retromusic.dialogs.ExportPlaylistDialog
 import code.name.monkey.retromusic.dialogs.RenamePlaylistDialog
 import code.name.monkey.retromusic.dialogs.SavePlaylistDialog
 import code.name.monkey.retromusic.helper.MusicPlayerRemote
@@ -75,6 +76,11 @@ object PlaylistMenuHelper : KoinComponent {
             R.id.action_save_playlist -> {
                 SavePlaylistDialog.create(playlistWithSongs)
                     .show(activity.supportFragmentManager, "SavePlaylist")
+                return true
+            }
+            R.id.action_export_playlist -> {
+                ExportPlaylistDialog.create(playlistWithSongs)
+                    .show(activity.supportFragmentManager, "ExportPlaylist")
                 return true
             }
         }

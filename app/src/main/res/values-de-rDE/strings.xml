@@ -220,6 +220,7 @@
     <string name="import_label">Importieren</string>
     <string name="import_playlist">Playlist importieren</string>
     <string name="import_playlist_message">Alle im Android-Medienspeicher abgelegten Playlists werden importiert. Falls die Playlists bereits existieren, werden die Titel eingefügt.</string>
+    <string name="action_export_playlist">Playlist exportieren</string>
     <string name="inserted_x_songs_into_playlist_x">%1$d Titel in Playlist %2$s eingefügt.</string>
     <string name="keyboard">Tastatur</string>
     <string name="label_bit_rate">Bitrate</string>
@@ -476,6 +477,8 @@
     <string name="save_playlist_title">Als Datei speichern</string>
     <string name="save_playlists_title">Als Dateien speichern</string>
     <string name="saved_playlist_to">Playlist unter %s gespeichert.</string>
+    <string name="exporting_playlist_title">Playlist wird exportiert</string>
+    <string name="exported_playlist_to">Playlist nach %s exportiert.</string>
     <string name="saving_changes">Änderungen werden gespeichert</string>
     <string name="scan_media">Medien scannen</string>
     <string name="scanned_files">%1$d von %2$d Dateien gescannt.</string>

@@ -46,11 +46,11 @@
         tools:visibility="visible">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/emptyEmoji"
+            android:id="@+id/empty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="@string/empty_text_emoji"
+            android:text="@string/playlist_is_empty"
             android:textAppearance="@style/TextViewHeadline3" />
 
         <com.google.android.material.textview.MaterialTextView
