@@ -78,7 +78,7 @@ class ThemeSettingsFragment : AbsSettingsFragment() {
         val blackTheme: ATESwitchPreference? = findPreference(BLACK_THEME)
         blackTheme?.setOnPreferenceChangeListener { _, _ ->
             if (!App.isProVersion()) {
-                showProToastAndNavigate("Just Black theme")
+                showProToastAndNavigate("AMOLED theme")
                 return@setOnPreferenceChangeListener false
             }
             ThemeStore.markChanged(requireContext())

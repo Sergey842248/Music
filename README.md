@@ -25,7 +25,7 @@ Self-explanatory interface without overloaded menus.
 
 ## 🎨 Colorful
 You can choose between three different main themes: Clearly White, Kinda
-Dark and Just Black for AMOLED displays. Select your favorite accent
+Dark and AMOLED. Select your favorite accent
 color from a color palette.
 
 ## 🏠 Home
@@ -33,7 +33,7 @@ Where you can view your recently/top played artists, albums and
 favorite songs. No other music player has this feature.
 
 ## 📦 Included Features
--  Base 3 themes (Clearly White, Kinda Dark and Just Black)
+-  Base 3 themes (Clearly White, Kinda Dark and AMOLED)
 -  Chromecast support
 -  Choose from 10+ now playing themes
 -  Driving Mode
