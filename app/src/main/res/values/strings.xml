@@ -169,7 +169,9 @@
     <string name="donate_summary">If you think I deserve to get paid for my work, you can leave some money here</string>
     <string name="donation_header">Buy me a:</string>
     <string name="done">Done</string>
+    <string name="device">Device</string>
     <string name="drive_mode">Drive mode</string>
+    <string name="effects">Effects</string>
     <string name="edit_fab">Edit Button</string>
     <string name="edit_normal_lyrics">Edit Lyrics</string>
     <string name="edit_synced_lyrics">Edit Synced Lyrics</string>
@@ -260,6 +262,7 @@
     <string name="my_name">Name</string>
     <string name="my_top_tracks">Most played</string>
     <string name="never">Never</string>
+    <string name="navigate">Navigate</string>
     <string name="new_music_mix">New Music Mix</string>
     <string name="new_playlist_title">New playlist</string>
     <string name="new_start_directory">%s is the new start directory.</string>
@@ -315,6 +318,7 @@
     <string name="playback_speed">Playback Speed</string>
     <string name="playing_notification_description">The playing notification provides actions for play/pause etc.</string>
     <string name="playing_notification_name">Playing notification</string>
+    <string name="playing_queue_group">Playing queue</string>
     <string name="playlist_created_sucessfully">%s created successfully</string>
     <string name="playlist_is_empty">Playlist is empty</string>
     <string name="playlist_name_empty">Playlist name</string>

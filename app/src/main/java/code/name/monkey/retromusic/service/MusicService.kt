@@ -866,7 +866,16 @@ class MusicService : MediaBrowserServiceCompat(),
 
         playingNotification?.clear(this)
 
+        mediaSession?.isActive = false // Deactivate media session immediately
+        mediaSession?.setPlaybackState(
+            PlaybackStateCompat.Builder()
+                .setState(PlaybackStateCompat.STATE_STOPPED, 0, 1.0f)
+                .setActions(0) // No actions available when stopped
+                .build()
+        )
+
         stopSelf()
+        android.os.Process.killProcess(android.os.Process.myPid()) // Kill the entire app process
     }
 
     private fun releaseWakeLock() {
@@ -1345,11 +1354,9 @@ class MusicService : MediaBrowserServiceCompat(),
             )
                 .build()
         )
-        val shuffleIcon =
-            if (getShuffleMode() == SHUFFLE_MODE_NONE) R.drawable.ic_shuffle_off_circled else R.drawable.ic_shuffle_on_circled
         stateBuilder.addCustomAction(
             PlaybackStateCompat.CustomAction.Builder(
-                TOGGLE_SHUFFLE, getString(R.string.action_toggle_shuffle), shuffleIcon
+                ACTION_QUIT, getString(R.string.action_cancel), R.drawable.ic_close
             )
                 .build()
         )

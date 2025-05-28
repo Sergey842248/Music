@@ -167,7 +167,9 @@
     <string name="donate_summary">Falls du meinst, ich habe mir etwas für meine Arbeit verdient, kannst du hier gerne ein bisschen Geld hinterlassen</string>
     <string name="donation_header">Kauf\' mir ein(e/n):</string>
     <string name="done">Fertig</string>
+    <string name="device">Gerät</string>
     <string name="drive_mode">Fahrmodus</string>
+    <string name="effects">Effekte</string>
     <string name="edit_fab">Bearbeitungs-Schaltfläche</string>
     <string name="edit_normal_lyrics">Liedtext bearbeiten</string>
     <string name="edit_synced_lyrics">Synchronisierten Liedtext bearbeiten</string>
@@ -257,6 +259,7 @@
     <string name="my_name">Name</string>
     <string name="my_top_tracks">Am häufigsten gespielt</string>
     <string name="never">Nie</string>
+    <string name="navigate">Navigieren</string>
     <string name="new_music_mix">Neuer Musik-Mix</string>
     <string name="new_playlist_title">Neue Playlist</string>
     <string name="new_start_directory">%s ist das neue Startverzeichnis.</string>
@@ -312,6 +315,7 @@
     <string name="playback_speed">Wiedergabegeschwindigkeit</string>
     <string name="playing_notification_description">Die Wiedergabe-Benachrichtigung ermöglicht Play-/Pause-Steuerung etc.</string>
     <string name="playing_notification_name">Wiedergabe-Benachrichtigung</string>
+    <string name="playing_queue_group">Wiedergabeliste</string>
     <string name="playlist_created_sucessfully">%s erfolgreich erstellt</string>
     <string name="playlist_is_empty">Playlist ist leer</string>
     <string name="playlist_name_empty">Playlist-Name</string>

@@ -100,10 +100,7 @@ abstract class AbsPlayerFragment(@LayoutRes layout: Int) : AbsMusicServiceFragme
                 return true
             }
 
-            R.id.action_go_to_lyrics -> {
-                goToLyrics(requireActivity())
-                return true
-            }
+
 
             R.id.action_toggle_favorite -> {
                 toggleFavorite(song)

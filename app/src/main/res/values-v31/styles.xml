@@ -19,7 +19,6 @@
     </style>
 
     <style name="Theme.RetroMusic.SplashScreen" parent="Theme.SplashScreen">
-        <item name="android:windowSplashScreenAnimatedIcon">@drawable/avd_splash</item>
-        <item name="android:windowSplashScreenAnimationDuration">1000</item>
+        <item name="android:windowSplashScreenAnimationDuration">10</item>
     </style>
 </resources>

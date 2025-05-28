@@ -97,13 +97,10 @@ class PlayingNotificationImpl24(
         setContentIntent(clickIntent)
         setDeleteIntent(deleteIntent)
         setShowWhen(false)
-        addAction(toggleFavorite)
         addAction(previousAction)
         addAction(playPauseAction)
         addAction(nextAction)
-        if (VersionUtils.hasS()) {
-            addAction(dismissAction)
-        }
+        addAction(dismissAction)
 
         setStyle(
             MediaStyle()

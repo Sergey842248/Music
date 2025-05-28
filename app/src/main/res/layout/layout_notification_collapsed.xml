@@ -134,7 +134,8 @@
             android:layout_height="38dp"
             android:background="@drawable/notification_selector"
             android:scaleType="centerInside"
-            android:visibility="gone" />
+            android:src="@drawable/ic_close"
+            tools:tint="?colorOnPrimary" />
 
         <ImageButton
             android:layout_width="38dp"

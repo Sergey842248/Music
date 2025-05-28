@@ -190,12 +190,15 @@ class MediaSessionCallback(
                 musicService.updateMediaSessionPlaybackState()
             }
 
-            TOGGLE_SHUFFLE -> {
+            TOGGLE_SHUFFLE -> { // This case should ideally be removed if shuffle is completely replaced
                 musicService.toggleShuffle()
                 musicService.updateMediaSessionPlaybackState()
             }
             TOGGLE_FAVORITE -> {
                 musicService.toggleFavorite()
+            }
+            MusicService.ACTION_QUIT -> {
+                musicService.quit()
             }
             else -> {
                 logE("Unsupported action: $action")
