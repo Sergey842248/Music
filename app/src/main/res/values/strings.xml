@@ -222,7 +222,7 @@
     <string name="import_label">Import</string>
     <string name="import_playlist">Import playlist</string>
     <string name="import_playlist_message">It imports all playlists listed in the Android Media Store with songs, if the playlists already exists, the songs will get merged.</string>
-    <string name="action_export_playlist">Export</string>
+    <string name="action_export_playlist">Export playlist</string>
     <string name="inserted_x_songs_into_playlist_x">Inserted %1$d songs into the playlist %2$s.</string>
     <string name="keyboard">Keyboard</string>
     <string name="label_bit_rate">Bitrate</string>

@@ -125,10 +125,10 @@ ___
 - If you think the font looks ugly, then you just need to change the default font from your Android settings (or use any Magisk module). If you can't, there's nothing we can do about it.
 ___
 
-## **Q: How to export a playlist?**
+## **Q: How to export playlist?**
 - ***From Music:***
 
-Head to the playlists tab > tap on the three-dot menu on the playlist you want to export > tap on"Export" > choose where you want to save it and hit "save".
+Head to the playlists tab > tap on the three-dot menu on the playlist you want to export > save as a file.
 
 - ***From Other Music Players:***
 
