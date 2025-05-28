@@ -40,9 +40,7 @@ android {
             signingConfig theSigningConfig
         }
         debug {
-            signingConfig theSigningConfig
-            applicationIdSuffix '.debug'
-            versionNameSuffix ' DEBUG'
+            versionNameSuffix ""
         }
     }
     flavorDimensions = ["version"]
