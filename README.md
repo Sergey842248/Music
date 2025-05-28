@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/Sergey842248/Music/">
-    <img src="app\src\main\ic_launcher-web.png" height="128">
+    <img src="app\src\main\ic_launcher-repo.png" height="128">
     <h1 align="center">Music Player 🎵</h1>
   </a>
 </p>
