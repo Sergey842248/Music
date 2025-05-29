@@ -82,7 +82,19 @@ class PlaylistAdapter(
     }
 
     private fun getPlaylistText(playlist: PlaylistWithSongs): String {
-        return MusicUtil.getPlaylistInfoString(activity, playlist.songs.toSongs())
+        val songCount = playlist.songs.size
+        val totalDurationMillis = playlist.songs.toSongs().sumOf { it.duration }
+
+        val hours = totalDurationMillis / (1000 * 60 * 60)
+        val minutes = (totalDurationMillis / (1000 * 60)) % 60
+
+        val durationString = if (hours > 0) {
+            "${hours}h ${minutes}m"
+        } else {
+            "${minutes}m"
+        }
+
+        return "$songCount • $durationString"
     }
 
     override fun getPopupText(position: Int): String {

@@ -36,6 +36,7 @@
     <string name="action_remove_from_playing_queue">Remove from playing queue</string>
     <string name="action_remove_from_playlist">Remove from playlist</string>
     <string name="action_rename">Rename</string>
+    <string name="action_save">Save</string>
     <string name="action_save_playing_queue">Save playing queue</string>
     <string name="action_scan">Scan</string>
     <string name="action_search">Search</string>
@@ -173,6 +174,8 @@
     <string name="drive_mode">Drive mode</string>
     <string name="effects">Effects</string>
     <string name="edit_fab">Edit Button</string>
+    <string name="edit_mode_enabled">Edit mode enabled</string>
+    <string name="changes_saved">Changes saved</string>
     <string name="edit_normal_lyrics">Edit Lyrics</string>
     <string name="edit_synced_lyrics">Edit Synced Lyrics</string>
     <string name="empty">Empty</string>

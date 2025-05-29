@@ -47,11 +47,17 @@ class OrderablePlaylistSongAdapter(
     private var filtered = false
     private var filter: CharSequence? = null
     private var fullDataSet: MutableList<Song>
+    private var isDragEnabled: Boolean = false
 
     init {
         this.setHasStableIds(true)
         this.setMultiSelectMenuRes(R.menu.menu_playlists_songs_selection)
         fullDataSet = dataSet.toMutableList()
+    }
+
+    fun setDragEnabled(enabled: Boolean) {
+        isDragEnabled = enabled
+        notifyDataSetChanged()
     }
 
     override fun swapDataSet(dataSet: List<Song>) {
@@ -84,6 +90,7 @@ class OrderablePlaylistSongAdapter(
     }
 
     inner class ViewHolder(itemView: View) : SongAdapter.ViewHolder(itemView) {
+        val dragView: View? = itemView.findViewById(R.id.drag_view)
 
         override var songMenuRes: Int
             get() = R.menu.menu_item_playlist_song
@@ -112,19 +119,12 @@ class OrderablePlaylistSongAdapter(
         }
 
         init {
-            dragView?.isVisible = true
+            dragView?.isVisible = isDragEnabled
         }
     }
 
     override fun onCheckCanStartDrag(holder: ViewHolder, position: Int, x: Int, y: Int): Boolean {
-        if (isInQuickSelectMode || filtered) {
-            return false
-        }
-        return ViewUtil.hitTest(holder.imageText!!, x, y) || ViewUtil.hitTest(
-            holder.dragView!!,
-            x,
-            y
-        )
+        return isDragEnabled // Only check isDragEnabled
     }
 
     override fun onMoveItem(fromPosition: Int, toPosition: Int) {

@@ -12,6 +12,7 @@ buildscript {
         classpath libs.androidx.navigation.safeargs.plugin
     }
 }
+
 plugins {
     alias libs.plugins.github.ben.manes
     alias libs.plugins.google.devtools.ksp apply false
