@@ -44,16 +44,19 @@ class PersonalizeSettingsFragment : AbsSettingsFragment() {
             setSummary(preference, newValue)
             true
         }
+        setSummary(homeArtistStyle)
         val homeAlbumStyle: ATEListPreference? = findPreference(HOME_ALBUM_GRID_STYLE)
         homeAlbumStyle?.setOnPreferenceChangeListener { preference, newValue ->
             setSummary(preference, newValue)
             true
         }
+        setSummary(homeAlbumStyle)
         val tabTextMode: ATEListPreference? = findPreference(TAB_TEXT_MODE)
         tabTextMode?.setOnPreferenceChangeListener { prefs, newValue ->
             setSummary(prefs, newValue)
             true
         }
+        setSummary(tabTextMode)
         val appBarMode: ATEListPreference? = findPreference(APPBAR_MODE)
         appBarMode?.setOnPreferenceChangeListener { _, newValue ->
             val currentAppBarMode = PreferenceManager.getDefaultSharedPreferences(requireContext()).getString(APPBAR_MODE, "1")
@@ -62,5 +65,6 @@ class PersonalizeSettingsFragment : AbsSettingsFragment() {
             }
             true
         }
+        setSummary(appBarMode)
     }
 }
