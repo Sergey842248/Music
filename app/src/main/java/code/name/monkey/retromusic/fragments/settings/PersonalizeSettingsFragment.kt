@@ -18,6 +18,7 @@ import android.os.Bundle
 import android.view.View
 import code.name.monkey.appthemehelper.common.prefs.supportv7.ATEListPreference
 import code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
+import androidx.preference.PreferenceManager
 import code.name.monkey.appthemehelper.util.VersionUtils
 import code.name.monkey.retromusic.*
 
@@ -54,8 +55,11 @@ class PersonalizeSettingsFragment : AbsSettingsFragment() {
             true
         }
         val appBarMode: ATEListPreference? = findPreference(APPBAR_MODE)
-        appBarMode?.setOnPreferenceChangeListener { _, _ ->
-            restartActivity()
+        appBarMode?.setOnPreferenceChangeListener { _, newValue ->
+            val currentAppBarMode = PreferenceManager.getDefaultSharedPreferences(requireContext()).getString(APPBAR_MODE, "1")
+            if (newValue.toString() != currentAppBarMode) {
+                restartActivity()
+            }
             true
         }
     }
