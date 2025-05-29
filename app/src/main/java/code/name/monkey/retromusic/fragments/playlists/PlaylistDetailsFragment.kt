@@ -198,7 +198,6 @@ class PlaylistDetailsFragment : AbsMainActivityFragment(R.layout.fragment_playli
                 isEditMode = true
                 requireActivity().invalidateOptionsMenu() // Recreate menu to show/hide buttons
                 playlistSongAdapter.setDragEnabled(true)
-                Toast.makeText(requireContext(), R.string.edit_mode_enabled, Toast.LENGTH_SHORT).show()
                 return true
             }
             R.id.action_save_playlist -> {
@@ -206,7 +205,6 @@ class PlaylistDetailsFragment : AbsMainActivityFragment(R.layout.fragment_playli
                 requireActivity().invalidateOptionsMenu() // Recreate menu to show/hide buttons
                 playlistSongAdapter.setDragEnabled(false)
                 playlistSongAdapter.saveSongs(playlist.playlistEntity)
-                Toast.makeText(requireContext(), R.string.changes_saved, Toast.LENGTH_SHORT).show()
                 return true
             }
         }

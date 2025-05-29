@@ -65,7 +65,6 @@ public class UpdateToastMediaScannerCompletionListener
                                         + String.format(scannedFiles, scanned, toBeScanned.size())
                                         + (failed > 0 ? " " + String.format(couldNotScanFiles, failed) : "");
                         toast.setText(text);
-                        toast.show();
                     });
         }
     }
