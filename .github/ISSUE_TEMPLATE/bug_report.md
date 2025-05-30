@@ -1,33 +1,66 @@
----
 name: Bug report
-about: Create a report to help us improve
-title: "[BUG]"
-labels: bug
-assignees: Sergey842248
+description: Create a bug report to help us improve
+labels: [ bug ]
+body:
+  - type: textarea
+    id: bug
+    attributes:
+      label: A clear description of the Bug 
+      description: Which bugg occurs?
+      placeholder: |
+        Example: If I open the app it crashes
+    validations:
+      required: true
+    
+  - type: textarea
+    id: reproduce-steps
+    attributes:
+      label: Steps to reproduce the bug
+      description: What did you do for the bug to show up?
+      placeholder: |
+        Example:
+          1. Go to '...'
+          2. Click on '....'
+          3. Scroll down to '....'
+          4. See error
+    validations:
+      required: true
 
----
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      placeholder: |
+        Example:
+          "This should happen..."
+    validations:
+      required: false
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+  - type: input
+    id: app-version
+    attributes:
+      label: Music version
+      description: |
+        You can find your Music version in: 3-dots at the top right > "Settings" > "About" > "Version".
+      placeholder: |
+        Example: "6.3.8"
+    validations:
+      required: true
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+  - type: input
+    id: android-version
+    attributes:
+      label: Android version
+      description: |
+        You can find this somewhere in your Android settings.
+      placeholder: |
+        Example: "Android 15"
+    validations:
+      required: true
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
-
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
-
-
-**Version (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Version of the App (App > 3 Dots at the top right > settings > about > version)[e.g. 22]
-
-**Additional context**
-Add any possible other context about the problem here to help us understanding the problem better.
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: Additional information
+      placeholder: |
+        Additional details and attachments.
