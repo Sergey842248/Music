@@ -1,7 +1,7 @@
 name: Feature request
 description: Suggest an idea for Music
 labels: [enhancement]
-assignee: Sergey842248
+assignees: "Sergey842248"
 body:
 
   - type: textarea
