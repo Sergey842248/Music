@@ -9,6 +9,8 @@ body:
     attributes:
       label: Feature description
       description: What feature you want the app to have?
+      placeholder: |
+        A clear and concise desription of the feature.
     validations:
       required: true
 
@@ -17,6 +19,8 @@ body:
     attributes:
       label: Why do you want this feature?
       description: Describe the problem or limitation that motivates you to want this feature to be added.
+      placeholder: |
+        Why dou you want this feature, where it helps or improves the app/user experience.
     validations:
       required: false
 
