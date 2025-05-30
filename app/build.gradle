@@ -14,7 +14,7 @@ android {
 
         vectorDrawables.useSupportLibrary = true
 
-        applicationId namespace
+        applicationId "code.sergey842248.music"
         versionCode 10621
         versionName '6.3.6'
 
