@@ -421,6 +421,8 @@
     <string name="pref_title_now_playing_screen_appearance">Now playing theme</string>
     <string name="pref_title_open_source_licences">Open source licences</string>
     <string name="pref_title_pause_history">Pause history</string>
+    <string name="show_lyrics">Show lyrics</string>
+    <string name="do_nothing">Do nothing</string>
     <string name="pref_title_remember_tab">Remember last tab</string>
     <string name="pref_title_enable_search_playlist">Enable search in playlist</string>
     <string name="pref_title_show_lyrics">Show lyrics</string>

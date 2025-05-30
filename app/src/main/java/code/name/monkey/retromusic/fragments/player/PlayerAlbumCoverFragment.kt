@@ -123,7 +123,12 @@ class PlayerAlbumCoverFragment : AbsMusicServiceFragment(R.layout.fragment_playe
                 true
             }
             setOnClickListener {
-                goToLyrics(requireActivity())
+                when (PreferenceUtil.artworkClickAction) {
+                    0 -> goToLyrics(requireActivity())
+                    1 -> {
+                        // Do nothing
+                    }
+                }
             }
         }
     }

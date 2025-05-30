@@ -110,7 +110,12 @@ class AlbumCoverPagerAdapter(
             val view = inflater.inflate(getLayoutWithPlayerTheme(), container, false)
             view.setOnClickListener {
                 if (mainActivity.getBottomSheetBehavior().state == STATE_EXPANDED) {
-                    showLyricsDialog()
+                    when (PreferenceUtil.artworkClickAction) {
+                        0 -> showLyricsDialog()
+                        1 -> {
+                            // Do nothing
+                        }
+                    }
                 }
             }
             return view

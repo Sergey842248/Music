@@ -752,6 +752,9 @@ object PreferenceUtil {
 
     val swipeDownToDismiss
         get() = sharedPreferences.getBoolean(SWIPE_DOWN_DISMISS, true)
+
+    val artworkClickAction: Int
+        get() = sharedPreferences.getStringOrDefault(ARTWORK_CLICK_ACTION, "0").toInt()
 }
 
 enum class CoverLyricsType {
