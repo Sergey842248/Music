@@ -16,7 +16,7 @@ android {
 
         applicationId "code.sergey842248.music"
         versionCode 10621
-        versionName '6.3.8'
+        versionName '6.3.9'
 
         buildConfigField("String", "GOOGLE_PLAY_LICENSING_KEY", "\"${getProperty(getProperties('../public.properties'), 'GOOGLE_PLAY_LICENSE_KEY')}\"")
     }
