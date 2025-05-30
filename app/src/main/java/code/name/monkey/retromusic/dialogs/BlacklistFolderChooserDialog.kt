@@ -58,7 +58,6 @@ class BlacklistFolderChooserDialog : DialogFragment() {
             ) {
                 return materialDialog().show {
                     title(res = R.string.md_error_label)
-                    message(res = R.string.made_with_love)
                     positiveButton(res = android.R.string.ok)
                 }
             }

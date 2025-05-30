@@ -241,7 +241,6 @@
     <string name="loading_products">กำลังโหลดสินค้า</string>
     <string name="login">เข้าสู่ระบบ</string>
     <string name="lyrics">เนื้อเพลง</string>
-    <string name="made_with_love">ทำจาก ❤️ ในอินเดีย</string>
     <string name="material">Material</string>
     <string name="md_error_label">เกิดข้อผิดพลาด</string>
     <string name="md_storage_perm_error">ไม่มีสิทธิ์ในการเข้าถึง</string>
