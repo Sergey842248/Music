@@ -128,6 +128,13 @@ class PlayerAlbumCoverFragment : AbsMusicServiceFragment(R.layout.fragment_playe
                     1 -> {
                         // Do nothing
                     }
+                    2 -> {
+                        if (MusicPlayerRemote.isPlaying) {
+                            MusicPlayerRemote.pauseSong()
+                        } else {
+                            MusicPlayerRemote.resumePlaying()
+                        }
+                    }
                 }
             }
         }

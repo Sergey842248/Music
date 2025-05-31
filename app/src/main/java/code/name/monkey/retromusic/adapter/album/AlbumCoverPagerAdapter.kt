@@ -38,6 +38,7 @@ import code.name.monkey.retromusic.model.Song
 import code.name.monkey.retromusic.util.MusicUtil
 import code.name.monkey.retromusic.util.PreferenceUtil
 import code.name.monkey.retromusic.util.color.MediaNotificationProcessor
+import code.name.monkey.retromusic.helper.MusicPlayerRemote
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -114,6 +115,13 @@ class AlbumCoverPagerAdapter(
                         0 -> showLyricsDialog()
                         1 -> {
                             // Do nothing
+                        }
+                        2 -> {
+                            if (MusicPlayerRemote.isPlaying) {
+                                MusicPlayerRemote.pauseSong()
+                            } else {
+                                MusicPlayerRemote.resumePlaying()
+                            }
                         }
                     }
                 }
