@@ -33,12 +33,15 @@ import code.name.monkey.retromusic.helper.MusicPlayerRemote
 import code.name.monkey.retromusic.util.PreferenceUtil
 import code.name.monkey.retromusic.util.color.MediaNotificationProcessor
 import com.google.android.material.slider.Slider
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class PlayerPlaybackControlsFragment :
     AbsPlayerControlsFragment(R.layout.fragment_player_playback_controls) {
 
     private var _binding: FragmentPlayerPlaybackControlsBinding? = null
     private val binding get() = _binding!!
+
+    private var individualArtists: List<String> = emptyList()
 
     override val progressSlider: Slider
         get() = binding.progressSlider
@@ -72,7 +75,17 @@ class PlayerPlaybackControlsFragment :
             goToAlbum(requireActivity())
         }
         binding.text.setOnClickListener {
-            goToArtist(requireActivity())
+            if (individualArtists.size > 1) {
+                MaterialAlertDialogBuilder(requireContext())
+                    .setTitle(R.string.select_artist)
+                    .setItems(individualArtists.toTypedArray()) { dialog, which ->
+                        val selectedArtistName = individualArtists[which]
+                        goToArtist(requireActivity(), selectedArtistName, MusicPlayerRemote.currentSong.artistId)
+                    }
+                    .show()
+            } else {
+                goToArtist(requireActivity(), MusicPlayerRemote.currentSong.artistName, MusicPlayerRemote.currentSong.artistId)
+            }
         }
     }
 
@@ -115,7 +128,19 @@ class PlayerPlaybackControlsFragment :
     private fun updateSong() {
         val song = MusicPlayerRemote.currentSong
         binding.title.text = song.title
-        binding.text.text = song.artistName
+
+        val artistName = song.artistName
+        val delimiters = PreferenceUtil.artistDelimiters.split(",").map { it.trim() }
+        individualArtists = artistName.split(*delimiters.toTypedArray())
+            .map { it.trim() }
+            .filter { it.isNotEmpty() }
+
+        if (individualArtists.size > 1) {
+            binding.text.text = "${individualArtists.first()} + others"
+        } else {
+            binding.text.text = artistName
+        }
+
 
         if (PreferenceUtil.isSongInfo) {
             binding.songInfo.text = getSongInfo(song)

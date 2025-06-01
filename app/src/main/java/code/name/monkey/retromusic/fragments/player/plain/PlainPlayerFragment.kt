@@ -84,7 +84,7 @@ class PlainPlayerFragment : AbsPlayerFragment(R.layout.fragment_plain_player) {
             goToAlbum(requireActivity())
         }
         binding.text.setOnClickListener {
-            goToArtist(requireActivity())
+goToArtist(requireActivity(), MusicPlayerRemote.currentSong.artistName, MusicPlayerRemote.currentSong.artistId)
         }
         playerToolbar().drawAboveSystemBars()
     }

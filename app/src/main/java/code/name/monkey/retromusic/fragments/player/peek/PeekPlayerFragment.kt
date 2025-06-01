@@ -51,7 +51,7 @@ class PeekPlayerFragment : AbsPlayerFragment(R.layout.fragment_peek_player) {
             goToAlbum(requireActivity())
         }
         binding.text.setOnClickListener {
-            goToArtist(requireActivity())
+goToArtist(requireActivity(), MusicPlayerRemote.currentSong.artistName, MusicPlayerRemote.currentSong.artistId)
         }
         binding.root.drawAboveSystemBarsWithPadding()
     }

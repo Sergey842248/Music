@@ -92,7 +92,7 @@ class CirclePlayerFragment : AbsPlayerFragment(R.layout.fragment_circle_player),
             goToAlbum(requireActivity())
         }
         binding.text.setOnClickListener {
-            goToArtist(requireActivity())
+            goToArtist(requireActivity(), MusicPlayerRemote.currentSong.artistName, MusicPlayerRemote.currentSong.artistId)
         }
         binding.songInfo.drawAboveSystemBars()
     }

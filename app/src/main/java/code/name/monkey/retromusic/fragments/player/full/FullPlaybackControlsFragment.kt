@@ -96,7 +96,7 @@ class FullPlaybackControlsFragment :
             goToAlbum(requireActivity())
         }
         binding.text.setOnClickListener {
-            goToArtist(requireActivity())
+goToArtist(requireActivity(), MusicPlayerRemote.currentSong.artistName, MusicPlayerRemote.currentSong.artistId)
         }
     }
 

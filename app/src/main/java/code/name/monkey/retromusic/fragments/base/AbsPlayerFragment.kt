@@ -168,7 +168,7 @@ abstract class AbsPlayerFragment(@LayoutRes layout: Int) : AbsMusicServiceFragme
             }
 
             R.id.action_go_to_artist -> {
-                goToArtist(requireActivity())
+goToArtist(requireActivity(), MusicPlayerRemote.currentSong.artistName, MusicPlayerRemote.currentSong.artistId)
                 return true
             }
 
@@ -400,9 +400,8 @@ abstract class AbsPlayerFragment(@LayoutRes layout: Int) : AbsMusicServiceFragme
     }
 }
 
-fun goToArtist(activity: Activity) {
+fun goToArtist(activity: Activity, artistName: String, artistId: Long) {
     if (activity !is MainActivity) return
-    val song = MusicPlayerRemote.currentSong
     activity.apply {
 
         // Remove exit transition of current fragment so
@@ -417,7 +416,7 @@ fun goToArtist(activity: Activity) {
 
         findNavController(R.id.fragment_container).navigate(
             R.id.artistDetailsFragment,
-            bundleOf(EXTRA_ARTIST_ID to song.artistId)
+            bundleOf(EXTRA_ARTIST_ID to artistId)
         )
     }
 }

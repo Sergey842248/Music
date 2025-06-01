@@ -69,7 +69,7 @@ class FullPlayerFragment : AbsPlayerFragment(R.layout.fragment_full) {
 
     private fun setupArtist() {
         binding.artistImage.setOnClickListener {
-            goToArtist(mainActivity)
+goToArtist(mainActivity, MusicPlayerRemote.currentSong.artistName, MusicPlayerRemote.currentSong.artistId)
         }
     }
 

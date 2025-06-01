@@ -139,8 +139,8 @@ class TinyPlayerFragment : AbsPlayerFragment(R.layout.fragment_tiny_player),
         binding.title.setOnClickListener {
             goToAlbum(requireActivity())
         }
-        binding.text.setOnClickListener {
-            goToArtist(requireActivity())
+binding.text.setOnClickListener {
+            goToArtist(requireActivity(), MusicPlayerRemote.currentSong.artistName, MusicPlayerRemote.currentSong.artistId)
         }
         playerToolbar().drawAboveSystemBars()
     }
