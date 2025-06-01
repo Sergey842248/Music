@@ -34,6 +34,12 @@ import code.name.monkey.retromusic.util.PreferenceUtil
 import code.name.monkey.retromusic.util.color.MediaNotificationProcessor
 import com.google.android.material.slider.Slider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import androidx.lifecycle.lifecycleScope
+import code.name.monkey.retromusic.fragments.base.AbsPlayerFragment
+
 
 class PlayerPlaybackControlsFragment :
     AbsPlayerControlsFragment(R.layout.fragment_player_playback_controls) {
@@ -80,7 +86,19 @@ class PlayerPlaybackControlsFragment :
                     .setTitle(R.string.select_artist)
                     .setItems(individualArtists.toTypedArray()) { dialog, which ->
                         val selectedArtistName = individualArtists[which]
-                        goToArtist(requireActivity(), selectedArtistName, MusicPlayerRemote.currentSong.artistId)
+                        lifecycleScope.launch(Dispatchers.IO) {
+                            // Find the artist by name from the list of all artists
+                            val allArtists = (requireParentFragment() as AbsPlayerFragment).libraryViewModel.getArtists().value
+                            val selectedArtist = allArtists?.find { artist -> artist.name == selectedArtistName }
+                            withContext(Dispatchers.Main) {
+                                if (selectedArtist != null) {
+                                    goToArtist(requireActivity(), selectedArtistName, selectedArtist.id)
+                                } else {
+                                    // Fallback to current song artist ID if artist not found by name
+                                    goToArtist(requireActivity(), selectedArtistName, MusicPlayerRemote.currentSong.artistId)
+                                }
+                            }
+                        }
                     }
                     .show()
             } else {
@@ -216,3 +234,4 @@ class PlayerPlaybackControlsFragment :
         _binding = null
     }
 }
+

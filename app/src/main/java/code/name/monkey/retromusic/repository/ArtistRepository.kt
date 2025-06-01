@@ -62,13 +62,30 @@ class RealArtistRepository(
             return Artist(Artist.VARIOUS_ARTISTS_ID, albums)
         }
 
-        val songs = songRepository.songs(
-            songRepository.makeSongCursor(
-                AudioColumns.ARTIST_ID + "=?",
-                arrayOf(artistId.toString()),
-                getSongLoaderSortOrder()
+        // To show songs by individual artists from a multi-artist tag,
+        // we query for songs where the artist column contains the individual artist's name.
+        // First, get the artist object to access its name.
+        val individualArtist = artists().find { it.id == artistId }
+
+        val songs = if (individualArtist != null) {
+            songRepository.songs(
+                songRepository.makeSongCursor(
+                    AudioColumns.ARTIST + " LIKE ?", // Query by artist name containing
+                    arrayOf("%" + individualArtist.name + "%"),
+                    getSongLoaderSortOrder()
+                )
             )
-        )
+        } else {
+            // Fallback to original behavior if artist not found by ID (should not happen if IDs are consistent)
+            songRepository.songs(
+                songRepository.makeSongCursor(
+                    AudioColumns.ARTIST_ID + "=?",
+                    arrayOf(artistId.toString()),
+                    getSongLoaderSortOrder()
+                )
+            )
+        }
+
         return Artist(artistId, albumRepository.splitIntoAlbums(songs))
     }
 
@@ -125,7 +142,7 @@ class RealArtistRepository(
         val songs = songRepository.songs(
             songRepository.makeSongCursor(
                 "album_artist" + " LIKE ?",
-                arrayOf("%$query%"),
+                arrayOf("%" + query + "%"),
                 getSongLoaderSortOrder()
             )
         )
@@ -137,7 +154,7 @@ class RealArtistRepository(
         val songs = songRepository.songs(
             songRepository.makeSongCursor(
                 AudioColumns.ARTIST + " LIKE ?",
-                arrayOf("%$query%"),
+                arrayOf("%" + query + "%"),
                 getSongLoaderSortOrder()
             )
         )
