@@ -47,7 +47,7 @@ class LibraryViewModel(
     private val suggestions = MutableLiveData<List<Song>>()
     private val albums = MutableLiveData<List<Album>>()
     private val songs = MutableLiveData<List<Song>>()
-    private val artists = MutableLiveData<List<Artist>>()
+    val artists = MutableLiveData<List<Artist>>() // Changed from private val to val
     private val playlists = MutableLiveData<List<PlaylistWithSongs>>()
     private val genres = MutableLiveData<List<Genre>>()
     private val searchResults = MutableLiveData<List<Any>>()
@@ -310,7 +310,6 @@ class LibraryViewModel(
         }
         songHistory.value = emptyList()
     }
-
 
     fun restoreHistory() {
         viewModelScope.launch(IO) {

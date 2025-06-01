@@ -19,6 +19,7 @@ import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
 import code.name.monkey.appthemehelper.util.ATHUtil
 import code.name.monkey.appthemehelper.util.ColorUtil
 import code.name.monkey.appthemehelper.util.MaterialValueHelper
@@ -37,8 +38,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import androidx.lifecycle.lifecycleScope
 import code.name.monkey.retromusic.fragments.base.AbsPlayerFragment
+import code.name.monkey.retromusic.model.Artist
 
 
 class PlayerPlaybackControlsFragment :
@@ -88,7 +89,7 @@ class PlayerPlaybackControlsFragment :
                         val selectedArtistName = individualArtists[which]
                         lifecycleScope.launch(Dispatchers.IO) {
                             // Find the artist by name from the list of all artists
-                            val allArtists = (requireParentFragment() as AbsPlayerFragment).libraryViewModel.getArtists().value
+                            val allArtists = (requireParentFragment() as AbsPlayerFragment).libraryViewModel.artists.value
                             val selectedArtist = allArtists?.find { artist -> artist.name == selectedArtistName }
                             withContext(Dispatchers.Main) {
                                 if (selectedArtist != null) {
@@ -153,11 +154,8 @@ class PlayerPlaybackControlsFragment :
             .map { it.trim() }
             .filter { it.isNotEmpty() }
 
-        if (individualArtists.size > 1) {
-            binding.text.text = "${individualArtists.first()} + others"
-        } else {
-            binding.text.text = artistName
-        }
+        // Always display the full artist name string
+        binding.text.text = artistName
 
 
         if (PreferenceUtil.isSongInfo) {
@@ -234,4 +232,3 @@ class PlayerPlaybackControlsFragment :
         _binding = null
     }
 }
-
