@@ -27,8 +27,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
+import code.name.monkey.retromusic.DISABLE_SWIPE_DOWN_TO_DISMISS
 import java.io.File
-
 
 object PreferenceUtil {
     private val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(App.getContext())
@@ -766,8 +766,12 @@ object PreferenceUtil {
     val swipeDownToDismiss
         get() = sharedPreferences.getBoolean(SWIPE_DOWN_DISMISS, true)
 
+
     val artworkClickAction: Int
         get() = sharedPreferences.getStringOrDefault(ARTWORK_CLICK_ACTION, "0").toInt()
+
+    val disableSwipeDownToDismiss
+        get() = sharedPreferences.getBoolean(DISABLE_SWIPE_DOWN_TO_DISMISS, false)
 }
 
 enum class CoverLyricsType {

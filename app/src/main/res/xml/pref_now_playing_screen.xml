@@ -98,6 +98,13 @@
 <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
     android:layout="@layout/list_item_view_switch"
     app:defaultValue="false"
+    app:key="disable_swipe_down_to_dismiss"
+    app:summary="Disable the swipe down gesture to close the expanded player. The back button will be required to close."
+    app:title="Disable Swipe Down to Close" />
+
+<code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
+    android:layout="@layout/list_item_view_switch"
+    app:defaultValue="false"
     app:icon="@drawable/ic_play_arrow"
     app:key="toggle_add_controls"
     app:summary="@string/pref_summary_extra_controls"

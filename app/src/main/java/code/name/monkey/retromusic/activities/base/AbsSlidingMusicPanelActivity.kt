@@ -14,6 +14,7 @@
  */
 package code.name.monkey.retromusic.activities.base
 
+import code.name.monkey.retromusic.DISABLE_SWIPE_DOWN_TO_DISMISS
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
 import android.content.Intent
@@ -112,7 +113,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HIDDEN
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_SETTLING
 import com.google.android.material.bottomsheet.BottomSheetBehavior.from
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 abstract class AbsSlidingMusicPanelActivity : AbsMusicServiceActivity(),
     SharedPreferences.OnSharedPreferenceChangeListener {
@@ -240,6 +240,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsMusicServiceActivity(),
         bottomSheetBehavior = from(binding.slidingPanel)
         bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallbackList)
         bottomSheetBehavior.isHideable = PreferenceUtil.swipeDownToDismiss
+        bottomSheetBehavior.isDraggable = !PreferenceUtil.disableSwipeDownToDismiss
         bottomSheetBehavior.significantVelocityThreshold = 300
         setMiniPlayerAlphaProgress(0F)
     }
@@ -267,6 +268,10 @@ abstract class AbsSlidingMusicPanelActivity : AbsMusicServiceActivity(),
                 bottomSheetBehavior.isHideable = PreferenceUtil.swipeDownToDismiss
             }
 
+            DISABLE_SWIPE_DOWN_TO_DISMISS -> {
+                bottomSheetBehavior.isDraggable = !PreferenceUtil.disableSwipeDownToDismiss
+            }
+
             TOGGLE_ADD_CONTROLS -> {
                 miniPlayerFragment?.setUpButtons()
             }
@@ -276,7 +281,8 @@ abstract class AbsSlidingMusicPanelActivity : AbsMusicServiceActivity(),
                 binding.slidingPanel.updateLayoutParams<ViewGroup.LayoutParams> {
                     height = if (nowPlayingScreen != Peek) {
                         ViewGroup.LayoutParams.MATCH_PARENT
-                    } else {
+                    }
+                     else {
                         ViewGroup.LayoutParams.WRAP_CONTENT
                     }
                     onServiceConnected()
@@ -506,10 +512,12 @@ abstract class AbsSlidingMusicPanelActivity : AbsMusicServiceActivity(),
                 if (visible) {
                     binding.navigationView.bringToFront()
                     binding.navigationView.show()
-                } else {
+                }
+                 else {
                     binding.navigationView.hide()
                 }
-            } else {
+            }
+             else {
                 binding.navigationView.isVisible = visible
                 if (visible && bottomSheetBehavior.state != STATE_EXPANDED) {
                     binding.navigationView.bringToFront()
@@ -537,7 +545,8 @@ abstract class AbsSlidingMusicPanelActivity : AbsMusicServiceActivity(),
                 this,
                 if (isBottomNavVisible) dip(R.dimen.bottom_nav_height) else 0
             )
-        } else {
+        }
+ else {
             if (MusicPlayerRemote.playingQueue.isNotEmpty()) {
                 binding.slidingPanel.elevation = 0F
                 binding.navigationView.elevation = 5F
@@ -545,20 +554,23 @@ abstract class AbsSlidingMusicPanelActivity : AbsMusicServiceActivity(),
                     logD("List")
                     if (animate) {
                         bottomSheetBehavior.peekHeightAnimate(heightOfBarWithTabs)
-                    } else {
+                    }
+                     else {
                         bottomSheetBehavior.peekHeight = heightOfBarWithTabs
                     }
                     libraryViewModel.setFabMargin(
                         this,
                         dip(R.dimen.bottom_nav_mini_player_height)
                     )
-                } else {
+                }
+                 else {
                     logD("Details")
                     if (animate) {
                         bottomSheetBehavior.peekHeightAnimate(heightOfBar).doOnEnd {
                             binding.slidingPanel.bringToFront()
                         }
-                    } else {
+                    }
+                     else {
                         bottomSheetBehavior.peekHeight = heightOfBar
                         binding.slidingPanel.bringToFront()
                     }
