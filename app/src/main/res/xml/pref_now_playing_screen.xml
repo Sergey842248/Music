@@ -145,37 +145,32 @@
             android:defaultValue="true"
             android:key="show_sleep_timer_button"
             android:layout="@layout/list_item_view_switch"
-            android:title="Show Sleep Timer Button" />
+            android:title="Show 'Sleep timer' Button" />
 
         <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
             android:defaultValue="true"
             android:key="show_lyrics_button"
             android:layout="@layout/list_item_view_switch"
-            android:title="Show Lyrics Button" />
+            android:title="Show 'Lyrics' Button" />
 
         <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
             android:defaultValue="true"
             android:key="show_favorite_button"
             android:layout="@layout/list_item_view_switch"
-            android:title="Show Favorite Button" />
+            android:title="Show 'Add to favorites' Button" />
 
-        <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
-            android:defaultValue="false"
-            android:key="hide_all_action_buttons"
-            android:layout="@layout/list_item_view_switch"
-            android:title="Hide All Action Buttons" />
 
         <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
             android:defaultValue="true"
             android:key="show_now_playing_queue_button"
             android:layout="@layout/list_item_view_switch"
-            android:title="Show Now Playing Queue Button" />
+            android:title="Show 'Now playing queue' Button" />
 
         <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
             android:defaultValue="true"
             android:key="show_options_menu"
             android:layout="@layout/list_item_view_switch"
-            android:title="Show Options Menu" />
+            android:title="Show 'More options' Menu" />
 
     </code.name.monkey.appthemehelper.common.prefs.supportv7.ATEPreferenceCategory>
 </androidx.preference.PreferenceScreen>
