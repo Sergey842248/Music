@@ -51,6 +51,7 @@
     <string name="action_sort_order">Sort order</string>
     <string name="action_tag_editor">Tag editor</string>
     <string name="action_toggle_favorite">Toggle favorite</string>
+    <string name="action_toggle_lyrics">Toggle lyrics</string>
     <string name="action_toggle_shuffle">Toggle shuffle mode</string>
     <string name="adaptive">Adaptive</string>
     <string name="add_action">Add</string>
@@ -434,6 +435,8 @@
     <string name="pref_title_toggle_full_screen">Fullscreen app</string>
     <string name="pref_title_toggle_toggle_headset">Auto-play</string>
     <string name="pref_title_toggle_toggle_shuffle">Shuffle mode</string>
+    <string name="pref_title_player_action_buttons">Player action buttons</string>
+    <string name="pref_summary_player_action_buttons_reorder">Drag and drop to reorder action buttons</string>
     <string name="pref_title_toggle_volume">Volume controls</string>
     <string name="pref_title_wallpaper_accent">Wallpaper accent color</string>
     <string name="pref_title_whitelist">Whitelist music</string>

@@ -46,26 +46,26 @@ object PreferenceUtil {
         CategoryInfo(CategoryInfo.Category.Search, false)
     )
 
+    private val libraryCategoryType = object : TypeToken<List<CategoryInfo>>() {}.type
+
     var libraryCategory: List<CategoryInfo>
         get() {
             val gson = Gson()
-            val collectionType = object : TypeToken<List<CategoryInfo>>() {}.type
-
             val data = sharedPreferences.getStringOrDefault(
                 LIBRARY_CATEGORIES,
-                gson.toJson(defaultCategories, collectionType)
+                gson.toJson(defaultCategories, libraryCategoryType)
             )
             return try {
-                Gson().fromJson(data, collectionType)
+                Gson().fromJson(data, libraryCategoryType)
             } catch (e: JsonSyntaxException) {
                 e.printStackTrace()
                 return defaultCategories
             }
         }
         set(value) {
-            val collectionType = object : TypeToken<List<CategoryInfo?>?>() {}.type
+            val gson = Gson()
             sharedPreferences.edit {
-                putString(LIBRARY_CATEGORIES, Gson().toJson(value, collectionType))
+                putString(LIBRARY_CATEGORIES, gson.toJson(value, libraryCategoryType))
             }
         }
 
@@ -766,12 +766,87 @@ object PreferenceUtil {
     val swipeDownToDismiss
         get() = sharedPreferences.getBoolean(SWIPE_DOWN_DISMISS, true)
 
+    const val HIDE_ALL_ACTION_BUTTONS = "hide_action_buttons"
+    const val SHOW_SLEEP_TIMER_BUTTON = "show_sleep_timer_button"
+    const val SHOW_LYRICS_BUTTON = "show_lyrics_button"
+    const val SHOW_FAVORITE_BUTTON = "show_favorite_button"
+
+    val hideAllActionButtons: Boolean
+        get() = sharedPreferences.getBoolean(
+            HIDE_ALL_ACTION_BUTTONS, false
+        )
+
+    val showSleepTimerButton: Boolean
+        get() = sharedPreferences.getBoolean(
+            SHOW_SLEEP_TIMER_BUTTON, false
+        )
+
+    val showLyricsButton: Boolean
+        get() = sharedPreferences.getBoolean(
+            SHOW_LYRICS_BUTTON, false
+        )
+
+    val showFavoriteButton: Boolean
+        get() = sharedPreferences.getBoolean(
+            SHOW_FAVORITE_BUTTON, false
+        )
 
     val artworkClickAction: Int
         get() = sharedPreferences.getStringOrDefault(ARTWORK_CLICK_ACTION, "0").toInt()
 
     val disableSwipeDownToDismiss
         get() = sharedPreferences.getBoolean(DISABLE_SWIPE_DOWN_TO_DISMISS, false)
+
+    const val PLAYER_ACTION_BUTTONS_ORDER = "player_action_buttons_order"
+    const val NOW_PLAYING_ACTION_BUTTONS_ORDER = "now_playing_action_buttons_order"
+    const val NOW_PLAYING_ACTION_BUTTONS_VISIBILITY = "now_playing_action_buttons_visibility"
+
+    var playerActionButtonsOrder: String
+        get() = sharedPreferences.getStringOrDefault(PLAYER_ACTION_BUTTONS_ORDER, "")
+        set(value) = sharedPreferences.edit { putString(PLAYER_ACTION_BUTTONS_ORDER, value) }
+
+    var nowPlayingActionButtonsOrder: List<Int>
+        get() {
+            val json = sharedPreferences.getStringOrDefault(NOW_PLAYING_ACTION_BUTTONS_ORDER, "[]")
+            return try {
+                Gson().fromJson(json, object : TypeToken<List<Int>>() {}.type)
+            } catch (e: JsonSyntaxException) {
+                e.printStackTrace()
+                emptyList()
+            }
+        }
+        set(value) {
+            val json = Gson().toJson(value)
+            sharedPreferences.edit { putString(NOW_PLAYING_ACTION_BUTTONS_ORDER, json) }
+        }
+
+    var nowPlayingActionButtonsVisibility: Map<String, Boolean>
+        get() {
+            val json = sharedPreferences.getStringOrDefault(NOW_PLAYING_ACTION_BUTTONS_VISIBILITY, "{}")
+            return try {
+                Gson().fromJson(json, object : TypeToken<Map<String, Boolean>>() {}.type)
+            } catch (e: JsonSyntaxException) {
+                e.printStackTrace()
+                emptyMap()
+            }
+        }
+        set(value) {
+            val json = Gson().toJson(value)
+            sharedPreferences.edit { putString(NOW_PLAYING_ACTION_BUTTONS_VISIBILITY, json) }
+        }
+
+    const val SHOW_NOW_PLAYING_QUEUE_BUTTON = "show_now_playing_queue_button"
+    const val SHOW_OPTIONS_MENU = "show_options_menu"
+
+    val showNowPlayingQueueButton: Boolean
+        get() = sharedPreferences.getBoolean(
+            SHOW_NOW_PLAYING_QUEUE_BUTTON, true // Default to true, as it's visible by default
+        )
+
+    val showOptionsMenu: Boolean
+        get() = sharedPreferences.getBoolean(
+            SHOW_OPTIONS_MENU, true // Default to true, as it's visible by default
+        )
 }
 
 enum class CoverLyricsType {

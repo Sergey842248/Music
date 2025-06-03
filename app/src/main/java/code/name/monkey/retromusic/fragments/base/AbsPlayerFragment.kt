@@ -19,6 +19,7 @@ import android.app.Activity
 import android.content.ContentUris
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.media.MediaMetadataRetriever
 import android.os.Bundle
@@ -36,6 +37,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.findNavController
 import androidx.navigation.navOptions
+import androidx.preference.PreferenceManager
 import androidx.viewpager.widget.ViewPager
 import code.name.monkey.appthemehelper.util.VersionUtils
 import code.name.monkey.retromusic.EXTRA_ALBUM_ID
@@ -59,6 +61,12 @@ import code.name.monkey.retromusic.repository.RealRepository
 import code.name.monkey.retromusic.service.MusicService
 import code.name.monkey.retromusic.util.NavigationUtil
 import code.name.monkey.retromusic.util.PreferenceUtil
+import code.name.monkey.retromusic.util.PreferenceUtil.HIDE_ALL_ACTION_BUTTONS
+import code.name.monkey.retromusic.util.PreferenceUtil.SHOW_FAVORITE_BUTTON
+import code.name.monkey.retromusic.util.PreferenceUtil.SHOW_LYRICS_BUTTON
+import code.name.monkey.retromusic.util.PreferenceUtil.SHOW_NOW_PLAYING_QUEUE_BUTTON
+import code.name.monkey.retromusic.util.PreferenceUtil.SHOW_OPTIONS_MENU
+import code.name.monkey.retromusic.util.PreferenceUtil.SHOW_SLEEP_TIMER_BUTTON
 import code.name.monkey.retromusic.util.RingtoneManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.coroutines.Dispatchers.IO
@@ -70,7 +78,10 @@ import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import kotlin.math.abs
 
 abstract class AbsPlayerFragment(@LayoutRes layout: Int) : AbsMusicServiceFragment(layout),
-    Toolbar.OnMenuItemClickListener, IPaletteColorHolder, PlayerAlbumCoverFragment.Callbacks {
+    Toolbar.OnMenuItemClickListener, IPaletteColorHolder, PlayerAlbumCoverFragment.Callbacks,
+    SharedPreferences.OnSharedPreferenceChangeListener {
+
+    private lateinit var sharedPreferences: SharedPreferences
 
     val libraryViewModel: LibraryViewModel by activityViewModel()
 
@@ -244,7 +255,7 @@ goToArtist(requireActivity(), MusicPlayerRemote.currentSong.artistName, MusicPla
 
     abstract fun onShow()
 
-    abstract fun onHide()
+    abstract fun onHide(): Unit // Added Unit explicitly for clarity, might not be necessary
 
     abstract fun toolbarIconColor(): Int
 
@@ -318,6 +329,7 @@ goToArtist(requireActivity(), MusicPlayerRemote.currentSong.artistName, MusicPla
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
         if (PreferenceUtil.isFullScreenMode &&
             view.findViewById<View>(R.id.status_bar) != null
         ) {
@@ -330,17 +342,70 @@ goToArtist(requireActivity(), MusicPlayerRemote.currentSong.artistName, MusicPla
             view.findViewById<RelativeLayout>(R.id.statusBarShadow)?.hide()
     }
 
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onResume() {
         super.onResume()
-        val nps = PreferenceUtil.nowPlayingScreen
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this)
+        updateMenuVisibility()
+    }
 
+    override fun onPause() {
+        super.onPause()
+        sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
+    }
+
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        when (key) {
+            HIDE_ALL_ACTION_BUTTONS,
+            SHOW_SLEEP_TIMER_BUTTON,
+            SHOW_LYRICS_BUTTON,
+            SHOW_FAVORITE_BUTTON,
+            SHOW_NOW_PLAYING_QUEUE_BUTTON,
+            SHOW_OPTIONS_MENU -> updateMenuVisibility()
+        }
+    }
+
+    private fun updateMenuVisibility() {
+        val toolbar = playerToolbar()
+        val menu = toolbar?.menu
+        if (menu == null) return
+
+        val hideAll = PreferenceUtil.hideAllActionButtons
+        val showSleepTimer = PreferenceUtil.showSleepTimerButton
+        val showLyricsPref = PreferenceUtil.showLyricsButton
+        val showFavorite = PreferenceUtil.showFavoriteButton
+        val showQueueButton = PreferenceUtil.showNowPlayingQueueButton
+        val showOptionsMenuPref = PreferenceUtil.showOptionsMenu
+
+        // Control visibility of individual action buttons based on preferences and hideAllActionButtons
+        menu.findItem(R.id.action_sleep_timer)?.isVisible = !hideAll && showSleepTimer
+        menu.findItem(R.id.action_toggle_favorite)?.isVisible = !hideAll && showFavorite
+        menu.findItem(R.id.now_playing)?.isVisible = !hideAll && showQueueButton
+
+        // Control lyrics menu item visibility by preference and player style
+        val nps = PreferenceUtil.nowPlayingScreen
         if (nps == NowPlayingScreen.Circle || nps == NowPlayingScreen.Peek || nps == NowPlayingScreen.Tiny) {
-            playerToolbar()?.menu?.removeItem(R.id.action_toggle_lyrics)
+             menu.findItem(R.id.action_toggle_lyrics)?.isVisible = false
         } else {
-            playerToolbar()?.menu?.findItem(R.id.action_toggle_lyrics)?.apply {
-                isChecked = PreferenceUtil.showLyrics
-                showLyricsIcon(this)
+             menu.findItem(R.id.action_toggle_lyrics)?.isVisible = !hideAll && showLyricsPref
+        }
+
+        // Control visibility of the overall options menu (3 dots icon)
+        // Iterate through all menu items. If showOptionsMenuPref is false, hide items that are not explicitly controlled
+        for (i in 0 until menu.size()) {
+            val item = menu.getItem(i)
+            when (item.itemId) {
+                R.id.action_sleep_timer,
+                R.id.action_toggle_lyrics,
+                R.id.action_toggle_favorite,
+                R.id.now_playing -> {
+                    // These are already handled above, do nothing here
+                }
+                else -> {
+                    // Hide other menu items if showOptionsMenuPref is false
+                    item.isVisible = showOptionsMenuPref
+                }
             }
         }
     }
