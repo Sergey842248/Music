@@ -190,7 +190,7 @@ class PlayingNotificationImpl24(
     }
 
     override fun clear(context: Context) {
-        Glide.with(context).clear(currentTarget)
+        Glide.with(context.applicationContext).clear(currentTarget)
     }
 
     private fun retrievePlaybackAction(action: String): PendingIntent {

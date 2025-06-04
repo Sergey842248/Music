@@ -53,7 +53,20 @@ class MainActivity : AbsCastActivity() {
 
         setupNavigationController()
 
+        // Restore the navigation controller state if available
+        if (savedInstanceState != null) {
+            savedInstanceState.getBundle("nav_state")?.let {
+                findNavController(R.id.fragment_container).restoreState(it)
+            }
+        }
+
         WhatsNewFragment.showChangeLog(this)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        // Save the navigation controller state
+        outState.putBundle("nav_state", findNavController(R.id.fragment_container).saveState())
     }
 
     private fun setupNavigationController() {

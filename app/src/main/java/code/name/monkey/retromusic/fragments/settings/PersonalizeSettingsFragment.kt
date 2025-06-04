@@ -70,6 +70,9 @@ class PersonalizeSettingsFragment : AbsSettingsFragment() {
         }
         setSummary(appBarMode)
 
+        val toggleHomeBanner: ATESwitchPreference? = findPreference("toggle_home_banner")
+        toggleHomeBanner?.title = getString(R.string.pref_title_home_banner)
+
         findPreference<Preference>(PreferenceUtil.NOW_PLAYING_METADATA)?.setOnPreferenceClickListener {
             findNavController().navigate(R.id.action_personalizeSettingsFragment_to_nowPlayingMetadataPreferenceDialog)
             true

@@ -30,12 +30,20 @@ import code.name.monkey.retromusic.extensions.goToProVersion
 import code.name.monkey.retromusic.extensions.showToast
 import code.name.monkey.retromusic.preferences.*
 import dev.chrisbanes.insetter.applyInsetter
+import android.content.Context
+import code.name.monkey.retromusic.util.theme.getThemeResValue
+import androidx.appcompat.view.ContextThemeWrapper
 
 /**
  * @author Hemanth S (h4h13).
  */
 
 abstract class AbsSettingsFragment : ATEPreferenceFragmentCompat() {
+
+    override fun onAttach(context: Context) {
+        val themedContext = ContextThemeWrapper(context, context.getThemeResValue())
+        super.onAttach(themedContext)
+    }
 
     internal fun showProToastAndNavigate(message: String) {
         showToast(getString(R.string.message_pro_feature, message))

@@ -874,10 +874,9 @@ class MusicService : MediaBrowserServiceCompat(),
                 .build()
         )
 
-        stopSelf()
-        android.os.Process.killProcess(android.os.Process.myPid()) // Kill the entire app process
-    }
 
+        stopSelf()
+    }
     private fun releaseWakeLock() {
         if (wakeLock!!.isHeld) {
             wakeLock?.release()

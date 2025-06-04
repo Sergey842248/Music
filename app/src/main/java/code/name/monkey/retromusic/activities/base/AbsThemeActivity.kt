@@ -48,6 +48,7 @@ abstract class AbsThemeActivity : ATHToolbarActivity(), Runnable {
         updateTheme()
         hideStatusBar()
         super.onCreate(savedInstanceState)
+        getTheme().applyStyle(getThemeResValue(), true) // Re-apply theme style to ensure resources are resolved
         setEdgeToEdgeOrImmersive()
         maybeSetScreenOn()
         maybeShowWhenLocked()
