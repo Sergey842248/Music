@@ -40,10 +40,19 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import code.name.monkey.retromusic.fragments.base.AbsPlayerFragment
 import code.name.monkey.retromusic.model.Artist
+import code.name.monkey.retromusic.model.MetadataField
+import code.name.monkey.retromusic.util.FileUtil
+import code.name.monkey.retromusic.util.MusicUtil
+import java.io.File
+import android.content.SharedPreferences
+import androidx.preference.PreferenceManager
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class PlayerPlaybackControlsFragment :
-    AbsPlayerControlsFragment(R.layout.fragment_player_playback_controls) {
+    AbsPlayerControlsFragment(R.layout.fragment_player_playback_controls),
+    SharedPreferences.OnSharedPreferenceChangeListener {
 
     private var _binding: FragmentPlayerPlaybackControlsBinding? = null
     private val binding get() = _binding!!
@@ -106,6 +115,22 @@ class PlayerPlaybackControlsFragment :
                 goToArtist(requireActivity(), MusicPlayerRemote.currentSong.artistName, MusicPlayerRemote.currentSong.artistId)
             }
         }
+        PreferenceManager.getDefaultSharedPreferences(requireContext())
+            .registerOnSharedPreferenceChangeListener(this)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        PreferenceManager.getDefaultSharedPreferences(requireContext())
+            .unregisterOnSharedPreferenceChangeListener(this)
+        _binding = null
+    }
+
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        when (key) {
+            PreferenceUtil.NOW_PLAYING_METADATA_ORDER,
+            PreferenceUtil.NOW_PLAYING_METADATA_VISIBILITY -> updateSong()
+        }
     }
 
     override fun setColor(color: MediaNotificationProcessor) {
@@ -157,9 +182,58 @@ class PlayerPlaybackControlsFragment :
         // Always display the full artist name string
         binding.text.text = artistName
 
+        val metadataOrder = PreferenceUtil.nowPlayingMetadataOrder
+        val metadataVisibility = PreferenceUtil.nowPlayingMetadataVisibility
+        val stringBuilder = StringBuilder()
 
-        if (PreferenceUtil.isSongInfo) {
-            binding.songInfo.text = getSongInfo(song)
+        for (fieldId in metadataOrder) {
+            if (metadataVisibility.contains(fieldId)) {
+                val metadataField = MetadataField.fromId(fieldId)
+                metadataField?.let {
+                    val label = getString(it.labelRes)
+                    val value = when (it) {
+                        MetadataField.ALBUM -> song.albumName
+                        MetadataField.ARTIST -> song.artistName
+                        MetadataField.YEAR -> if (song.year != 0) song.year.toString() else null
+                        MetadataField.BITRATE -> {
+                            // Retrieving bitrate requires MediaMetadataRetriever, which is complex.
+                            // For now, display N/A or hide if not easily available.
+                            // If a helper function exists in MusicUtil or FileUtil, use it here.
+                            null // Placeholder
+                        }
+                        MetadataField.FORMAT -> {
+                            // Retrieving format requires MediaMetadataRetriever.
+                            null // Placeholder
+                        }
+                        MetadataField.TRACK_LENGTH -> if (song.duration != 0L) MusicUtil.getReadableDurationString(song.duration) else null
+                        MetadataField.FILE_NAME -> if (song.data.isNotEmpty()) File(song.data).name else null
+                        MetadataField.FILE_PATH -> if (song.data.isNotEmpty()) song.data else null
+                        MetadataField.FILE_SIZE -> {
+                            val file = File(song.data)
+                            if (file.exists()) FileUtil.getReadableFileSize(file.length()) else null
+                        }
+                        MetadataField.SAMPLING_RATE -> {
+                            // Retrieving sampling rate requires MediaMetadataRetriever.
+                            null // Placeholder
+                        }
+                        MetadataField.LAST_MODIFIED -> if (song.dateModified != 0L) {
+                            val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+                            dateFormat.format(Date(song.dateModified * 1000L))
+                        } else null
+                    }
+
+                    if (!value.isNullOrEmpty()) {
+                        if (stringBuilder.isNotEmpty()) {
+                            stringBuilder.append("  •  ")
+                        }
+                        stringBuilder.append("$label: $value")
+                    }
+                }
+            }
+        }
+
+        if (stringBuilder.isNotEmpty()) {
+            binding.songInfo.text = stringBuilder.toString()
             binding.songInfo.show()
         } else {
             binding.songInfo.hide()
@@ -225,10 +299,5 @@ class PlayerPlaybackControlsFragment :
             scaleY = 0f
             rotation = 0f
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

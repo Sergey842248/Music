@@ -21,6 +21,9 @@ import code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreferenc
 import androidx.preference.PreferenceManager
 import code.name.monkey.appthemehelper.util.VersionUtils
 import code.name.monkey.retromusic.*
+import androidx.preference.Preference
+import androidx.navigation.fragment.findNavController
+import code.name.monkey.retromusic.util.PreferenceUtil
 
 class PersonalizeSettingsFragment : AbsSettingsFragment() {
 
@@ -66,5 +69,10 @@ class PersonalizeSettingsFragment : AbsSettingsFragment() {
             true
         }
         setSummary(appBarMode)
+
+        findPreference<Preference>(PreferenceUtil.NOW_PLAYING_METADATA)?.setOnPreferenceClickListener {
+            findNavController().navigate(R.id.action_personalizeSettingsFragment_to_nowPlayingMetadataPreferenceDialog)
+            true
+        }
     }
 }

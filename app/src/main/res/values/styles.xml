@@ -270,4 +270,6 @@
         <item name="background">@android:color/transparent</item>
         <item name="haloRadius">0dp</item>
     </style>
+
+    <style name="TextViewSubhead" parent="TextAppearance.AppCompat.Subhead" />
 </resources>

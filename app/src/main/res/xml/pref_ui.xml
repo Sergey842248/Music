@@ -134,4 +134,11 @@
             android:summary="@string/pref_summary_lock_screen"
             android:title="@string/pref_title_lock_screen" />
     </code.name.monkey.appthemehelper.common.prefs.supportv7.ATEPreferenceCategory>
+
+    <androidx.preference.Preference
+        android:key="now_playing_metadata"
+        android:layout="@layout/list_item_view"
+        android:title="@string/pref_header_now_playing_metadata"
+        android:summary="@string/pref_summary_extra_song_info" />
+
 </androidx.preference.PreferenceScreen>

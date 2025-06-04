@@ -20,6 +20,7 @@ import code.name.monkey.retromusic.fragments.NowPlayingScreen
 import code.name.monkey.retromusic.fragments.folder.FoldersFragment
 import code.name.monkey.retromusic.helper.SortOrder.*
 import code.name.monkey.retromusic.model.CategoryInfo
+import code.name.monkey.retromusic.model.MetadataField
 import code.name.monkey.retromusic.transform.*
 import code.name.monkey.retromusic.util.theme.ThemeMode
 import code.name.monkey.retromusic.views.TopAppBarLayout
@@ -837,6 +838,7 @@ object PreferenceUtil {
 
     const val SHOW_NOW_PLAYING_QUEUE_BUTTON = "show_now_playing_queue_button"
     const val SHOW_OPTIONS_MENU = "show_options_menu"
+    const val NOW_PLAYING_METADATA = "now_playing_metadata"
 
     val showNowPlayingQueueButton: Boolean
         get() = sharedPreferences.getBoolean(
@@ -847,6 +849,41 @@ object PreferenceUtil {
         get() = sharedPreferences.getBoolean(
             SHOW_OPTIONS_MENU, true // Default to true, as it's visible by default
         )
+
+    const val NOW_PLAYING_METADATA_ORDER = "now_playing_metadata_order"
+    const val NOW_PLAYING_METADATA_VISIBILITY = "now_playing_metadata_visibility"
+
+    var nowPlayingMetadataOrder: List<Int>
+        get() {
+            val json = sharedPreferences.getStringOrDefault(NOW_PLAYING_METADATA_ORDER, "[]")
+            return try {
+                Gson().fromJson(json, object : TypeToken<List<Int>>() {}.type)
+            } catch (e: JsonSyntaxException) {
+                e.printStackTrace()
+                // Default order: all fields in the order defined in the enum
+                MetadataField.values().map { it.id }
+            }
+        }
+        set(value) {
+            val json = Gson().toJson(value)
+            sharedPreferences.edit { putString(NOW_PLAYING_METADATA_ORDER, json) }
+        }
+
+    var nowPlayingMetadataVisibility: Set<Int>
+        get() {
+            val json = sharedPreferences.getStringOrDefault(NOW_PLAYING_METADATA_VISIBILITY, "[]")
+            return try {
+                Gson().fromJson(json, object : TypeToken<Set<Int>>() {}.type)
+            } catch (e: JsonSyntaxException) {
+                e.printStackTrace()
+                // Default visibility: all fields visible
+                MetadataField.values().map { it.id }.toSet()
+            }
+        }
+        set(value) {
+            val json = Gson().toJson(value)
+            sharedPreferences.edit { putString(NOW_PLAYING_METADATA_VISIBILITY, json) }
+        }
 }
 
 enum class CoverLyricsType {
