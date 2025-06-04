@@ -222,8 +222,12 @@ class SearchAdapter(
                 }
 
                 SONG -> {
-                    MusicPlayerRemote.playNext(item as Song)
-                    MusicPlayerRemote.playNextSong()
+                    val song = item as Song
+                    val songList = dataSet.filterIsInstance<Song>()
+                    val index = songList.indexOf(song)
+                    if (index != -1) {
+                        MusicPlayerRemote.openQueue(songList, index, true)
+                    }
                 }
             }
         }
