@@ -90,9 +90,7 @@ abstract class LocalPlayback(val context: Context) : Playback, MediaPlayer.OnErr
 
     @CallSuper
     override fun start(): Boolean {
-        if (!requestFocus()) {
-            context.showToast(R.string.audio_focus_denied)
-        }
+        requestFocus()
         registerBecomingNoisyReceiver()
         return true
     }
