@@ -588,4 +588,21 @@
     <string name="pref_title_suggestions">Show suggestions</string>
     <string name="pref_title_swipe_anywhere_now_playing">Swipe anywhere to change song</string>
     <string name="pref_title_swipe_to_dismiss">Dismiss with swipe down</string>
+
+    <!-- New strings for disabling now playing taps -->
+    <string name="pref_title_disabled_now_playing_taps">Disable Now Playing Taps</string>
+    <string name="pref_summary_disabled_now_playing_taps">Select which tap actions to disable on the Now Playing screen.</string>
+
+    <!-- Array for disabled now playing taps preference -->
+    <string-array name="pref_disabled_now_playing_taps_titles">
+        <item>Disable artist tap</item>
+        <item>Disable title tap</item>
+    </string-array>
+    <string-array name="pref_disabled_now_playing_taps_values">
+        <item>artist</item>
+        <item>title</item>
+    </string-array>
+    <string-array name="pref_disabled_now_playing_taps_default_value">
+        <item></item>
+    </string-array>
 </resources>

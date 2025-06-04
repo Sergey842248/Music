@@ -88,31 +88,35 @@ class PlayerPlaybackControlsFragment :
         binding.title.isSelected = true
         binding.text.isSelected = true
         binding.title.setOnClickListener {
-            goToAlbum(requireActivity())
+            if (!PreferenceUtil.disabledNowPlayingTaps.contains("title")) {
+                goToAlbum(requireActivity())
+            }
         }
         binding.text.setOnClickListener {
-            if (individualArtists.size > 1) {
-                MaterialAlertDialogBuilder(requireContext())
-                    .setTitle(R.string.select_artist)
-                    .setItems(individualArtists.toTypedArray()) { dialog, which ->
-                        val selectedArtistName = individualArtists[which]
-                        lifecycleScope.launch(Dispatchers.IO) {
-                            // Find the artist by name from the list of all artists
-                            val allArtists = (requireParentFragment() as AbsPlayerFragment).libraryViewModel.artists.value
-                            val selectedArtist = allArtists?.find { artist -> artist.name == selectedArtistName }
-                            withContext(Dispatchers.Main) {
-                                if (selectedArtist != null) {
-                                    goToArtist(requireActivity(), selectedArtistName, selectedArtist.id)
-                                } else {
-                                    // Fallback to current song artist ID if artist not found by name
-                                    goToArtist(requireActivity(), selectedArtistName, MusicPlayerRemote.currentSong.artistId)
+            if (!PreferenceUtil.disabledNowPlayingTaps.contains("artist")) {
+                if (individualArtists.size > 1) {
+                    MaterialAlertDialogBuilder(requireContext())
+                        .setTitle(R.string.select_artist)
+                        .setItems(individualArtists.toTypedArray()) { dialog, which ->
+                            val selectedArtistName = individualArtists[which]
+                            lifecycleScope.launch(Dispatchers.IO) {
+                                // Find the artist by name from the list of all artists
+                                val allArtists = (requireParentFragment() as AbsPlayerFragment).libraryViewModel.artists.value
+                                val selectedArtist = allArtists?.find { artist -> artist.name == selectedArtistName }
+                                withContext(Dispatchers.Main) {
+                                    if (selectedArtist != null) {
+                                        goToArtist(requireActivity(), selectedArtistName, selectedArtist.id)
+                                    } else {
+                                        // Fallback to current song artist ID if artist not found by name
+                                        goToArtist(requireActivity(), selectedArtistName, MusicPlayerRemote.currentSong.artistId)
+                                    }
                                 }
                             }
                         }
-                    }
-                    .show()
-            } else {
-                goToArtist(requireActivity(), MusicPlayerRemote.currentSong.artistName, MusicPlayerRemote.currentSong.artistId)
+                        .show()
+                } else {
+                    goToArtist(requireActivity(), MusicPlayerRemote.currentSong.artistName, MusicPlayerRemote.currentSong.artistId)
+                }
             }
         }
         PreferenceManager.getDefaultSharedPreferences(requireContext())
@@ -129,7 +133,10 @@ class PlayerPlaybackControlsFragment :
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
         when (key) {
             PreferenceUtil.NOW_PLAYING_METADATA_ORDER,
-            PreferenceUtil.NOW_PLAYING_METADATA_VISIBILITY -> updateSong()
+            PreferenceUtil.NOW_PLAYING_METADATA_VISIBILITY,
+            PreferenceUtil.DISABLED_NOW_PLAYING_TAPS -> {
+                // No UI update needed for tap preference change, just the click listener logic
+            }
         }
     }
 

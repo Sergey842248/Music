@@ -798,6 +798,10 @@ object PreferenceUtil {
     val disableSwipeDownToDismiss
         get() = sharedPreferences.getBoolean(DISABLE_SWIPE_DOWN_TO_DISMISS, false)
 
+    const val DISABLED_NOW_PLAYING_TAPS = "disabled_now_playing_taps"
+    val disabledNowPlayingTaps: Set<String>
+        get() = sharedPreferences.getStringSet(DISABLED_NOW_PLAYING_TAPS, emptySet()) ?: emptySet()
+
     const val PLAYER_ACTION_BUTTONS_ORDER = "player_action_buttons_order"
     const val NOW_PLAYING_ACTION_BUTTONS_ORDER = "now_playing_action_buttons_order"
     const val NOW_PLAYING_ACTION_BUTTONS_VISIBILITY = "now_playing_action_buttons_visibility"
