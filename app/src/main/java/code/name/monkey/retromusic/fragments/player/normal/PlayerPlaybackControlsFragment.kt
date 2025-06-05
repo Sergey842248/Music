@@ -48,6 +48,8 @@ import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import java.text.SimpleDateFormat
 import java.util.*
+import android.media.MediaMetadataRetriever
+import android.net.Uri
 
 
 class PlayerPlaybackControlsFragment :
@@ -193,50 +195,71 @@ class PlayerPlaybackControlsFragment :
         val metadataVisibility = PreferenceUtil.nowPlayingMetadataVisibility
         val stringBuilder = StringBuilder()
 
-        for (fieldId in metadataOrder) {
-            if (metadataVisibility.contains(fieldId)) {
-                val metadataField = MetadataField.fromId(fieldId)
-                metadataField?.let {
-                    val label = getString(it.labelRes)
-                    val value = when (it) {
-                        MetadataField.ALBUM -> song.albumName
-                        MetadataField.ARTIST -> song.artistName
-                        MetadataField.YEAR -> if (song.year != 0) song.year.toString() else null
-                        MetadataField.BITRATE -> {
-                            // Retrieving bitrate requires MediaMetadataRetriever, which is complex.
-                            // For now, display N/A or hide if not easily available.
-                            // If a helper function exists in MusicUtil or FileUtil, use it here.
-                            null // Placeholder
-                        }
-                        MetadataField.FORMAT -> {
-                            // Retrieving format requires MediaMetadataRetriever.
-                            null // Placeholder
-                        }
-                        MetadataField.TRACK_LENGTH -> if (song.duration != 0L) MusicUtil.getReadableDurationString(song.duration) else null
-                        MetadataField.FILE_NAME -> if (song.data.isNotEmpty()) File(song.data).name else null
-                        MetadataField.FILE_PATH -> if (song.data.isNotEmpty()) song.data else null
-                        MetadataField.FILE_SIZE -> {
-                            val file = File(song.data)
-                            if (file.exists()) FileUtil.getReadableFileSize(file.length()) else null
-                        }
-                        MetadataField.SAMPLING_RATE -> {
-                            // Retrieving sampling rate requires MediaMetadataRetriever.
-                            null // Placeholder
-                        }
-                        MetadataField.LAST_MODIFIED -> if (song.dateModified != 0L) {
-                            val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
-                            dateFormat.format(Date(song.dateModified * 1000L))
-                        } else null
-                    }
+        var retriever: MediaMetadataRetriever? = null
+        try {
+            if (song.data.isNotEmpty()) {
+                retriever = MediaMetadataRetriever()
+                retriever.setDataSource(requireContext(), Uri.parse(song.data))
+            }
 
-                    if (!value.isNullOrEmpty()) {
-                        if (stringBuilder.isNotEmpty()) {
-                            stringBuilder.append("  •  ")
+            for (fieldId in metadataOrder) {
+                if (metadataVisibility.contains(fieldId)) {
+                    val metadataField = MetadataField.fromId(fieldId)
+                    metadataField?.let {
+                        val label = getString(it.labelRes)
+                        val value = when (it) {
+                            MetadataField.ALBUM -> song.albumName
+                            MetadataField.ARTIST -> song.artistName
+                            MetadataField.YEAR -> if (song.year != 0) song.year.toString() else null
+                            MetadataField.BITRATE -> {
+                                retriever?.extractMetadata(MediaMetadataRetriever.METADATA_KEY_BITRATE)?.let { bitrateStr ->
+                                    try {
+                                        val bitrate = bitrateStr.toLong() / 1000 // Convert to kbps
+                                        "${bitrate}kbps"
+                                    } catch (e: NumberFormatException) {
+                                        null
+                                    }
+                                }
+                            }
+                            MetadataField.FORMAT -> {
+                                retriever?.extractMetadata(MediaMetadataRetriever.METADATA_KEY_MIMETYPE)?.let { mimeType ->
+                                    mimeType.substringAfterLast('/') // e.g., "mpeg" from "audio/mpeg"
+                                }
+                            }
+                            MetadataField.TRACK_LENGTH -> if (song.duration != 0L) MusicUtil.getReadableDurationString(song.duration) else null
+                            MetadataField.FILE_NAME -> if (song.data.isNotEmpty()) File(song.data).name else null
+                            MetadataField.FILE_PATH -> if (song.data.isNotEmpty()) song.data else null
+                            MetadataField.FILE_SIZE -> {
+                                val file = File(song.data)
+                                if (file.exists()) FileUtil.getReadableFileSize(file.length()) else null
+                            }
+                            MetadataField.SAMPLING_RATE -> {
+                                retriever?.extractMetadata(MediaMetadataRetriever.METADATA_KEY_SAMPLERATE)?.let { sampleRateStr ->
+                                    try {
+                                        val sampleRate = sampleRateStr.toLong() / 1000 // Convert to kHz
+                                        "${sampleRate}kHz"
+                                    } catch (e: NumberFormatException) {
+                                        null
+                                    }
+                                }
+                            }
+                            MetadataField.LAST_MODIFIED -> if (song.dateModified != 0L) {
+                                val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+                                dateFormat.format(Date(song.dateModified * 1000L))
+                            } else null
                         }
-                        stringBuilder.append("$label: $value")
+
+                        if (!value.isNullOrEmpty()) {
+                            if (stringBuilder.isNotEmpty()) {
+                                stringBuilder.append("  •  ")
+                            }
+                            stringBuilder.append("$label: $value")
+                        }
                     }
                 }
             }
+        } finally {
+            retriever?.release()
         }
 
         if (stringBuilder.isNotEmpty()) {

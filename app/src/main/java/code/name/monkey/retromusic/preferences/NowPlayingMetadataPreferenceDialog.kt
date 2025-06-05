@@ -58,6 +58,12 @@ class NowPlayingMetadataPreferenceDialog : DialogFragment() {
                 val defaultOrder = MetadataField.values().map { it.id }
                 val defaultVisibility = MetadataField.values().map { it.id }.toSet()
                 updateMetadataFields(defaultOrder, defaultVisibility)
+                metadataFieldAdapter.metadataFields = defaultOrder.mapNotNull { fieldId ->
+                    MetadataField.fromId(fieldId)?.let { metadataField ->
+                        EditableMetadataField(metadataField, defaultVisibility.contains(fieldId))
+                    }
+                }.toMutableList()
+                metadataFieldAdapter.notifyDataSetChanged()
                 dismiss()
             }
             .setNegativeButton(android.R.string.cancel) { dialog, _ ->
@@ -68,6 +74,12 @@ class NowPlayingMetadataPreferenceDialog : DialogFragment() {
                 val currentOrder = metadataFieldAdapter.metadataFields.map { it.metadataField.id }
                 val currentVisibility = metadataFieldAdapter.metadataFields.filter { it.isVisible }.map { it.metadataField.id }.toSet()
                 updateMetadataFields(currentOrder, currentVisibility)
+                metadataFieldAdapter.metadataFields = currentOrder.mapNotNull { fieldId ->
+                    MetadataField.fromId(fieldId)?.let { metadataField ->
+                        EditableMetadataField(metadataField, currentVisibility.contains(fieldId))
+                    }
+                }.toMutableList()
+                metadataFieldAdapter.notifyDataSetChanged()
                 dismiss()
             }
             .setView(binding.root) // Set view using builder
