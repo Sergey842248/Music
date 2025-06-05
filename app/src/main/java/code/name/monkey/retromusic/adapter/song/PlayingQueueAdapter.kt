@@ -108,11 +108,7 @@ class PlayingQueueAdapter(
     }
 
     override fun onCheckCanStartDrag(holder: ViewHolder, position: Int, x: Int, y: Int): Boolean {
-        return ViewUtil.hitTest(holder.imageText!!, x, y) || ViewUtil.hitTest(
-            holder.dragView!!,
-            x,
-            y
-        )
+        return ViewUtil.hitTest(holder.dragView!!, x, y)
     }
 
     override fun onGetItemDraggableRange(holder: ViewHolder, position: Int): ItemDraggableRange? {

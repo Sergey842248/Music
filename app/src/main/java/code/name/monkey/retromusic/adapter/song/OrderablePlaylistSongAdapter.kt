@@ -90,7 +90,9 @@ class OrderablePlaylistSongAdapter(
     }
 
     inner class ViewHolder(itemView: View) : SongAdapter.ViewHolder(itemView) {
-        val dragView: View? = itemView.findViewById(R.id.drag_view)
+        private val dragView: View? = itemView.findViewById(R.id.drag_view)
+
+        fun getDragView(): View? = dragView
 
         override var songMenuRes: Int
             get() = R.menu.menu_item_playlist_song
@@ -118,13 +120,16 @@ class OrderablePlaylistSongAdapter(
             }
         }
 
+
         init {
-            dragView?.isVisible = isDragEnabled
+
         }
     }
-
     override fun onCheckCanStartDrag(holder: ViewHolder, position: Int, x: Int, y: Int): Boolean {
-        return isDragEnabled // Only check isDragEnabled
+        // Check if dragging is enabled and if the touch coordinates are within the dragView bounds
+        return isDragEnabled && holder.getDragView()?.let {
+            x >= it.left && x < it.right && y >= it.top && y < it.bottom
+        } ?: false
     }
 
     override fun onMoveItem(fromPosition: Int, toPosition: Int) {
@@ -170,5 +175,13 @@ class OrderablePlaylistSongAdapter(
 
     fun hasSongs(): Boolean {
         return itemCount > 0 || (filtered && fullDataSet.size > 0)
+    }
+
+    override fun onBindViewHolder(holder: SongAdapter.ViewHolder, position: Int) {
+        super.onBindViewHolder(holder, position)
+        // Update dragView visibility based on isDragEnabled state for each bound item
+        if (holder is ViewHolder) {
+            holder.getDragView()?.isVisible = isDragEnabled
+        }
     }
 }

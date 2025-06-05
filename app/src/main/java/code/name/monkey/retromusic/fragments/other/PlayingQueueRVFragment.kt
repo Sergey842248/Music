@@ -38,7 +38,6 @@ class PlayingQueueRVFragment : AbsRecyclerViewFragment<PlayingQueueAdapter, Line
     private lateinit var wrappedAdapter: RecyclerView.Adapter<*>
     private var recyclerViewDragDropManager: RecyclerViewDragDropManager? = null
     private var recyclerViewSwipeManager: RecyclerViewSwipeManager? = null
-    private var recyclerViewTouchActionGuardManager: RecyclerViewTouchActionGuardManager? = null
     override val titleRes: Int
         get() = R.string.now_playing_queue
     override val isShuffleVisible: Boolean
@@ -60,7 +59,6 @@ class PlayingQueueRVFragment : AbsRecyclerViewFragment<PlayingQueueAdapter, Line
     }
 
     private fun setupRecyclerView() {
-        recyclerViewTouchActionGuardManager = RecyclerViewTouchActionGuardManager()
         recyclerViewDragDropManager = RecyclerViewDragDropManager()
         recyclerViewSwipeManager = RecyclerViewSwipeManager()
 
@@ -73,7 +71,6 @@ class PlayingQueueRVFragment : AbsRecyclerViewFragment<PlayingQueueAdapter, Line
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = wrappedAdapter
         recyclerView.itemAnimator = animator
-        recyclerViewTouchActionGuardManager?.attachRecyclerView(recyclerView)
         recyclerViewDragDropManager?.attachRecyclerView(recyclerView)
         recyclerViewSwipeManager?.attachRecyclerView(recyclerView)
 
@@ -143,6 +140,7 @@ class PlayingQueueRVFragment : AbsRecyclerViewFragment<PlayingQueueAdapter, Line
             recyclerViewSwipeManager?.release()
             recyclerViewSwipeManager = null
         }
+
 
         WrapperAdapterUtils.releaseAll(wrappedAdapter)
     }
