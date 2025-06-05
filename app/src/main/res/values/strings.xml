@@ -605,4 +605,9 @@
     <string-array name="pref_disabled_now_playing_taps_default_value">
         <item></item>
     </string-array>
+
+    <string name="time_display_mode_title">Time Display Mode</string>
+    <string name="time_display_mode_total">Always show total time</string>
+    <string name="time_display_mode_remaining">Always show remaining time</string>
+    <string name="time_display_mode_toggle">Tap to toggle</string>
 </resources>

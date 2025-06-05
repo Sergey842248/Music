@@ -857,6 +857,15 @@ object PreferenceUtil {
     const val NOW_PLAYING_METADATA_ORDER = "now_playing_metadata_order"
     const val NOW_PLAYING_METADATA_VISIBILITY = "now_playing_metadata_visibility"
 
+    const val TIME_DISPLAY_MODE = "time_display_mode"
+    const val TIME_DISPLAY_MODE_TOTAL = 0
+    const val TIME_DISPLAY_MODE_REMAINING = 1
+    const val TIME_DISPLAY_MODE_TOGGLE = 2
+
+    var timeDisplayMode: Int
+        get() = sharedPreferences.getInt(TIME_DISPLAY_MODE, TIME_DISPLAY_MODE_TOTAL)
+        set(value) = sharedPreferences.edit { putInt(TIME_DISPLAY_MODE, value) }
+
     var nowPlayingMetadataOrder: List<Int>
         get() {
             val json = sharedPreferences.getStringOrDefault(NOW_PLAYING_METADATA_ORDER, "[]")

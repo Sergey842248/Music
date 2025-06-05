@@ -38,6 +38,9 @@ import code.name.monkey.retromusic.helper.MusicProgressViewUpdateHelper
 import code.name.monkey.retromusic.service.MusicService
 import code.name.monkey.retromusic.util.MusicUtil
 import code.name.monkey.retromusic.util.PreferenceUtil
+import code.name.monkey.retromusic.util.PreferenceUtil.TIME_DISPLAY_MODE_REMAINING
+import code.name.monkey.retromusic.util.PreferenceUtil.TIME_DISPLAY_MODE_TOGGLE
+import code.name.monkey.retromusic.util.PreferenceUtil.TIME_DISPLAY_MODE_TOTAL
 import code.name.monkey.retromusic.util.color.MediaNotificationProcessor
 import com.google.android.material.slider.Slider
 
@@ -59,6 +62,7 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layout: Int) : AbsMusicServi
     var lastDisabledPlaybackControlsColor: Int = 0
 
     private var isSeeking = false
+    private var isShowingRemainingTime = false
 
     open val progressSlider: Slider? = null
 
@@ -99,7 +103,29 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layout: Int) : AbsMusicServi
 
             }
         }
-        songTotalTime?.text = MusicUtil.getReadableDurationString(total.toLong())
+
+        val timeDisplayMode = PreferenceUtil.timeDisplayMode
+        when (timeDisplayMode) {
+            TIME_DISPLAY_MODE_TOTAL -> {
+                songTotalTime?.text = MusicUtil.getReadableDurationString(total.toLong())
+                songTotalTime?.setOnClickListener(null) // Remove any previous click listener
+            }
+            TIME_DISPLAY_MODE_REMAINING -> {
+                songTotalTime?.text = MusicUtil.getReadableDurationString((total - progress).toLong())
+                songTotalTime?.setOnClickListener(null) // Remove any previous click listener
+            }
+            TIME_DISPLAY_MODE_TOGGLE -> {
+                if (isShowingRemainingTime) {
+                    songTotalTime?.text = MusicUtil.getReadableDurationString((total - progress).toLong())
+                } else {
+                    songTotalTime?.text = MusicUtil.getReadableDurationString(total.toLong())
+                }
+                songTotalTime?.setOnClickListener {
+                    isShowingRemainingTime = !isShowingRemainingTime
+                    onUpdateProgressViews(progress, total) // Update immediately
+                }
+            }
+        }
         songCurrentProgress?.text = MusicUtil.getReadableDurationString(progress.toLong())
     }
 
