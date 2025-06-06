@@ -196,6 +196,8 @@ abstract class AbsRecyclerViewFragment<A : RecyclerView.Adapter<*>, LM : Recycle
             menu,
             ATHToolbarActivity.getToolbarBackgroundColor(toolbar)
         )
+        val castButton = menu.findItem(R.id.action_cast)
+        castButton.isVisible = PreferenceUtil.showCastButton
     }
 
     override fun onMenuItemSelected(item: MenuItem): Boolean {

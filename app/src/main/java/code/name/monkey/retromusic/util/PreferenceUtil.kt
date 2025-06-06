@@ -871,6 +871,7 @@ object PreferenceUtil {
     const val SHOW_NOW_PLAYING_QUEUE_BUTTON = "show_now_playing_queue_button"
     const val SHOW_OPTIONS_MENU = "show_options_menu"
     const val NOW_PLAYING_METADATA = "now_playing_metadata"
+    const val SHOW_CAST_BUTTON = "show_cast_button"
 
     val showNowPlayingQueueButton: Boolean
         get() = sharedPreferences.getBoolean(
@@ -880,6 +881,11 @@ object PreferenceUtil {
     val showOptionsMenu: Boolean
         get() = sharedPreferences.getBoolean(
             SHOW_OPTIONS_MENU, true // Default to true, as it's visible by default
+        )
+
+    val showCastButton: Boolean
+        get() = sharedPreferences.getBoolean(
+            SHOW_CAST_BUTTON, true // Default to true, as it's visible by default
         )
 
     const val NOW_PLAYING_METADATA_ORDER = "now_playing_metadata_order"

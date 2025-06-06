@@ -611,6 +611,8 @@
     <string name="pref_header_now_playing">Now Playing</string>
     <string name="pref_summary_disabled_now_playing_taps">Select which elements on the now playing screen should not react to taps.</string>
     <string name="pref_title_disabled_now_playing_taps">Disabled now playing taps</string>
+    <string name="pref_title_show_cast_button">Show Cast Button</string>
+    <string name="pref_summary_show_cast_button">Toggle visibility of the Cast to Device button</string>
 
 
 </resources>
