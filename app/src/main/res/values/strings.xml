@@ -613,6 +613,8 @@
     <string name="pref_title_disabled_now_playing_taps">Disabled now playing taps</string>
     <string name="pref_title_show_cast_button">Show Cast Button</string>
     <string name="pref_summary_show_cast_button">Toggle visibility of the Cast to Device button</string>
+    <string name="pref_title_hide_song_menu_grid">Hide song menu in grid</string>
+    <string name="pref_summary_hide_song_menu_grid">Hide the three-dot menu icon in the Songs section when using Grid View</string>
 
 
 </resources>
