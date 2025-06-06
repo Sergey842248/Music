@@ -99,7 +99,7 @@ open class SongAdapter(
         holder.text2?.text = getSongText(song)
         loadAlbumCover(song, holder)
         val landscape = RetroUtil.isLandscape
-        if ((PreferenceUtil.songGridSize > 2 && !landscape) || (PreferenceUtil.songGridSizeLand > 5 && landscape)) {
+        if (PreferenceUtil.hideSongMenuGrid || (PreferenceUtil.songGridSize > 2 && !landscape) || (PreferenceUtil.songGridSizeLand > 5 && landscape)) {
             holder.menu?.isVisible = false
         }
     }

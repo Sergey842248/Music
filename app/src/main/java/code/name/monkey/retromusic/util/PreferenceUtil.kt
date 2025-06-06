@@ -888,6 +888,12 @@ object PreferenceUtil {
             SHOW_CAST_BUTTON, true // Default to true, as it's visible by default
         )
 
+    const val HIDE_SONG_MENU_GRID = "hide_song_menu_grid"
+    val hideSongMenuGrid: Boolean
+        get() = sharedPreferences.getBoolean(
+            HIDE_SONG_MENU_GRID, false // Default to false, as it's visible by default
+        )
+
     const val NOW_PLAYING_METADATA_ORDER = "now_playing_metadata_order"
     const val NOW_PLAYING_METADATA_VISIBILITY = "now_playing_metadata_visibility"
 
