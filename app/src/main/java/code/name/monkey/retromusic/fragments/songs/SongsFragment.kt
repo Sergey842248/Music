@@ -34,6 +34,10 @@ class SongsFragment : AbsRecyclerViewCustomGridSizeFragment<SongAdapter, GridLay
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         updateFabIcon()
+        if (PreferenceUtil.hideSongsSearchButton) {
+            toolbar.navigationIcon = null
+            toolbar.setNavigationOnClickListener(null)
+        }
         libraryViewModel.getSongs().observe(viewLifecycleOwner) {
             if (it.isNotEmpty())
                 adapter?.swapDataSet(it)
@@ -50,7 +54,8 @@ class SongsFragment : AbsRecyclerViewCustomGridSizeFragment<SongAdapter, GridLay
 
 
     override val isShuffleVisible: Boolean
-        get() = PreferenceUtil.songsFabAction != PreferenceUtil.FAB_ACTION_DISABLED
+        get() = PreferenceUtil.songsFabAction != PreferenceUtil.FAB_ACTION_DISABLED &&
+                !(PreferenceUtil.hideSongsSearchButton && PreferenceUtil.songsFabAction == PreferenceUtil.FAB_ACTION_SEARCH)
 
     override fun onShuffleClicked() {
         when (PreferenceUtil.songsFabAction) {
@@ -349,11 +354,16 @@ class SongsFragment : AbsRecyclerViewCustomGridSizeFragment<SongAdapter, GridLay
     }
 
     private fun updateFabIcon() {
-        when (PreferenceUtil.songsFabAction) {
-            PreferenceUtil.FAB_ACTION_SHUFFLE -> shuffleButton.setImageResource(R.drawable.ic_shuffle)
-            PreferenceUtil.FAB_ACTION_SEARCH -> shuffleButton.setImageResource(R.drawable.ic_search)
-            PreferenceUtil.FAB_ACTION_PLAY_NEXT -> shuffleButton.setImageResource(R.drawable.ic_play_arrow)
-            PreferenceUtil.FAB_ACTION_DISABLED -> { /* FAB is hidden by isShuffleVisible */ }
+        if (PreferenceUtil.hideSongsSearchButton && PreferenceUtil.songsFabAction == PreferenceUtil.FAB_ACTION_SEARCH) {
+            shuffleButton.visibility = View.GONE
+        } else {
+            shuffleButton.visibility = View.VISIBLE
+            when (PreferenceUtil.songsFabAction) {
+                PreferenceUtil.FAB_ACTION_SHUFFLE -> shuffleButton.setImageResource(R.drawable.ic_shuffle)
+                PreferenceUtil.FAB_ACTION_SEARCH -> shuffleButton.setImageResource(R.drawable.ic_search)
+                PreferenceUtil.FAB_ACTION_PLAY_NEXT -> shuffleButton.setImageResource(R.drawable.ic_play_arrow)
+                PreferenceUtil.FAB_ACTION_DISABLED -> { /* FAB is hidden by isShuffleVisible */ }
+            }
         }
     }
 

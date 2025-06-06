@@ -894,6 +894,12 @@ object PreferenceUtil {
             HIDE_SONG_MENU_GRID, false // Default to false, as it's visible by default
         )
 
+    const val HIDE_SONGS_SEARCH_BUTTON = "hide_songs_search_button"
+    val hideSongsSearchButton: Boolean
+        get() = sharedPreferences.getBoolean(
+            HIDE_SONGS_SEARCH_BUTTON, false // Default to false, as it's visible by default
+        )
+
     const val NOW_PLAYING_METADATA_ORDER = "now_playing_metadata_order"
     const val NOW_PLAYING_METADATA_VISIBILITY = "now_playing_metadata_visibility"
 

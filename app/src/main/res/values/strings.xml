@@ -615,6 +615,7 @@
     <string name="pref_summary_show_cast_button">Toggle visibility of the Cast to Device button</string>
     <string name="pref_title_hide_song_menu_grid">Hide song menu in grid</string>
     <string name="pref_summary_hide_song_menu_grid">Hide the three-dot menu icon in the Songs section when using Grid View</string>
-
+    <string name="pref_title_hide_songs_search_button">Hide Songs Search Button</string>
+    <string name="pref_summary_hide_songs_search_button">Hide the search button in the Songs Grid View</string>
 
 </resources>
