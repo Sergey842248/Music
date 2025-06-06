@@ -127,6 +127,13 @@
             android:title="@string/pref_title_albums_fab_action"
             android:summary="@string/pref_summary_albums_fab_action" />
 
+        <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
+            android:defaultValue="false"
+            android:key="hide_song_menu_grid"
+            android:layout="@layout/list_item_view_switch"
+            android:summary="@string/pref_summary_hide_song_menu_grid"
+            android:title="@string/pref_title_hide_song_menu_grid" />
+
     </code.name.monkey.appthemehelper.common.prefs.supportv7.ATEPreferenceCategory>
 
     <code.name.monkey.appthemehelper.common.prefs.supportv7.ATEPreferenceCategory
