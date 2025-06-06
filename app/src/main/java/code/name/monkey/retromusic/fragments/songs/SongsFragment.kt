@@ -23,7 +23,9 @@ import code.name.monkey.retromusic.adapter.song.SongAdapter
 import code.name.monkey.retromusic.extensions.setUpMediaRouteButton
 import code.name.monkey.retromusic.fragments.GridStyle
 import code.name.monkey.retromusic.fragments.ReloadType
+import androidx.navigation.fragment.findNavController
 import code.name.monkey.retromusic.fragments.base.AbsRecyclerViewCustomGridSizeFragment
+import code.name.monkey.retromusic.helper.MusicPlayerRemote
 import code.name.monkey.retromusic.helper.SortOrder.SongSortOrder
 import code.name.monkey.retromusic.util.PreferenceUtil
 import code.name.monkey.retromusic.util.RetroUtil
@@ -31,6 +33,7 @@ import code.name.monkey.retromusic.util.RetroUtil
 class SongsFragment : AbsRecyclerViewCustomGridSizeFragment<SongAdapter, GridLayoutManager>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        updateFabIcon()
         libraryViewModel.getSongs().observe(viewLifecycleOwner) {
             if (it.isNotEmpty())
                 adapter?.swapDataSet(it)
@@ -45,13 +48,29 @@ class SongsFragment : AbsRecyclerViewCustomGridSizeFragment<SongAdapter, GridLay
     override val emptyMessage: Int
         get() = R.string.no_songs
 
+
     override val isShuffleVisible: Boolean
-        get() = true
+        get() = PreferenceUtil.songsFabAction != PreferenceUtil.FAB_ACTION_DISABLED
 
     override fun onShuffleClicked() {
-        libraryViewModel.shuffleSongs()
+        when (PreferenceUtil.songsFabAction) {
+            PreferenceUtil.FAB_ACTION_SHUFFLE -> libraryViewModel.shuffleSongs()
+            PreferenceUtil.FAB_ACTION_SEARCH -> {
+                findNavController().navigate(R.id.action_search)
+            }
+            PreferenceUtil.FAB_ACTION_PLAY_NEXT -> {
+                if (MusicPlayerRemote.isPlaying) {
+                    MusicPlayerRemote.playNextSong()
+                } else {
+                    adapter?.dataSet?.let { songs ->
+                        if (songs.isNotEmpty()) {
+                            MusicPlayerRemote.openQueue(songs, 0, true, true)
+                        }
+                    }
+                }
+            }
+        }
     }
-
     override fun createLayoutManager(): GridLayoutManager {
         return GridLayoutManager(requireActivity(), getGridSize())
     }
@@ -320,12 +339,22 @@ class SongsFragment : AbsRecyclerViewCustomGridSizeFragment<SongAdapter, GridLay
 
     override fun onResume() {
         super.onResume()
+        updateFabIcon()
         libraryViewModel.forceReload(ReloadType.Songs)
     }
 
     override fun onPause() {
         super.onPause()
         adapter?.actionMode?.finish()
+    }
+
+    private fun updateFabIcon() {
+        when (PreferenceUtil.songsFabAction) {
+            PreferenceUtil.FAB_ACTION_SHUFFLE -> shuffleButton.setImageResource(R.drawable.ic_shuffle)
+            PreferenceUtil.FAB_ACTION_SEARCH -> shuffleButton.setImageResource(R.drawable.ic_search)
+            PreferenceUtil.FAB_ACTION_PLAY_NEXT -> shuffleButton.setImageResource(R.drawable.ic_play_arrow)
+            PreferenceUtil.FAB_ACTION_DISABLED -> { /* FAB is hidden by isShuffleVisible */ }
+        }
     }
 
     companion object {

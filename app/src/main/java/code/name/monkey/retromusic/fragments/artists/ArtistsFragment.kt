@@ -40,6 +40,7 @@ class ArtistsFragment : AbsRecyclerViewCustomGridSizeFragment<ArtistAdapter, Gri
     IArtistClickListener, IAlbumArtistClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        updateFabIcon()
         libraryViewModel.getArtists().observe(viewLifecycleOwner) {
             if (it.isNotEmpty())
                 adapter?.swapDataSet(it)
@@ -55,16 +56,33 @@ class ArtistsFragment : AbsRecyclerViewCustomGridSizeFragment<ArtistAdapter, Gri
         get() = R.string.no_artists
 
     override val isShuffleVisible: Boolean
-        get() = true
+        get() = PreferenceUtil.artistsFabAction != PreferenceUtil.FAB_ACTION_DISABLED
 
     override fun onShuffleClicked() {
-        libraryViewModel.getArtists().value?.let {
+        when (PreferenceUtil.artistsFabAction) {
+            PreferenceUtil.FAB_ACTION_SHUFFLE -> libraryViewModel.getArtists().value?.let {
             MusicPlayerRemote.setShuffleMode(MusicService.SHUFFLE_MODE_NONE)
             MusicPlayerRemote.openQueue(
                 queue = it.shuffled().flatMap { artist -> artist.songs },
                 startPosition = 0,
                 startPlaying = true
             )
+        }
+            PreferenceUtil.FAB_ACTION_SEARCH -> {
+                findNavController().navigate(R.id.action_search)
+            }
+            PreferenceUtil.FAB_ACTION_PLAY_NEXT -> {
+                if (MusicPlayerRemote.isPlaying) {
+                    MusicPlayerRemote.playNextSong()
+                } else {
+                    libraryViewModel.getArtists().value?.let { artists ->
+                        val allSongs = artists.flatMap { artist -> artist.songs }
+                        if (allSongs.isNotEmpty()) {
+                            MusicPlayerRemote.openQueue(allSongs, 0, true, true)
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -333,6 +351,16 @@ class ArtistsFragment : AbsRecyclerViewCustomGridSizeFragment<ArtistAdapter, Gri
 
     override fun onResume() {
         super.onResume()
+        updateFabIcon()
         libraryViewModel.forceReload(ReloadType.Artists)
+    }
+
+    private fun updateFabIcon() {
+        when (PreferenceUtil.artistsFabAction) {
+            PreferenceUtil.FAB_ACTION_SHUFFLE -> shuffleButton.setImageResource(R.drawable.ic_shuffle)
+            PreferenceUtil.FAB_ACTION_SEARCH -> shuffleButton.setImageResource(R.drawable.ic_search)
+            PreferenceUtil.FAB_ACTION_PLAY_NEXT -> shuffleButton.setImageResource(R.drawable.ic_play_arrow)
+            PreferenceUtil.FAB_ACTION_DISABLED -> { /* FAB is hidden by isShuffleVisible */ }
+        }
     }
 }

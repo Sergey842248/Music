@@ -772,6 +772,16 @@ object PreferenceUtil {
     const val SHOW_LYRICS_BUTTON = "show_lyrics_button"
     const val SHOW_FAVORITE_BUTTON = "show_favorite_button"
 
+
+    const val SONGS_FAB_ACTION = "songs_fab_action"
+    const val ARTISTS_FAB_ACTION = "artists_fab_action"
+    const val ALBUMS_FAB_ACTION = "albums_fab_action"
+
+    const val FAB_ACTION_SHUFFLE = "shuffle"
+    const val FAB_ACTION_SEARCH = "search"
+    const val FAB_ACTION_PLAY_NEXT = "play_next"
+    const val FAB_ACTION_DISABLED = "disabled"
+
     val hideAllActionButtons: Boolean
         get() = sharedPreferences.getBoolean(
             HIDE_ALL_ACTION_BUTTONS, false
@@ -791,6 +801,24 @@ object PreferenceUtil {
         get() = sharedPreferences.getBoolean(
             SHOW_FAVORITE_BUTTON, false
         )
+
+    var songsFabAction: String
+        get() = sharedPreferences.getStringOrDefault(
+            SONGS_FAB_ACTION, FAB_ACTION_SHUFFLE // Default to shuffle
+        )
+        set(value) = sharedPreferences.edit { putString(SONGS_FAB_ACTION, value) }
+
+    var artistsFabAction: String
+        get() = sharedPreferences.getStringOrDefault(
+            ARTISTS_FAB_ACTION, FAB_ACTION_SHUFFLE // Default to shuffle
+        )
+        set(value) = sharedPreferences.edit { putString(ARTISTS_FAB_ACTION, value) }
+
+    var albumsFabAction: String
+        get() = sharedPreferences.getStringOrDefault(
+            ALBUMS_FAB_ACTION, FAB_ACTION_SHUFFLE // Default to shuffle
+        )
+        set(value) = sharedPreferences.edit { putString(ALBUMS_FAB_ACTION, value) }
 
     val artworkClickAction: Int
         get() = sharedPreferences.getStringOrDefault(ARTWORK_CLICK_ACTION, "0").toInt()

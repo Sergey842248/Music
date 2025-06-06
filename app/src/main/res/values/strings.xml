@@ -52,6 +52,8 @@
     <string name="action_tag_editor">Tag editor</string>
     <string name="action_toggle_favorite">Toggle favorite</string>
     <string name="action_toggle_lyrics">Toggle lyrics</string>
+    <string name="show_lyrics">Show lyrics</string>
+    <string name="do_nothing">Do nothing</string>
     <string name="action_toggle_shuffle">Toggle shuffle mode</string>
     <string name="adaptive">Adaptive</string>
     <string name="add_action">Add</string>
@@ -348,7 +350,6 @@
     <string name="pref_show_when_locked_summary">Requires an app restart to take effect. The player must be on foreground before locking for this feature to work</string>
     <string name="pref_show_when_locked_title">Show the player interface when locked</string>
     <string name="pref_language_name">Select language</string>
-    <string name="pref_header_now_playing">Now Playing</string>
     <string name="pref_snow_fall_title">Snow fall effect</string>
     <string name="pref_summary_album_art_on_lockscreen">Use the currently playing song album cover as the lockscreen wallpaper</string>
     <string name="pref_summary_album_artists_only">Show Album Artists in the Artist category</string>
@@ -426,9 +427,11 @@
     <string name="permission_alarm_summary">The app needs permission to schedule exact alarms to set sleep timers</string>
     <string name="permission_alarm_title">Alarm (Optional)</string>
     <string name="saf_delete_failed">File delete failed: %s</string>
+    <!-- SAF -->
     <string name="saf_error_uri">Can\'t get SAF URI</string>
     <string name="saf_guide_slide1_description">Open navigation drawer</string>
     <string name="saf_guide_slide1_description_before_o">Enable \'Show SD card\' in overflow menu</string>
+    <!-- SAF guide -->
     <string name="saf_guide_slide1_title">%s needs SD card access</string>
     <string name="saf_guide_slide2_description">You need to select your SD card root directory</string>
     <string name="saf_guide_slide2_title">Select your SD card in navigation drawer</string>
@@ -436,6 +439,8 @@
     <string name="saf_guide_slide3_title">Tap \'select\' button at the bottom of the screen</string>
     <string name="saf_write_failed">File write failed: %s</string>
     <string name="save">Save</string>
+    <!-- SAF -->
+    <!-- SAF guide -->
     <string name="saved_playlist_to">Saved playlist to %s.</string>
     <string name="exporting_playlist_title">Exporting playlist</string>
     <string name="exported_playlist_to">Exported playlist to %s.</string>
@@ -534,80 +539,78 @@
     <string name="pref_title_artist_delimiters">Artist Delimiters</string>
     <string name="pref_summary_artist_delimiters">Characters used to separate multiple artists (comma-separated)</string>
     <string name="select_artist">Select Artist</string>
-    <string name="default_artist_delimiters">N/A</string>
-    <string name="save_playlist_title">Save playlist</string>
-    <string name="save_playlists_title">Save playlists</string>
-    <string name="pref_header_now_playing_metadata">Now Playing Metadata</string>
-    <string name="show_lyrics">Show Lyrics</string>
-    <string name="do_nothing">Do Nothing</string>
-    <string name="pref_summary_toggle_full_screen">Full Screen</string>
-    <string name="pref_summary_toggle_headset">Start playing immediately after headphones are connected</string>
-    <string name="pref_summary_toggle_shuffle">Shuffle mode will turn off when playing a new list of songs</string>
-    <string name="pref_summary_toggle_volume">If enough space is available, show volume controls in the now playing screen</string>
-    <string name="pref_summary_wallpaper_accent">Extract accent color from wallpaper</string>
-    <string name="pref_summary_whitelist">Only show music from /Music Folder</string>
-    <string name="pref_title_album_art_on_lockscreen">Show album cover</string>
-    <string name="pref_title_album_artists_only">Navigate by Album Artist</string>
-    <string name="pref_title_album_cover_style">Album cover theme</string>
-    <string name="pref_title_album_cover_transform">Album cover skip</string>
-    <string name="pref_title_app_shortcuts">Colored app shortcuts</string>
-    <string name="pref_title_appbar_mode">Header style</string>
-    <string name="pref_title_audio_ducking">Reduce volume on focus loss</string>
-    <string name="pref_title_audio_fade">Fade audio</string>
-    <string name="pref_title_auto_download_artist_images">Auto-download artist images</string>
+    <string name="default_artist_delimiters"></string>
+
+    <string name="pref_summary_toggle_full_screen">Toggle fullscreen mode</string>
+    <string name="pref_summary_toggle_headset">Toggle headset control</string>
+    <string name="pref_summary_toggle_volume">Toggle volume control</string>
+    <string name="pref_summary_wallpaper_accent">Toggle wallpaper accent</string>
+    <string name="pref_summary_whitelist">Toggle whitelist</string>
+    <string name="pref_title_album_art_on_lockscreen">Album art on lockscreen</string>
+    <string name="pref_title_album_artists_only">Album artists only</string>
+    <string name="pref_title_album_cover_style">Album cover style</string>
+    <string name="pref_title_album_cover_transform">Album cover transform</string>
+    <string name="pref_title_app_shortcuts">App shortcuts</string>
+    <string name="pref_title_appbar_mode">App bar mode</string>
+    <string name="pref_title_audio_ducking">Audio ducking</string>
+    <string name="pref_title_audio_fade">Audio fade</string>
+    <string name="pref_title_auto_download_artist_images">Auto download artist images</string>
     <string name="pref_title_blacklist">Blacklist</string>
     <string name="pref_title_bluetooth_playback">Bluetooth playback</string>
-    <string name="pref_title_blurred_album_art">Blur album cover</string>
-    <string name="pref_title_circle_button">Circular play button</string>
-    <string name="pref_title_classic_notification">Classic notification design</string>
-    <string name="pref_title_colored_app">Adaptive color</string>
+    <string name="pref_title_blurred_album_art">Blurred album art</string>
+    <string name="pref_title_circle_button">Circle play button</string>
+    <string name="pref_title_classic_notification">Classic notification</string>
+    <string name="pref_title_colored_app">Colored app</string>
     <string name="pref_title_colored_notification">Colored notification</string>
-    <string name="pref_title_cross_fade">Crossfade</string>
-    <string name="pref_title_custom_font">Use Manrope font</string>
+    <string name="pref_title_cross_fade">Crossfade duration</string>
+    <string name="pref_title_custom_font">Custom font</string>
     <string name="pref_title_desaturated_color">Desaturated color</string>
     <string name="pref_title_enable_search_playlist">Enable search in playlist</string>
-    <string name="pref_title_expand_now_playing_panel">Show now playing screen</string>
+    <string name="pref_title_expand_now_playing_panel">Expand now playing panel</string>
     <string name="pref_title_extra_controls">Extra controls</string>
-    <string name="pref_title_extra_song_info">Song info</string>
+    <string name="pref_title_extra_song_info">Extra song info</string>
     <string name="pref_title_gapless_playback">Gapless playback</string>
-    <string name="pref_title_general_theme">App theme</string>
-    <string name="pref_title_home_album_grid_style">Album grid</string>
-    <string name="pref_title_home_artist_grid_style">Artist grid</string>
-    <string name="pref_title_home_banner">Banner</string>
-    <string name="pref_title_ignore_media_store_artwork">Ignore Media Store covers</string>
-    <string name="pref_title_last_added_interval">Last added playlist interval</string>
-    <string name="pref_title_lock_screen">Fullscreen controls</string>
-    <string name="pref_title_lyrics_screen_on">Keep screen on when showing lyrics</string>
+    <string name="pref_title_general_theme">General theme</string>
+    <string name="pref_title_home_album_grid_style">Home album grid style</string>
+    <string name="pref_title_home_artist_grid_style">Home artist grid style</string>
+    <string name="pref_title_home_banner">Home banner</string>
+    <string name="pref_title_ignore_media_store_artwork">Ignore media store artwork</string>
+    <string name="pref_title_last_added_interval">Last added interval</string>
+    <string name="pref_title_lock_screen">Lock screen</string>
+    <string name="pref_title_lyrics_screen_on">Lyrics screen on</string>
     <string name="pref_title_lyrics_type">Lyrics type</string>
-    <string name="pref_title_manage_audio_focus">Always play</string>
-    <string name="pref_title_now_playing_screen_appearance">Now playing theme</string>
-    <string name="pref_title_open_source_licences">Open source licences</string>
+    <string name="pref_title_manage_audio_focus">Manage audio focus</string>
+    <string name="pref_title_now_playing_screen_appearance">Now playing screen appearance</string>
+    <string name="pref_title_open_source_licences">Open source licenses</string>
     <string name="pref_title_pause_history">Pause history</string>
     <string name="pref_title_remember_tab">Remember last tab</string>
     <string name="pref_title_show_lyrics">Show lyrics</string>
-    <string name="pref_title_suggestions">Show suggestions</string>
+    <string name="pref_title_suggestions">Suggestions</string>
     <string name="pref_title_swipe_anywhere_now_playing">Swipe anywhere to change song</string>
-    <string name="pref_title_swipe_to_dismiss">Dismiss with swipe down</string>
+    <string name="pref_title_swipe_to_dismiss">Swipe down to dismiss</string>
+    <string name="time_display_mode_title">Time display mode</string>
+    <string name="time_display_mode_total">Total time</string>
+    <string name="time_display_mode_remaining">Remaining time</string>
+    <string name="time_display_mode_toggle">Toggle on tap</string>
 
-    <!-- New strings for disabling now playing taps -->
-    <string name="pref_title_disabled_now_playing_taps">Disable Now Playing Taps</string>
-    <string name="pref_summary_disabled_now_playing_taps">Select which tap actions to disable on the Now Playing screen.</string>
+    <string name="pref_title_songs_fab_action">Songs FAB Action</string>
+    <string name="pref_summary_songs_fab_action">Choose the action for the Floating Action Button in the Songs tab</string>
+    <string name="pref_title_artists_fab_action">Artists FAB Action</string>
+    <string name="pref_summary_artists_fab_action">Choose the action for the Floating Action Button in the Artists tab</string>
+    <string name="pref_title_albums_fab_action">Albums FAB Action</string>
+    <string name="pref_summary_albums_fab_action">Choose the action for the Floating Action Button in the Albums tab</string>
+    <string name="fab_action_shuffle">Shuffle and Play</string>
+    <string name="fab_action_search">Open Search</string>
+    <string name="fab_action_play_next">Play Next</string>
+    <string name="fab_action_disabled">Disabled</string>
 
-    <!-- Array for disabled now playing taps preference -->
-    <string-array name="pref_disabled_now_playing_taps_titles">
-        <item>Disable artist tap</item>
-        <item>Disable title tap</item>
-    </string-array>
-    <string-array name="pref_disabled_now_playing_taps_values">
-        <item>artist</item>
-        <item>title</item>
-    </string-array>
-    <string-array name="pref_disabled_now_playing_taps_default_value">
-        <item></item>
-    </string-array>
+    <string name="pref_summary_toggle_shuffle">Toggle shuffle mode summary</string>
+    <string name="save_playlist_title">Save playlist</string>
+    <string name="save_playlists_title">Save playlists</string>
+    <string name="pref_header_now_playing_metadata">Now Playing Metadata</string>
+    <string name="pref_header_now_playing">Now Playing</string>
+    <string name="pref_summary_disabled_now_playing_taps">Select which elements on the now playing screen should not react to taps.</string>
+    <string name="pref_title_disabled_now_playing_taps">Disabled now playing taps</string>
 
-    <string name="time_display_mode_title">Time Display Mode</string>
-    <string name="time_display_mode_total">Always show total time</string>
-    <string name="time_display_mode_remaining">Always show remaining time</string>
-    <string name="time_display_mode_toggle">Tap to toggle</string>
+
 </resources>

@@ -225,4 +225,35 @@
         <item>@string/choose_image</item>
         <item>@string/remove_image</item>
     </string-array>
+
+    <string-array name="pref_songs_fab_action_titles">
+        <item>@string/fab_action_shuffle</item>
+        <item>@string/fab_action_search</item>
+        <item>@string/fab_action_play_next</item>
+        <item>@string/fab_action_disabled</item>
+    </string-array>
+
+    <string-array name="pref_songs_fab_action_values">
+        <item>shuffle</item>
+        <item>search</item>
+        <item>play_next</item>
+        <item>disabled</item>
+    </string-array>
+
+    <string-array name="pref_disabled_now_playing_taps_titles">
+        <item>Album Art</item>
+        <item>Seek Bar</item>
+        <item>Title and Artist</item>
+        <item>Lyrics</item>
+    </string-array>
+
+    <string-array name="pref_disabled_now_playing_taps_values">
+        <item>album_art</item>
+        <item>seek_bar</item>
+        <item>title_artist</item>
+        <item>lyrics</item>
+    </string-array>
+
+    <array name="pref_disabled_now_playing_taps_default_value">
+        </array>
 </resources>

@@ -45,6 +45,7 @@ class AlbumsFragment : AbsRecyclerViewCustomGridSizeFragment<AlbumAdapter, GridL
             else
                 adapter?.swapDataSet(listOf())
         }
+        updateFabIcon() // Call updateFabIcon here
     }
 
     override val titleRes: Int
@@ -53,17 +54,35 @@ class AlbumsFragment : AbsRecyclerViewCustomGridSizeFragment<AlbumAdapter, GridL
     override val emptyMessage: Int
         get() = R.string.no_albums
 
+
+
     override val isShuffleVisible: Boolean
-        get() = true
+        get() = PreferenceUtil.albumsFabAction != PreferenceUtil.FAB_ACTION_DISABLED
 
     override fun onShuffleClicked() {
-        libraryViewModel.getAlbums().value?.let {
-            MusicPlayerRemote.setShuffleMode(MusicService.SHUFFLE_MODE_NONE)
+        when (PreferenceUtil.albumsFabAction) {
+            PreferenceUtil.FAB_ACTION_SHUFFLE -> libraryViewModel.getAlbums().value?.let {
             MusicPlayerRemote.openQueue(
                 queue = it.shuffled().flatMap { album -> album.songs },
                 startPosition = 0,
                 startPlaying = true
             )
+        }
+            PreferenceUtil.FAB_ACTION_SEARCH -> {
+                findNavController().navigate(R.id.action_search)
+            }
+            PreferenceUtil.FAB_ACTION_PLAY_NEXT -> {
+                if (MusicPlayerRemote.isPlaying) {
+                    MusicPlayerRemote.playNextSong()
+                } else {
+                    libraryViewModel.getAlbums().value?.let { albums ->
+                        val allSongs = albums.flatMap { album -> album.songs }
+                        if (allSongs.isNotEmpty()) {
+                            MusicPlayerRemote.openQueue(allSongs, 0, true, true)
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -121,6 +140,15 @@ class AlbumsFragment : AbsRecyclerViewCustomGridSizeFragment<AlbumAdapter, GridL
     override fun saveLayoutRes(layoutRes: Int) {
         PreferenceUtil.albumGridStyle = GridStyle.values().first { gridStyle ->
             gridStyle.layoutResId == layoutRes
+        }
+    }
+
+    private fun updateFabIcon() {
+        when (PreferenceUtil.albumsFabAction) {
+            PreferenceUtil.FAB_ACTION_SHUFFLE -> shuffleButton.setImageResource(R.drawable.ic_shuffle)
+            PreferenceUtil.FAB_ACTION_SEARCH -> shuffleButton.setImageResource(R.drawable.ic_search)
+            PreferenceUtil.FAB_ACTION_PLAY_NEXT -> shuffleButton.setImageResource(R.drawable.ic_play_arrow)
+            PreferenceUtil.FAB_ACTION_DISABLED -> { /* FAB is hidden by isShuffleVisible */ }
         }
     }
 
