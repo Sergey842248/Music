@@ -3,7 +3,6 @@ description: Suggest an idea for Music
 labels: [enhancement]
 assignees: "Sergey842248"
 body:
-
   - type: textarea
     id: feature-description
     attributes:
