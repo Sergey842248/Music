@@ -40,6 +40,7 @@ import android.content.SharedPreferences
 import code.name.monkey.retromusic.util.PreferenceUtil
 import code.name.monkey.retromusic.util.RetroUtil
 import com.bumptech.glide.Glide
+import code.name.monkey.retromusic.MINI_PLAYER_SCROLLING
 import kotlin.math.abs
 
 open class MiniPlayerFragment : AbsMusicServiceFragment(R.layout.fragment_mini_player),
@@ -105,7 +106,7 @@ open class MiniPlayerFragment : AbsMusicServiceFragment(R.layout.fragment_mini_p
 
         builder.append(title).append(" • ").append(text)
 
-        binding.miniPlayerTitle.isSelected = !PreferenceUtil.disableMiniPlayerScrolling
+        binding.miniPlayerTitle.isSelected = PreferenceUtil.miniPlayerScrolling
         binding.miniPlayerTitle.text = builder
 
 //        binding.title.isSelected = true
@@ -198,7 +199,7 @@ open class MiniPlayerFragment : AbsMusicServiceFragment(R.layout.fragment_mini_p
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-        if (key == PreferenceUtil.DISABLE_MINI_PLAYER_SCROLLING) {
+        if (key == MINI_PLAYER_SCROLLING) {
             updateSongTitle()
         }
     }

@@ -22,28 +22,37 @@ import java.text.Collator
 data class Artist(
     val id: Long,
     val albums: List<Album>,
-    val isAlbumArtist: Boolean = false
+    val isAlbumArtist: Boolean = false,
+    private var _name: String? = null // Internal mutable property for name
 ) {
     constructor(
         artistName: String,
         albums: List<Album>,
         isAlbumArtist: Boolean = false
     ) : this(albums[0].artistId, albums, isAlbumArtist) {
-        name = artistName
+        _name = artistName
     }
 
-    var name: String = "-"
+    // New constructor for cases where we only have a name and no albums initially
+    constructor(
+        id: Long,
+        artistName: String,
+        isAlbumArtist: Boolean = false
+    ) : this(id, emptyList(), isAlbumArtist) {
+        _name = artistName
+    }
+
+    var name: String = _name ?: "-" // Use _name if available, otherwise default
         get() {
-            val name = if (isAlbumArtist) getAlbumArtistName()
-            else getArtistName()
+            val resolvedName = _name ?: if (isAlbumArtist) getAlbumArtistName() else getArtistName()
             return when {
-                MusicUtil.isVariousArtists(name) ->
+                MusicUtil.isVariousArtists(resolvedName) ->
                     VARIOUS_ARTISTS_DISPLAY_NAME
 
-                MusicUtil.isArtistNameUnknown(name) ->
+                MusicUtil.isArtistNameUnknown(resolvedName) ->
                     UNKNOWN_ARTIST_DISPLAY_NAME
 
-                else -> name!!
+                else -> resolvedName!!
             }
         }
 
@@ -140,7 +149,6 @@ data class Artist(
         const val UNKNOWN_ARTIST_DISPLAY_NAME = "Unknown Artist"
         const val VARIOUS_ARTISTS_DISPLAY_NAME = "Various Artists"
         const val VARIOUS_ARTISTS_ID: Long = -2
-        val empty = Artist(-1, emptyList())
-
+        val empty = Artist(-1, emptyList(), false, UNKNOWN_ARTIST_DISPLAY_NAME) // Update empty to use new constructor
     }
 }

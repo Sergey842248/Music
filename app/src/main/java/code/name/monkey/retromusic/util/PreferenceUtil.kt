@@ -888,22 +888,19 @@ object PreferenceUtil {
             SHOW_CAST_BUTTON, true // Default to true, as it's visible by default
         )
 
-    const val HIDE_SONG_MENU_GRID = "hide_song_menu_grid"
-    val hideSongMenuGrid: Boolean
+    val showSongMenuGrid: Boolean
         get() = sharedPreferences.getBoolean(
-            HIDE_SONG_MENU_GRID, false // Default to false, as it's visible by default
+            SHOW_SONG_MENU_GRID, true // Default to true, as it's visible by default
         )
 
-    const val HIDE_SONGS_SEARCH_BUTTON = "hide_songs_search_button"
-    val hideSongsSearchButton: Boolean
+    val showSongsSearchButton: Boolean
         get() = sharedPreferences.getBoolean(
-            HIDE_SONGS_SEARCH_BUTTON, false // Default to false, as it's visible by default
+            SHOW_SONGS_SEARCH_BUTTON, true // Default to true, as it's visible by default
         )
 
-    const val DISABLE_MINI_PLAYER_SCROLLING = "disable_mini_player_scrolling"
-    val disableMiniPlayerScrolling: Boolean
+    val miniPlayerScrolling: Boolean
         get() = sharedPreferences.getBoolean(
-            DISABLE_MINI_PLAYER_SCROLLING, false // Default to false
+            MINI_PLAYER_SCROLLING, true // Default to true
         )
 
     val enableSongTitleMarquee: Boolean

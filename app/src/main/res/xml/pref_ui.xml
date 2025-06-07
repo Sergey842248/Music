@@ -94,45 +94,12 @@
             android:positiveButtonText="@null"
             android:title="@string/pref_title_appbar_mode" />
 
-        <code.name.monkey.appthemehelper.common.prefs.supportv7.ATEListPreference
-            android:defaultValue="@string/fab_action_shuffle"
-            android:entries="@array/pref_songs_fab_action_titles"
-            android:entryValues="@array/pref_songs_fab_action_values"
-            android:key="songs_fab_action"
-            android:layout="@layout/list_item_view"
-            android:negativeButtonText="@null"
-            android:positiveButtonText="@null"
-            android:title="@string/pref_title_songs_fab_action"
-            android:summary="@string/pref_summary_songs_fab_action" />
-
-        <code.name.monkey.appthemehelper.common.prefs.supportv7.ATEListPreference
-            android:defaultValue="@string/fab_action_shuffle"
-            android:entries="@array/pref_songs_fab_action_titles"
-            android:entryValues="@array/pref_songs_fab_action_values"
-            android:key="artists_fab_action"
-            android:layout="@layout/list_item_view"
-            android:negativeButtonText="@null"
-            android:positiveButtonText="@null"
-            android:title="@string/pref_title_artists_fab_action"
-            android:summary="@string/pref_summary_artists_fab_action" />
-
-        <code.name.monkey.appthemehelper.common.prefs.supportv7.ATEListPreference
-            android:defaultValue="@string/fab_action_shuffle"
-            android:entries="@array/pref_songs_fab_action_titles"
-            android:entryValues="@array/pref_songs_fab_action_values"
-            android:key="albums_fab_action"
-            android:layout="@layout/list_item_view"
-            android:negativeButtonText="@null"
-            android:positiveButtonText="@null"
-            android:title="@string/pref_title_albums_fab_action"
-            android:summary="@string/pref_summary_albums_fab_action" />
-
         <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
-            android:defaultValue="false"
-            android:key="hide_song_menu_grid"
+            android:defaultValue="true"
+            android:key="show_song_menu_grid"
             android:layout="@layout/list_item_view_switch"
-            android:summary="@string/pref_summary_hide_song_menu_grid"
-            android:title="@string/pref_title_hide_song_menu_grid" />
+            android:summary="@string/pref_summary_show_song_menu_grid"
+            android:title="@string/pref_title_show_song_menu_grid" />
 
         <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
             android:defaultValue="true"
@@ -141,14 +108,54 @@
             android:summary="@string/pref_summary_enable_song_title_marquee"
             android:title="@string/pref_title_enable_song_title_marquee" />
 
-        <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
-            android:defaultValue="false"
-            android:key="show_fab_on_scroll"
-            android:layout="@layout/list_item_view_switch"
-            android:summary="@string/pref_summary_show_fab_on_scroll"
-            android:title="@string/pref_title_show_fab_on_scroll" />
+    </code.name.monkey.appthemehelper.common.prefs.supportv7.ATEPreferenceCategory>
+
+    <code.name.monkey.appthemehelper.common.prefs.supportv7.ATEPreferenceCategory
+        android:layout="@layout/preference_category_title"
+        android:title="Floating Action Button">
+
+    <code.name.monkey.appthemehelper.common.prefs.supportv7.ATEListPreference
+        android:defaultValue="@string/fab_action_shuffle"
+        android:entries="@array/pref_songs_fab_action_titles"
+        android:entryValues="@array/pref_songs_fab_action_values"
+        android:key="songs_fab_action"
+        android:layout="@layout/list_item_view"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_title_songs_fab_action"
+        android:summary="@string/pref_summary_songs_fab_action" />
+
+    <code.name.monkey.appthemehelper.common.prefs.supportv7.ATEListPreference
+        android:defaultValue="@string/fab_action_shuffle"
+        android:entries="@array/pref_songs_fab_action_titles"
+        android:entryValues="@array/pref_songs_fab_action_values"
+        android:key="artists_fab_action"
+        android:layout="@layout/list_item_view"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_title_artists_fab_action"
+        android:summary="@string/pref_summary_artists_fab_action" />
+
+    <code.name.monkey.appthemehelper.common.prefs.supportv7.ATEListPreference
+        android:defaultValue="@string/fab_action_shuffle"
+        android:entries="@array/pref_songs_fab_action_titles"
+        android:entryValues="@array/pref_songs_fab_action_values"
+        android:key="albums_fab_action"
+        android:layout="@layout/list_item_view"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_title_albums_fab_action"
+        android:summary="@string/pref_summary_albums_fab_action" />
+
+    <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
+        android:defaultValue="false"
+        android:key="show_fab_on_scroll"
+        android:layout="@layout/list_item_view_switch"
+        android:summary="@string/pref_summary_show_fab_on_scroll"
+        android:title="@string/pref_title_show_fab_on_scroll" />
 
     </code.name.monkey.appthemehelper.common.prefs.supportv7.ATEPreferenceCategory>
+
 
     <code.name.monkey.appthemehelper.common.prefs.supportv7.ATEPreferenceCategory
         android:layout="@layout/preference_category_title"
@@ -162,11 +169,11 @@
             android:title="@string/pref_title_toggle_full_screen"
             app:icon="@drawable/ic_fullscreen" />
         <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
-            android:defaultValue="false"
-            android:key="hide_songs_search_button"
+            android:defaultValue="true"
+            android:key="show_songs_search_button"
             android:layout="@layout/list_item_view_switch"
-            android:summary="@string/pref_summary_hide_songs_search_button"
-            android:title="@string/pref_title_hide_songs_search_button" />
+            android:summary="@string/pref_summary_show_songs_search_button"
+            android:title="@string/pref_title_show_songs_search_button" />
 
         <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
             android:defaultValue="true"
@@ -196,11 +203,11 @@
             android:layout="@layout/list_item_view" />
 
         <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
-            android:defaultValue="false"
-            android:key="disable_mini_player_scrolling"
+            android:defaultValue="true"
+            android:key="mini_player_scrolling"
             android:layout="@layout/list_item_view_switch"
-            android:summary="@string/pref_summary_disable_mini_player_scrolling"
-            android:title="@string/pref_title_disable_mini_player_scrolling" />
+            android:summary="@string/pref_summary_mini_player_scrolling"
+            android:title="@string/pref_title_mini_player_scrolling" />
     </code.name.monkey.appthemehelper.common.prefs.supportv7.ATEPreferenceCategory>
 
     <code.name.monkey.appthemehelper.common.prefs.supportv7.ATEPreferenceCategory

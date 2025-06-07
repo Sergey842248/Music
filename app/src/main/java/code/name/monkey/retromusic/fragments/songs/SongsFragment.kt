@@ -34,7 +34,7 @@ class SongsFragment : AbsRecyclerViewCustomGridSizeFragment<SongAdapter, GridLay
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         updateFabIcon()
-        if (PreferenceUtil.hideSongsSearchButton) {
+        if (!PreferenceUtil.showSongsSearchButton) {
             toolbar.navigationIcon = null
             toolbar.setNavigationOnClickListener(null)
         }
@@ -55,7 +55,7 @@ class SongsFragment : AbsRecyclerViewCustomGridSizeFragment<SongAdapter, GridLay
 
     override val isShuffleVisible: Boolean
         get() = PreferenceUtil.songsFabAction != PreferenceUtil.FAB_ACTION_DISABLED &&
-                !(PreferenceUtil.hideSongsSearchButton && PreferenceUtil.songsFabAction == PreferenceUtil.FAB_ACTION_SEARCH)
+                !(PreferenceUtil.songsFabAction == PreferenceUtil.FAB_ACTION_SEARCH && !PreferenceUtil.showSongsSearchButton)
 
     override fun onShuffleClicked() {
         when (PreferenceUtil.songsFabAction) {
@@ -354,7 +354,7 @@ class SongsFragment : AbsRecyclerViewCustomGridSizeFragment<SongAdapter, GridLay
     }
 
     private fun updateFabIcon() {
-        if (PreferenceUtil.hideSongsSearchButton && PreferenceUtil.songsFabAction == PreferenceUtil.FAB_ACTION_SEARCH) {
+        if (!PreferenceUtil.showSongsSearchButton && PreferenceUtil.songsFabAction == PreferenceUtil.FAB_ACTION_SEARCH) {
             shuffleButton.visibility = View.GONE
         } else {
             shuffleButton.visibility = View.VISIBLE

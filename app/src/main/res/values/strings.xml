@@ -203,7 +203,7 @@
     <string name="full">Full</string>
     <string name="full_card">Full card</string>
     <string name="general_settings_summary">Change the theme and colors of the app</string>
-    <string name="general_settings_title">Look and feel</string>
+    <string name="general_settings_title">Apperance</string>
     <string name="genre">Genre</string>
     <string name="genres">Genres</string>
     <string name="git_hub_summary">Fork the project on GitHub</string>
@@ -614,13 +614,13 @@
     <string name="pref_title_disabled_now_playing_taps">Disabled now playing taps</string>
     <string name="pref_title_show_cast_button">Show Cast Button</string>
     <string name="pref_summary_show_cast_button">Toggle visibility of the Cast to Device button</string>
-    <string name="pref_title_hide_song_menu_grid">Hide song menu in grid</string>
-    <string name="pref_summary_hide_song_menu_grid">Hide the three-dot menu icon in the Songs section when using Grid View</string>
-    <string name="pref_title_hide_songs_search_button">Hide Songs Search Button</string>
-    <string name="pref_summary_hide_songs_search_button">Hide the search button in the Songs Grid View</string>
+    <string name="pref_title_show_song_menu_grid">Show song menu in grid</string>
+    <string name="pref_summary_show_song_menu_grid">Show the three-dot menu icon in the Songs section when using Grid View</string>
+    <string name="pref_title_show_songs_search_button">Show Songs Search Button</string>
+    <string name="pref_summary_show_songs_search_button">Show the search button in the Songs Grid View</string>
 
-    <string name="pref_title_disable_mini_player_scrolling">Disable Mini Player Scrolling</string>
-    <string name="pref_summary_disable_mini_player_scrolling">Disable automatic scrolling of the song title in the mini player</string>
+    <string name="pref_title_mini_player_scrolling">Mini Player Scrolling</string>
+    <string name="pref_summary_mini_player_scrolling">Enable automatic scrolling of the song title in the mini player</string>
 
     <string name="pref_title_enable_song_title_marquee">Enable Song Title Marquee</string>
     <string name="pref_summary_enable_song_title_marquee">Enable scrolling effect for song titles in the Songs tab</string>

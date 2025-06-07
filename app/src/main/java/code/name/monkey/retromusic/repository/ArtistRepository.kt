@@ -106,12 +106,17 @@ class RealArtistRepository(
 
         val songs = songRepository.songs(
             songRepository.makeSongCursor(
-                "album_artist" + "=?",
-                arrayOf(artistName),
+                AudioColumns.ARTIST + " LIKE ?", // Search in ARTIST column
+                arrayOf("%" + artistName + "%"), // Use LIKE for partial matching
                 getSongLoaderSortOrder()
             )
         )
-        return Artist(artistName, albumRepository.splitIntoAlbums(songs), true)
+        val albums = albumRepository.splitIntoAlbums(songs)
+        return if (albums.isNotEmpty()) {
+            Artist(0L, albums, true, artistName) // Corrected: isAlbumArtist then _name
+        } else {
+            Artist(0L, emptyList(), true, artistName) // Corrected: emptyList() for albums, then isAlbumArtist, then _name
+        }
     }
 
     override fun artists(): List<Artist> {

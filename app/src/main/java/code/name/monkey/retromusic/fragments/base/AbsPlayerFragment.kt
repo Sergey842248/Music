@@ -42,6 +42,7 @@ import androidx.viewpager.widget.ViewPager
 import code.name.monkey.appthemehelper.util.VersionUtils
 import code.name.monkey.retromusic.EXTRA_ALBUM_ID
 import code.name.monkey.retromusic.EXTRA_ARTIST_ID
+import code.name.monkey.retromusic.EXTRA_ARTIST_NAME
 import code.name.monkey.retromusic.R
 import code.name.monkey.retromusic.activities.MainActivity
 import code.name.monkey.retromusic.activities.tageditor.AbsTagEditorActivity
@@ -490,9 +491,13 @@ fun goToArtist(activity: Activity, artistName: String, artistId: Long) {
             collapsePanel()
         }
 
+        val bundle = bundleOf(EXTRA_ARTIST_ID to artistId)
+        if (artistId == 0L) { // Our placeholder for navigating by name
+            bundle.putString(EXTRA_ARTIST_NAME, artistName)
+        }
         findNavController(R.id.fragment_container).navigate(
             R.id.artistDetailsFragment,
-            bundleOf(EXTRA_ARTIST_ID to artistId)
+            bundle
         )
     }
 }

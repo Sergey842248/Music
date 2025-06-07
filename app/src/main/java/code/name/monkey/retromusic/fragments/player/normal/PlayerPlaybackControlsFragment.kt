@@ -90,12 +90,12 @@ class PlayerPlaybackControlsFragment :
         binding.title.isSelected = true
         binding.text.isSelected = true
         binding.title.setOnClickListener {
-            if (!PreferenceUtil.disabledNowPlayingTaps.contains("title")) {
+            if (!PreferenceUtil.disabledNowPlayingTaps.contains("title_artist")) {
                 goToAlbum(requireActivity())
             }
         }
         binding.text.setOnClickListener {
-            if (!PreferenceUtil.disabledNowPlayingTaps.contains("artist")) {
+            if (!PreferenceUtil.disabledNowPlayingTaps.contains("title_artist")) {
                 if (individualArtists.size > 1) {
                     MaterialAlertDialogBuilder(requireContext())
                         .setTitle(R.string.select_artist)
@@ -109,8 +109,9 @@ class PlayerPlaybackControlsFragment :
                                     if (selectedArtist != null) {
                                         goToArtist(requireActivity(), selectedArtistName, selectedArtist.id)
                                     } else {
-                                        // Fallback to current song artist ID if artist not found by name
-                                        goToArtist(requireActivity(), selectedArtistName, MusicPlayerRemote.currentSong.artistId)
+                                        // If artist not found by ID, navigate by name.
+                                        // Use a placeholder ID (e.g., 0L) to indicate navigation by name.
+                                        goToArtist(requireActivity(), selectedArtistName, 0L)
                                     }
                                 }
                             }
