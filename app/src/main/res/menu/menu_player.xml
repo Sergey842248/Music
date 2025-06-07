@@ -111,4 +111,8 @@
         android:id="@+id/action_details"
         android:orderInCategory="11"
         android:title="@string/action_details" />
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="12"
+        android:title="@string/settings" />
 </menu>

@@ -236,6 +236,17 @@ goToArtist(requireActivity(), MusicPlayerRemote.currentSong.artistName, MusicPla
                 showToast(genre)
                 return true
             }
+
+            R.id.action_settings -> {
+                mainActivity.setBottomNavVisibility(false)
+                mainActivity.collapsePanel()
+                requireActivity().findNavController(R.id.fragment_container).navigate(
+                    R.id.settings_fragment,
+                    null,
+                    navOptions { launchSingleTop = true }
+                )
+                return true
+            }
         }
         return false
     }
