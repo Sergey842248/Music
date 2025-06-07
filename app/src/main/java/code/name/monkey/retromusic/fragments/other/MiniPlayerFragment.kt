@@ -36,13 +36,15 @@ import code.name.monkey.retromusic.glide.RetroGlideExtension.songCoverOptions
 import code.name.monkey.retromusic.helper.MusicPlayerRemote
 import code.name.monkey.retromusic.helper.MusicProgressViewUpdateHelper
 import code.name.monkey.retromusic.helper.PlayPauseButtonOnClickHandler
+import android.content.SharedPreferences
 import code.name.monkey.retromusic.util.PreferenceUtil
 import code.name.monkey.retromusic.util.RetroUtil
 import com.bumptech.glide.Glide
 import kotlin.math.abs
 
 open class MiniPlayerFragment : AbsMusicServiceFragment(R.layout.fragment_mini_player),
-    MusicProgressViewUpdateHelper.Callback, View.OnClickListener {
+    MusicProgressViewUpdateHelper.Callback, View.OnClickListener,
+    SharedPreferences.OnSharedPreferenceChangeListener {
 
     private var _binding: FragmentMiniPlayerBinding? = null
     private val binding get() = _binding!!
@@ -103,7 +105,7 @@ open class MiniPlayerFragment : AbsMusicServiceFragment(R.layout.fragment_mini_p
 
         builder.append(title).append(" • ").append(text)
 
-        binding.miniPlayerTitle.isSelected = true
+        binding.miniPlayerTitle.isSelected = !PreferenceUtil.disableMiniPlayerScrolling
         binding.miniPlayerTitle.text = builder
 
 //        binding.title.isSelected = true
@@ -144,11 +146,13 @@ open class MiniPlayerFragment : AbsMusicServiceFragment(R.layout.fragment_mini_p
     override fun onResume() {
         super.onResume()
         progressViewUpdateHelper.start()
+        PreferenceUtil.registerOnSharedPreferenceChangedListener(this)
     }
 
     override fun onPause() {
         super.onPause()
         progressViewUpdateHelper.stop()
+        PreferenceUtil.unregisterOnSharedPreferenceChangedListener(this)
     }
 
     protected fun updatePlayPauseDrawableState() {
@@ -191,5 +195,11 @@ open class MiniPlayerFragment : AbsMusicServiceFragment(R.layout.fragment_mini_p
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        if (key == PreferenceUtil.DISABLE_MINI_PLAYER_SCROLLING) {
+            updateSongTitle()
+        }
     }
 }

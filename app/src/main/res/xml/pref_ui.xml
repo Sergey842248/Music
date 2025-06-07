@@ -183,6 +183,12 @@
             android:defaultValue="@array/pref_disabled_now_playing_taps_default_value"
             android:layout="@layout/list_item_view" />
 
+        <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
+            android:defaultValue="false"
+            android:key="disable_mini_player_scrolling"
+            android:layout="@layout/list_item_view_switch"
+            android:summary="@string/pref_summary_disable_mini_player_scrolling"
+            android:title="@string/pref_title_disable_mini_player_scrolling" />
     </code.name.monkey.appthemehelper.common.prefs.supportv7.ATEPreferenceCategory>
 
     <code.name.monkey.appthemehelper.common.prefs.supportv7.ATEPreferenceCategory

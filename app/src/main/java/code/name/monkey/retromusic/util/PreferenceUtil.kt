@@ -900,6 +900,12 @@ object PreferenceUtil {
             HIDE_SONGS_SEARCH_BUTTON, false // Default to false, as it's visible by default
         )
 
+    const val DISABLE_MINI_PLAYER_SCROLLING = "disable_mini_player_scrolling"
+    val disableMiniPlayerScrolling: Boolean
+        get() = sharedPreferences.getBoolean(
+            DISABLE_MINI_PLAYER_SCROLLING, false // Default to false
+        )
+
     const val NOW_PLAYING_METADATA_ORDER = "now_playing_metadata_order"
     const val NOW_PLAYING_METADATA_VISIBILITY = "now_playing_metadata_visibility"
 

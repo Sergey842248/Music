@@ -618,4 +618,7 @@
     <string name="pref_title_hide_songs_search_button">Hide Songs Search Button</string>
     <string name="pref_summary_hide_songs_search_button">Hide the search button in the Songs Grid View</string>
 
+    <string name="pref_title_disable_mini_player_scrolling">Disable Mini Player Scrolling</string>
+    <string name="pref_summary_disable_mini_player_scrolling">Disable automatic scrolling of the song title in the mini player</string>
+
 </resources>
