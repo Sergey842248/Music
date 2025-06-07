@@ -9,7 +9,7 @@
     <string name="action_add_to_favorites">Προσθήκη στα αγαπημένα</string>
     <string name="action_add_to_playing_queue">Προσθήκη στην ουρά αναπαραγωγής</string>
     <string name="action_add_to_playlist">Προσθήκη στη λίστα αναπαραγωγής</string>
-    <string name="action_cancel">Ακύρωση τρέχοντος χρονοδιακόπτη</string>
+    <string name="action_cancel">Ακύρωση</string>
     <string name="action_cast">Μετάδοση</string>
     <string name="action_clear_playing_queue">Εκκαθάριση ουράς αναπαραγωγής</string>
     <string name="action_cycle_repeat">Λειτουργία κυκλικής επανάληψης</string>
@@ -110,7 +110,7 @@
     <string name="bug_report_summary">Προέκυψε ένα μη αναμενόμενο σφάλμα. Λυπούμαστε που βρήκατε αυτό το σφάλμα, εάν εξακολουθεί να παρουσιάζεται διαγράψτε τα δεδομένα εφαρμογής ή στείλτε ένα Email </string>
     <string name="bug_report_use_account">Αποστολή χρησιμοποιώντας λογαριασμό GitHub</string>
     <string name="buy_now">Αγορά τώρα</string>
-    <string name="cancel_current_timer">Ακύρωση τρέχοντος χρονοδιακόπτη</string>
+    <string name="cancel_current_timer">Ακύρωση</string>
     <string name="card">Κάρτα</string>
     <string name="card_color_style">Έγχρωμη κάρτα</string>
     <string name="card_square">Τετράγωνη κάρτα</string>
@@ -271,7 +271,7 @@
     <string name="no_purchase_found">Δε βρέθηκε αγορά.</string>
     <string name="no_results">Κανένα αποτέλεσμα</string>
     <string name="no_songs">Δε βρέθηκαν κομμάτια</string>
-    <string name="no_search_results">No search results</string>
+    <string name="no_search_results">Δεν βρέθηκαν αποτελέσματα αναζήτησης</string>
     <string name="normal">Κανονικό</string>
     <string name="normal_lyrics">Κανονικοί στίχοι</string>
     <string name="not_listed_in_media_store"><![CDATA[Το <b>%s</b> δεν υπάρχει στο media store.]]></string>
@@ -455,8 +455,8 @@
     <string name="retro_music_pro">Retro Music Pro</string>
     <string name="ringtone_summary">Η εφαρμογή χρειάζεται άδεια πρόσβασης στις ρυθμίσεις της συσκευής σας, για να ορίσει τη μουσική ως ήχο κλήσης</string>
     <string name="ringtone_title">Ήχος Κλήσης (Προαιρετικό)</string>
-    <string name="permission_alarm_summary">The app needs permission to schedule exact alarms to set sleep timers</string>
-    <string name="permission_alarm_title">Alarm (Optional)</string>
+    <string name="permission_alarm_summary">Η εφαρμογή χρειάζεται άδεια για να προγραμματίσει ακριβείς ειδοποιήσεις για να ορίσει χρονοδιακόπτες ύπνου</string>
+    <string name="permission_alarm_title">Ξυπνητήρι (Προαιρετικό)</string>
     <string name="saf_delete_failed">Η διαγραφή αρχείου απέτυχε: %s</string>
     <!-- SAF -->
     <string name="saf_error_uri">Δεν είναι δυνατή η λήψη του SAF URI</string>
@@ -472,8 +472,8 @@
     <string name="save">Αποθήκευση</string>
     <!-- SAF -->
     <!-- SAF guide -->
-    <string name="save_playlist_title">Αποθήκευση ως αρχείο</string>
-    <string name="save_playlists_title">Αποθήκευση ως αρχεία</string>
+    <string name="save_playlist_title">Αποθήκευση λίστας αναπαραγωγής</string>
+    <string name="save_playlists_title">Αποθήκευση λιστών αναπαραγωγής</string>
     <string name="saved_playlist_to">Η λίστα αναπαραγωγής αποθηκεύτηκε στο %s.</string>
     <string name="saving_changes">Αποθηκεύονται οι αλλαγές...</string>
     <string name="scan_media">Σάρωση μέσων</string>
@@ -507,8 +507,8 @@
     <string name="sort_order_num_songs">Αριθμός τραγουδιών</string>
     <string name="sort_order_num_songs_desc">Αριθμός τραγουδιών φθίνουσα</string>
     <string name="sort_order_year">Έτος</string>
-    <string name="sort_order_year_asc">Year ascending</string>
-    <string name="sort_order_year_desc">Year descending</string>
+    <string name="sort_order_year_asc">Έτος αύξουσα</string>
+    <string name="sort_order_year_desc">Έτος φθίνουσα</string>
     <string name="sort_order_z_a">Φθίνουσα</string>
     <string name="speech_not_supported">Ωπ! Η συσκευή σου δεν υποστηρίζει εισαγωγή φωνής</string>
     <string name="speech_prompt">Αναζήτηση στη βιβλιοθήκη σας</string>
