@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://github.com/Sergey842248/Music/">
-    <img src="app\src\main\ic_launcher-repo.png" height="128">
-    <h1 align="center">Music Player 🎵</h1>
+    <img src="app\src\main\ic_launcher.png" height="128">
+    <h1 align="center">Music Player</h1>
   </a>
 </p>
 <p align="center">
@@ -16,7 +16,7 @@
 ## 🆕 Material You Design Music Player for Android music lovers 
 
 ## Download
-[<img src="https://raw.githubusercontent.com/deckerst/common/main/assets/get-it-on-github.png"
+[<img src="https://raw.githubusercontent.com/Sergey842248/Music/refs/heads/main/app/src/main/assets/get-it-on-github.png"
       alt='Get it on GitHub'
       height="80">](https://github.com/Sergey842248/Music/releases/latest)
 
