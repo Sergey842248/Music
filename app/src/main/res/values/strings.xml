@@ -625,4 +625,7 @@
     <string name="pref_title_enable_song_title_marquee">Enable Song Title Marquee</string>
     <string name="pref_summary_enable_song_title_marquee">Enable scrolling effect for song titles in the Songs tab</string>
 
+    <string name="pref_title_show_fab_on_scroll">Show FAB on Scroll</string>
+    <string name="pref_summary_show_fab_on_scroll">Keep the Floating Action Button visible when scrolling</string>
+
 </resources>

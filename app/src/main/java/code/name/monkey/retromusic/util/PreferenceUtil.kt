@@ -911,6 +911,11 @@ object PreferenceUtil {
             ENABLE_SONG_TITLE_MARQUEE, true // Default to true
         )
 
+    val showFabOnScroll: Boolean
+        get() = sharedPreferences.getBoolean(
+            SHOW_FAB_ON_SCROLL, false // Default to false
+        )
+
     const val NOW_PLAYING_METADATA_ORDER = "now_playing_metadata_order"
     const val NOW_PLAYING_METADATA_VISIBILITY = "now_playing_metadata_visibility"
 
