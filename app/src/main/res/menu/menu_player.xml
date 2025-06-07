@@ -61,13 +61,13 @@
                 android:id="@+id/action_go_to_artist"
                 android:icon="@drawable/ic_artist"
                 android:title="@string/action_go_to_artist" />
+            <item
+                android:id="@+id/action_go_to_genre"
+                android:icon="@drawable/ic_genre"
+                android:title="@string/action_go_to_genre"/>
         </menu>
     </item>
-    <item
-        android:id="@+id/action_go_to_genre"
-        android:orderInCategory="6"
-        android:title="@string/action_go_to_genre"
-        android:visible="false" />
+
     <item
         android:id="@+id/action_add_to_playlist"
         android:orderInCategory="7"
