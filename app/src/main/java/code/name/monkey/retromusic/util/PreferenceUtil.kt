@@ -906,6 +906,11 @@ object PreferenceUtil {
             DISABLE_MINI_PLAYER_SCROLLING, false // Default to false
         )
 
+    val enableSongTitleMarquee: Boolean
+        get() = sharedPreferences.getBoolean(
+            ENABLE_SONG_TITLE_MARQUEE, true // Default to true
+        )
+
     const val NOW_PLAYING_METADATA_ORDER = "now_playing_metadata_order"
     const val NOW_PLAYING_METADATA_VISIBILITY = "now_playing_metadata_visibility"
 

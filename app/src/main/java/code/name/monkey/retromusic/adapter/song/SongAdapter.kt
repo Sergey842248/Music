@@ -40,6 +40,7 @@ import code.name.monkey.retromusic.helper.menu.SongsMenuHelper
 import code.name.monkey.retromusic.model.Song
 import code.name.monkey.retromusic.util.MusicUtil
 import code.name.monkey.retromusic.util.PreferenceUtil
+import android.text.TextUtils
 import code.name.monkey.retromusic.util.RetroUtil
 import code.name.monkey.retromusic.util.color.MediaNotificationProcessor
 import com.bumptech.glide.Glide
@@ -101,6 +102,17 @@ open class SongAdapter(
         val landscape = RetroUtil.isLandscape
         if (PreferenceUtil.hideSongMenuGrid || (PreferenceUtil.songGridSize > 2 && !landscape) || (PreferenceUtil.songGridSizeLand > 5 && landscape)) {
             holder.menu?.isVisible = false
+        }
+
+        // Apply marquee effect based on preference
+        if (PreferenceUtil.enableSongTitleMarquee) {
+            holder.title?.ellipsize = TextUtils.TruncateAt.MARQUEE
+            holder.title?.isSelected = true // This is crucial for marquee to work
+            holder.title?.isSingleLine = true
+        } else {
+            holder.title?.ellipsize = TextUtils.TruncateAt.END
+            holder.title?.isSelected = false
+            holder.title?.isSingleLine = true
         }
     }
 

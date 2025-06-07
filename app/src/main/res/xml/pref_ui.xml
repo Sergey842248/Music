@@ -134,7 +134,12 @@
             android:summary="@string/pref_summary_hide_song_menu_grid"
             android:title="@string/pref_title_hide_song_menu_grid" />
 
-
+        <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
+            android:defaultValue="true"
+            android:key="enable_song_title_marquee"
+            android:layout="@layout/list_item_view_switch"
+            android:summary="@string/pref_summary_enable_song_title_marquee"
+            android:title="@string/pref_title_enable_song_title_marquee" />
 
     </code.name.monkey.appthemehelper.common.prefs.supportv7.ATEPreferenceCategory>
 
