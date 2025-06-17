@@ -29,7 +29,7 @@ data class Artist(
         artistName: String,
         albums: List<Album>,
         isAlbumArtist: Boolean = false
-    ) : this(albums[0].artistId, albums, isAlbumArtist) {
+    ) : this(albums.firstOrNull()?.artistId ?: -1, albums, isAlbumArtist) {
         _name = artistName
     }
 
