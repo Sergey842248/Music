@@ -20,7 +20,15 @@
       alt='Get it on GitHub'
       height="80">](https://github.com/Sergey842248/Music/releases/latest)
 
-## 📦 Included Features
+## 💻 Newly Added Features (In comparison to Retro Music Player)
+- Support for Lyrics over 100 Minutes
+- Custom Actions for Floating Action Button
+- Settings Search
+- Custom Time displaying in Now Playing Screen and Mini player
+- Custom Metadata for Now Playing Screen
+- Added Equalizer
+
+## 📦 Already Included Features
 -  Base 3 themes (Clearly White, Kinda Dark and AMOLED)
 -  Chromecast support
 -  Choose from 10+ now playing themes
@@ -49,7 +57,6 @@
   genres
 -  Smart Playlists - Recently played, most played and history
 -  Build your playlist on the go
--  Support for Lyrics over 100 Minutes
 
 
 We are trying our best to bring you the best user experience. The app is regularly updated for bug fixes and new features.
