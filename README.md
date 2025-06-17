@@ -58,10 +58,10 @@ ___
 
 
 ## ❓ FAQ
-Please read the FAQ [here](https://github.com/effinmr/Music/blob/main/FAQ.md)
+Please read the FAQ [here](https://github.com/Sergey842248/Music/blob/main/FAQ.md)
 
-In any case, if you find or notice any bugs please report them by creating an issue or by contacting us in the [Report a Bug](https://github.com/effinmr/Music/issues/new?template=bug_report.md).
-If you have any feature suggestions, please create an issue with detailed information or by contacting us in the [Request a new feature](https://github.com/effinmr/Music/issues/new?template=feature_request.md).
+In any case, if you find or notice any bugs please report them by creating an issue or by contacting us in the [Report a Bug](https://github.com/Sergey842248/Music/issues/new?template=bug_report.md).
+If you have any feature suggestions, please create an issue with detailed information or by contacting us in the [Request a new feature](https://github.com/Sergey842248/Music/issues/new?template=feature_request.md).
 
 
 ## 🗂️ License
