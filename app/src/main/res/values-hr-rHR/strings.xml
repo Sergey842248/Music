@@ -21,7 +21,7 @@
     <string name="action_go_to_artist">Idi na izvođača</string>
     <string name="action_go_to_genre">Idi na žanr</string>
     <string name="action_go_to_lyrics">Go to Lyrics</string>
-    <string name="action_go_to_start_directory">Go to start directory</string>
+    <string name="action_go_to_start_directory">Go to Home</string>
     <string name="action_grant">Odobri</string>
     <string name="action_grid_size">Veličina mreže</string>
     <string name="action_grid_size_land">Grid size (land)</string>
@@ -41,7 +41,7 @@
     <string name="action_search">Pretraži</string>
     <string name="action_set">Start</string>
     <string name="action_set_as_ringtone">Postavi kao zvuk zvona</string>
-    <string name="action_set_as_start_directory">Set as start directory</string>
+    <string name="action_set_as_start_directory">Set as Home</string>
     <string name="action_settings">"Postavke"</string>
     <string name="action_share">Podijeli</string>
     <string name="action_shuffle_all">Shuffle all</string>

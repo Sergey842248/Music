@@ -21,7 +21,7 @@
     <string name="action_go_to_artist">Přejít na interpreta</string>
     <string name="action_go_to_genre">Přejít na žánr</string>
     <string name="action_go_to_lyrics">Přejít na texty</string>
-    <string name="action_go_to_start_directory">Přejít do začáteční složky</string>
+    <string name="action_go_to_start_directory">Přejděte do domovské složky</string>
     <string name="action_grant">Udělit</string>
     <string name="action_grid_size">Velikost mřížky</string>
     <string name="action_grid_size_land">Velikost spodní mřížky</string>

@@ -21,7 +21,7 @@
     <string name="action_go_to_artist">Pumunta sa artist</string>
     <string name="action_go_to_genre">Pumunta sa genre</string>
     <string name="action_go_to_lyrics">Go to Lyrics</string>
-    <string name="action_go_to_start_directory">Pumunta sa start directory</string>
+    <string name="action_go_to_start_directory">Pumunta sa Home directory</string>
     <string name="action_grant">Payagan</string>
     <string name="action_grid_size">Sukat ng grid</string>
     <string name="action_grid_size_land">Sukat ng grid (tanawin)</string>
@@ -41,7 +41,7 @@
     <string name="action_search">Hanapin</string>
     <string name="action_set">Simulan</string>
     <string name="action_set_as_ringtone">Itakda bilang ringtone</string>
-    <string name="action_set_as_start_directory">Itakda bilang start directory</string>
+    <string name="action_set_as_start_directory">Itakda bilang Home directory</string>
     <string name="action_settings">"Mga Setting"</string>
     <string name="action_share">Ibahagi</string>
     <string name="action_shuffle_all">I-shuffle lahat</string>

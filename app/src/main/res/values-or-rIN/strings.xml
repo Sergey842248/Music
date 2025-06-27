@@ -21,7 +21,7 @@
     <string name="action_go_to_artist">Go to artist</string>
     <string name="action_go_to_genre">Go to genre</string>
     <string name="action_go_to_lyrics">Go to Lyrics</string>
-    <string name="action_go_to_start_directory">Go to start directory</string>
+    <string name="action_go_to_start_directory">Go to Home</string>
     <string name="action_grant">Grant</string>
     <string name="action_grid_size">Grid size</string>
     <string name="action_grid_size_land">Grid size (land)</string>
@@ -41,7 +41,7 @@
     <string name="action_search">ସନ୍ଧାନ</string>
     <string name="action_set">Start</string>
     <string name="action_set_as_ringtone">Set as ringtone</string>
-    <string name="action_set_as_start_directory">Set as start directory</string>
+    <string name="action_set_as_start_directory">Set as Home</string>
     <string name="action_settings">"ସେଟିଂ"</string>
     <string name="action_share">Share</string>
     <string name="action_shuffle_all">Shuffle all</string>

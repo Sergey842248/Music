@@ -21,7 +21,7 @@
     <string name="action_go_to_artist">Doties uz izpildītāju</string>
     <string name="action_go_to_genre">Doties uz žanru</string>
     <string name="action_go_to_lyrics">Go to Lyrics</string>
-    <string name="action_go_to_start_directory">Go to start directory</string>
+    <string name="action_go_to_start_directory">Go to Home</string>
     <string name="action_grant">Piešķirt</string>
     <string name="action_grid_size">Grid size</string>
     <string name="action_grid_size_land">Grid size (land)</string>
@@ -41,7 +41,7 @@
     <string name="action_search">Meklēt</string>
     <string name="action_set">Sākt</string>
     <string name="action_set_as_ringtone">Uzstādīt kā zvana signālu</string>
-    <string name="action_set_as_start_directory">Set as start directory</string>
+    <string name="action_set_as_start_directory">Set as Home</string>
     <string name="action_settings">"Iestatījumi"</string>
     <string name="action_share">Kopīgot</string>
     <string name="action_shuffle_all">Jaukt visu</string>
