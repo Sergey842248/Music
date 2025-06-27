@@ -44,6 +44,7 @@ import code.name.monkey.retromusic.util.MusicUtil
 import code.name.monkey.retromusic.util.PreferenceUtil
 import com.bumptech.glide.Glide
 import me.zhanghai.android.fastscroll.PopupTextProvider
+import java.util.*
 
 class PlaylistAdapter(
     override val activity: FragmentActivity,
@@ -62,6 +63,11 @@ class PlaylistAdapter(
     fun swapDataSet(dataSet: List<PlaylistWithSongs>) {
         this.dataSet = dataSet
         notifyDataSetChanged()
+    }
+
+    fun onItemMove(fromPosition: Int, toPosition: Int) {
+        Collections.swap(dataSet, fromPosition, toPosition)
+        notifyItemMoved(fromPosition, toPosition)
     }
 
     override fun getItemId(position: Int): Long {
@@ -112,6 +118,7 @@ class PlaylistAdapter(
         val playlist = dataSet[position]
         holder.itemView.isActivated = isChecked(playlist)
         holder.title?.text = getPlaylistTitle(playlist.playlistEntity)
+        holder.itemView.isLongClickable = PreferenceUtil.playlistSortOrder == PlaylistSortOrder.PLAYLIST_CUSTOM
         holder.text?.text = getPlaylistText(playlist)
         holder.menu?.isGone = isChecked(playlist)
         if (itemLayoutRes == R.layout.item_list) {

@@ -483,6 +483,7 @@
     <string name="sort_order_default">Default</string>
     <string name="sort_order_num_songs">Song count</string>
     <string name="sort_order_num_songs_desc">Song count desc</string>
+    <string name="sort_order_custom">Custom</string>
     <string name="sort_order_year">Year</string>
     <string name="sort_order_year_asc">Year ascending</string>
     <string name="sort_order_year_desc">Year descending</string>

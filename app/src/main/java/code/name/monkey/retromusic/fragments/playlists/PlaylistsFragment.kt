@@ -40,6 +40,8 @@ import code.name.monkey.retromusic.fragments.base.AbsRecyclerViewCustomGridSizeF
 import code.name.monkey.retromusic.helper.SortOrder.PlaylistSortOrder
 import code.name.monkey.retromusic.interfaces.IPlaylistClickListener
 import code.name.monkey.retromusic.model.Song
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import code.name.monkey.retromusic.util.PreferenceUtil
 import code.name.monkey.retromusic.util.RetroUtil
 import com.google.android.material.transition.MaterialSharedAxis
@@ -48,10 +50,13 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.BufferedReader
 import java.io.InputStreamReader
+import java.util.*
 
 class PlaylistsFragment :
     AbsRecyclerViewCustomGridSizeFragment<PlaylistAdapter, GridLayoutManager>(),
     IPlaylistClickListener {
+
+    private var itemTouchHelper: ItemTouchHelper? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -61,6 +66,7 @@ class PlaylistsFragment :
             else
                 adapter?.swapDataSet(listOf())
         }
+        setupItemTouchHelper()
     }
 
     override val titleRes: Int
@@ -199,6 +205,12 @@ class PlaylistsFragment :
             R.string.sort_order_num_songs_desc,
             order == PlaylistSortOrder.PLAYLIST_SONG_COUNT_DESC
         )
+        createId(
+            subMenu,
+            R.id.action_playlist_sort_order_custom,
+            R.string.sort_order_custom,
+            order == PlaylistSortOrder.PLAYLIST_CUSTOM
+        )
         subMenu.setGroupCheckable(0, true, true)
     }
 
@@ -208,6 +220,7 @@ class PlaylistsFragment :
             R.id.action_song_sort_order_desc -> PlaylistSortOrder.PLAYLIST_Z_A
             R.id.action_playlist_sort_order -> PlaylistSortOrder.PLAYLIST_SONG_COUNT
             R.id.action_playlist_sort_order_desc -> PlaylistSortOrder.PLAYLIST_SONG_COUNT_DESC
+            R.id.action_playlist_sort_order_custom -> PlaylistSortOrder.PLAYLIST_CUSTOM
             else -> PreferenceUtil.playlistSortOrder
         }
         if (sortOrder != PreferenceUtil.playlistSortOrder) {
@@ -341,6 +354,7 @@ class PlaylistsFragment :
 
     override fun setSortOrder(sortOrder: String) {
         libraryViewModel.forceReload(ReloadType.Playlists)
+        setupItemTouchHelper()
     }
 
     override fun loadSortOrder(): String {
@@ -376,11 +390,55 @@ class PlaylistsFragment :
     }
 
     override fun onPlaylistClick(playlistWithSongs: PlaylistWithSongs, view: View) {
-        exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).addTarget(requireView())
-        reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false)
-        findNavController().navigate(
-            R.id.playlistDetailsFragment,
-            bundleOf(EXTRA_PLAYLIST_ID to playlistWithSongs.playlistEntity.playListId)
-        )
+        if (PreferenceUtil.playlistSortOrder != PlaylistSortOrder.PLAYLIST_CUSTOM) {
+            exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).addTarget(requireView())
+            reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false)
+            findNavController().navigate(
+                R.id.playlistDetailsFragment,
+                bundleOf(EXTRA_PLAYLIST_ID to playlistWithSongs.playlistEntity.playListId)
+            )
+        }
+    }
+
+    private fun setupItemTouchHelper() {
+        if (PreferenceUtil.playlistSortOrder == PlaylistSortOrder.PLAYLIST_CUSTOM) {
+            if (itemTouchHelper == null) {
+                itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.Callback() {
+                    override fun getMovementFlags(
+                        recyclerView: RecyclerView,
+                        viewHolder: RecyclerView.ViewHolder
+                    ): Int {
+                        val dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN or ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+                        return makeMovementFlags(dragFlags, 0)
+                    }
+
+                    override fun onMove(
+                        recyclerView: RecyclerView,
+                        viewHolder: RecyclerView.ViewHolder,
+                        target: RecyclerView.ViewHolder
+                    ): Boolean {
+                        val fromPosition = viewHolder.adapterPosition
+                        val toPosition = target.adapterPosition
+                        adapter?.onItemMove(fromPosition, toPosition)
+                        return true
+                    }
+
+                    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                        // Not needed for this task
+                    }
+
+                    override fun isLongPressDragEnabled(): Boolean {
+                        return true
+                    }
+
+                    override fun isItemViewSwipeEnabled(): Boolean {
+                        return false
+                    }
+                })
+            }
+            itemTouchHelper?.attachToRecyclerView(recyclerView)
+        } else {
+            itemTouchHelper?.attachToRecyclerView(null)
+        }
     }
 }
