@@ -346,7 +346,9 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
             .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
         menu.add(0, R.id.action_go_to_start_directory, 1, R.string.action_go_to_start_directory)
             .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
-        menu.add(0, R.id.action_settings, 2, R.string.action_settings)
+        menu.add(0, R.id.action_set_as_start_directory, 2, R.string.action_set_as_start_directory)
+            .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
+        menu.add(0, R.id.action_settings, 3, R.string.action_settings)
             .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
         menu.removeItem(R.id.action_grid_size)
         menu.removeItem(R.id.action_layout_type)
@@ -367,6 +369,17 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
                     ),
                     true
                 )
+                return true
+            }
+
+            R.id.action_set_as_start_directory -> {
+                val crumb = activeCrumb
+                if (crumb != null) {
+                    startDirectory = crumb.file
+                    showToast(
+                        String.format(getString(R.string.new_start_directory), crumb.file.path)
+                    )
+                }
                 return true
             }
 
