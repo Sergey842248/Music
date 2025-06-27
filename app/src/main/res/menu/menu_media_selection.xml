@@ -3,22 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@id/action_multi_select_adapter_check_all"
+        android:icon="@drawable/ic_select_all"
+        android:title="@string/select_all"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/action_play_next"
         android:icon="@drawable/ic_redo"
         android:title="@string/action_play_next"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_add_to_current_playing"
-        android:icon="@drawable/ic_library_add"
-        android:title="@string/action_add_to_playing_queue"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/menu_media_selector_add_to"
+        android:title="Add to"
+        android:icon="@drawable/ic_add_to">
+        <menu>
+            <item
+                android:id="@+id/action_add_to_current_playing"
+                android:icon="@drawable/ic_add_to_queue"
+                android:title="@string/action_add_to_playing_queue"
+                app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/action_add_to_playlist"
-        android:icon="@drawable/ic_playlist_add"
-        android:title="@string/action_add_to_playlist"
-        app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/action_add_to_playlist"
+                android:icon="@drawable/ic_add"
+                android:title="@string/action_add_to_playlist"
+                app:showAsAction="ifRoom" />
+        </menu>
+    </item>
 
     <item
         android:id="@+id/action_share"
@@ -32,9 +45,5 @@
         android:title="@string/action_delete_from_device"
         app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@id/action_multi_select_adapter_check_all"
-        android:icon="@drawable/ic_select_all"
-        android:title="@string/select_all"
-        app:showAsAction="ifRoom" />
+
 </menu>

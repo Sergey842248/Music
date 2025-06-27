@@ -17,6 +17,7 @@ package code.name.monkey.retromusic.fragments.albums
 import android.os.Bundle
 import android.view.*
 import androidx.core.os.bundleOf
+import androidx.appcompat.widget.PopupMenu
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -158,17 +159,15 @@ class AlbumsFragment : AbsCustomFragment<AlbumAdapter, GridLayoutManager>(),
     }
 
     override fun onAlbumClick(albumId: Long, view: View) {
-        if (PreferenceUtil.albumSortOrder != AlbumSortOrder.ALBUM_CUSTOM) {
-            findNavController().navigate(
-                R.id.albumDetailsFragment,
-                bundleOf(EXTRA_ALBUM_ID to albumId),
-                null,
-                FragmentNavigatorExtras(
-                    view to albumId.toString()
-                )
+        findNavController().navigate(
+            R.id.albumDetailsFragment,
+            bundleOf(EXTRA_ALBUM_ID to albumId),
+            null,
+            FragmentNavigatorExtras(
+                view to albumId.toString()
             )
-            reenterTransition = null
-        }
+        )
+        reenterTransition = null
     }
 
     private fun setupItemTouchHelper() {
@@ -232,6 +231,13 @@ class AlbumsFragment : AbsCustomFragment<AlbumAdapter, GridLayoutManager>(),
 
 
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
+        try {
+            val menuBuilder = menu.javaClass.getDeclaredMethod("setOptionalIconsVisible", Boolean::class.javaPrimitiveType)
+            menuBuilder.isAccessible = true
+            menuBuilder.invoke(menu, true)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
         super.onCreateMenu(menu, inflater)
         val gridSizeItem: MenuItem = menu.findItem(R.id.action_grid_size)
         if (RetroUtil.isLandscape) {
@@ -350,6 +356,7 @@ class AlbumsFragment : AbsCustomFragment<AlbumAdapter, GridLayoutManager>(),
     }
 
     override fun onMenuItemSelected(item: MenuItem): Boolean {
+
         if (handleGridSizeMenuItem(item)) {
             return true
         }
@@ -360,6 +367,7 @@ class AlbumsFragment : AbsCustomFragment<AlbumAdapter, GridLayoutManager>(),
             return true
         }
         return super.onMenuItemSelected(item)
+
     }
 
     private fun handleSortOrderMenuItem(

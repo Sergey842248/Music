@@ -3,16 +3,20 @@
     <item
         android:id="@+id/action_play"
         android:title="@string/action_play"
+        android:icon="@drawable/ic_play_arrow"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_play_next"
         android:title="@string/action_play_next"
+        android:icon="@drawable/ic_redo"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_add_to_current_playing"
         android:title="@string/action_add_to_playing_queue"
+        android:icon="@drawable/ic_add_to_queue"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_add_to_playlist"
-        android:title="@string/action_add_to_playlist" />
+        android:title="@string/action_add_to_playlist"
+        android:icon="@drawable/ic_add"/>
 </menu>

@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="@string/last_added"
-        app:icon="@drawable/ic_library_add"
+        app:icon="@drawable/ic_add_to"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/history"

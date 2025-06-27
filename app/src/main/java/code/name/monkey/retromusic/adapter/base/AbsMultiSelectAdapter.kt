@@ -24,6 +24,18 @@ abstract class AbsMultiSelectAdapter<V : RecyclerView.ViewHolder?, I>(
     override fun onCreateActionMode(mode: ActionMode?, menu: Menu?): Boolean {
         val inflater = mode?.menuInflater
         inflater?.inflate(menuRes, menu)
+        try {
+            val field = mode?.javaClass?.getDeclaredField("mMenu")
+            field?.isAccessible = true
+            val menuPopupHelper = field?.get(mode)
+            val setForceShowIcon = menuPopupHelper?.javaClass?.getDeclaredMethod(
+                "setForceShowIcon",
+                Boolean::class.javaPrimitiveType
+            )
+            setForceShowIcon?.invoke(menuPopupHelper, true)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
         return true
     }
 

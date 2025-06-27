@@ -29,7 +29,7 @@
             android:negativeButtonText="@null"
             android:positiveButtonText="@null"
             android:title="@string/pref_title_last_added_interval"
-            app:icon="@drawable/ic_playlist_add" />
+            app:icon="@drawable/ic_add_to_queue" />
 
     </code.name.monkey.appthemehelper.common.prefs.supportv7.ATEPreferenceCategory>
     <code.name.monkey.appthemehelper.common.prefs.supportv7.ATEPreferenceCategory

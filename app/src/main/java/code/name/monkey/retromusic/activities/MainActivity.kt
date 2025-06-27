@@ -18,6 +18,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.Menu
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.contains
@@ -61,6 +62,17 @@ class MainActivity : AbsCastActivity(), IMiniPlayerExpanded {
         savedInstanceState?.getBundle("nav_state")?.let {
             findNavController(R.id.fragment_container).restoreState(it)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        try {
+            val menuBuilder = menu?.javaClass?.getDeclaredMethod("setOptionalIconsVisible", Boolean::class.javaPrimitiveType)
+            menuBuilder?.isAccessible = true
+            menuBuilder?.invoke(menu, true)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

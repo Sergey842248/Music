@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    <item
+        android:id="@id/action_multi_select_adapter_check_all"
+        android:icon="@drawable/ic_select_all"
+        android:title="@string/select_all"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_play_next"
         android:icon="@drawable/ic_redo"
@@ -9,17 +13,22 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_add_to_current_playing"
-        android:icon="@drawable/ic_library_add"
-        android:title="@string/action_add_to_playing_queue"
-        app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/action_add_to_playlist"
-        android:icon="@drawable/ic_playlist_add"
-        android:title="@string/action_add_to_playlist"
-        app:showAsAction="ifRoom" />
-
+        android:title="Add to"
+        android:icon="@drawable/ic_add_to">
+            <menu>
+                <item
+                    android:id="@+id/action_add_to_playlist"
+                    android:icon="@drawable/ic_add"
+                    android:title="@string/action_add_to_playlist"
+                    app:showAsAction="ifRoom" />
+                <item
+                    android:id="@+id/action_add_to_current_playing"
+                    android:icon="@drawable/ic_add_to_queue"
+                    android:title="@string/action_add_to_playing_queue"
+                    app:showAsAction="ifRoom" />
+            </menu>
+</item>
 
     <item
         android:id="@+id/action_delete_playlist"
@@ -27,10 +36,6 @@
         android:title="@string/delete_playlists_title"
         app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@id/action_multi_select_adapter_check_all"
-        android:icon="@drawable/ic_select_all"
-        android:title="@string/select_all"
-        app:showAsAction="ifRoom" />
+
 
 </menu>

@@ -173,6 +173,18 @@ class PlaylistAdapter(
             menu?.setOnClickListener { view ->
                 val popupMenu = PopupMenu(activity, view)
                 popupMenu.inflate(R.menu.menu_item_playlist)
+                try {
+                    val field = popupMenu.javaClass.getDeclaredField("mPopup")
+                    field.isAccessible = true
+                    val menuPopupHelper = field.get(popupMenu)
+                    val setForceShowIcon = menuPopupHelper.javaClass.getDeclaredMethod(
+                        "setForceShowIcon",
+                        Boolean::class.javaPrimitiveType
+                    )
+                    setForceShowIcon.invoke(menuPopupHelper, true)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
                 popupMenu.setOnMenuItemClickListener { item ->
                     PlaylistMenuHelper.handleMenuClick(activity, dataSet[layoutPosition], item)
                 }

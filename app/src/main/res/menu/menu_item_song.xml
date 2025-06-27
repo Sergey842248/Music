@@ -3,36 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_add_to_playlist"
-        android:title="@string/action_add_to_playlist"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_share"
-        android:title="@string/action_share"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_add_to_blacklist"
-        android:title="@string/action_add_to_blacklist"
+        android:id="@+id/action_play_next"
+        android:title="@string/action_play_next"
+        android:icon="@drawable/ic_redo"
         app:showAsAction="never" />
 
     <item
-        android:title="@string/playing_queue_group">
+        android:id="@+id/menu_songs_add_to"
+        android:title="Add to"
+        android:icon="@drawable/ic_add_to">
         <menu>
             <item
-                android:id="@+id/action_play_next"
-                android:title="@string/action_play_next"
-                android:icon="@drawable/ic_queue_music"
+                android:id="@+id/action_add_to_playlist"
+                android:title="@string/action_add_to_playlist"
+                android:icon="@drawable/ic_add"
                 app:showAsAction="never" />
             <item
                 android:id="@+id/action_add_to_current_playing"
                 android:title="@string/action_add_to_playing_queue"
                 android:icon="@drawable/ic_queue_music"
                 app:showAsAction="never" />
+            <item
+                android:id="@+id/action_add_to_blacklist"
+                android:title="@string/action_add_to_blacklist"
+                android:icon="@drawable/ic_remove"
+                app:showAsAction="never" />
         </menu>
     </item>
 
+
+
     <item
-        android:title="@string/navigate">
+        android:id="@+id/action_share"
+        android:title="@string/action_share"
+        android:icon="@drawable/ic_share"
+        app:showAsAction="never" />
+
+
+
+    <item
+        android:id="@+id/menu_songs_navigate"
+        android:title="@string/navigate"
+        android:icon="@drawable/ic_folder" >
         <menu>
             <item
                 android:id="@+id/action_go_to_album"
@@ -48,7 +60,8 @@
     </item>
 
     <item
-        android:title="@string/device">
+        android:title="@string/device"
+        android:icon="@drawable/ic_device">
         <menu>
             <item
                 android:id="@+id/action_set_as_ringtone"
@@ -64,15 +77,19 @@
     </item>
 
     <item
-        android:title="@string/menu_group_info">
+        android:id="@+id/menu_songs_info"
+        android:title="@string/menu_group_info"
+        android:icon="@drawable/ic_info_outline" >
         <menu>
-            <item
-                android:id="@+id/action_details"
-                android:title="@string/action_details"
-                app:showAsAction="never" />
             <item
                 android:id="@+id/action_tag_editor"
                 android:title="@string/action_tag_editor"
+                android:icon="@drawable/ic_edit"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/action_details"
+                android:title="@string/action_details"
+                android:icon="@drawable/ic_info_outline"
                 app:showAsAction="never" />
         </menu>
     </item>

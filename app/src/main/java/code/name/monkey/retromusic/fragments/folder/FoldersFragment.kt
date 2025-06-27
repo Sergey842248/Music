@@ -255,6 +255,15 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
                 false
             }
         }
+        try {
+            val field = popupMenu.javaClass.getDeclaredField("mPopup")
+            field.isAccessible = true
+            val menuPopupHelper = field.get(popupMenu)
+            val showIcons = menuPopupHelper.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.javaPrimitiveType)
+            showIcons.invoke(menuPopupHelper, true)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
         popupMenu.show()
     }
 
@@ -342,13 +351,24 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
     }
 
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
+        try {
+            val menuBuilder = menu.javaClass.getDeclaredMethod("setOptionalIconsVisible", Boolean::class.javaPrimitiveType)
+            menuBuilder.isAccessible = true
+            menuBuilder.invoke(menu, true)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
         menu.add(0, R.id.action_scan, 0, R.string.scan_media)
+            .setIcon(R.drawable.ic_search)
             .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
         menu.add(0, R.id.action_go_to_start_directory, 1, R.string.action_go_to_start_directory)
+            .setIcon(R.drawable.ic_home)
             .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
         menu.add(0, R.id.action_set_as_start_directory, 2, R.string.action_set_as_start_directory)
+            .setIcon(R.drawable.ic_home)
             .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
         menu.add(0, R.id.action_settings, 3, R.string.action_settings)
+            .setIcon(R.drawable.ic_settings)
             .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
         menu.removeItem(R.id.action_grid_size)
         menu.removeItem(R.id.action_layout_type)

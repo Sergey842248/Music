@@ -143,6 +143,13 @@ class SongsFragment : AbsRecyclerViewCustomGridSizeFragment<SongAdapter, GridLay
     }
 
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
+        try {
+            val menuBuilder = menu.javaClass.getDeclaredMethod("setOptionalIconsVisible", Boolean::class.javaPrimitiveType)
+            menuBuilder.isAccessible = true
+            menuBuilder.invoke(menu, true)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
         super.onCreateMenu(menu, inflater)
         val gridSizeItem: MenuItem = menu.findItem(R.id.action_grid_size)
         if (RetroUtil.isLandscape) {

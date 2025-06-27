@@ -143,6 +143,15 @@ object SongMenuHelper : KoinComponent {
             val popupMenu = PopupMenu(activity, v)
             popupMenu.inflate(menuRes)
             popupMenu.setOnMenuItemClickListener(this)
+            try {
+                val field = popupMenu.javaClass.getDeclaredField("mPopup")
+                field.isAccessible = true
+                val menuPopupHelper = field.get(popupMenu)
+                val showIcons = menuPopupHelper.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.javaPrimitiveType)
+                showIcons.invoke(menuPopupHelper, true)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
             popupMenu.show()
         }
 

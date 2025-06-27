@@ -176,15 +176,13 @@ class ArtistsFragment : AbsCustomFragment<ArtistAdapter, GridLayoutManager>(),
     }
 
     override fun onArtist(artistId: Long, view: View) {
-        if (PreferenceUtil.artistSortOrder != ArtistSortOrder.ARTIST_CUSTOM) {
-            findNavController().navigate(
-                R.id.artistDetailsFragment,
-                bundleOf(EXTRA_ARTIST_ID to artistId),
-                null,
-                FragmentNavigatorExtras(view to artistId.toString())
-            )
-            reenterTransition = null
-        }
+        findNavController().navigate(
+            R.id.artistDetailsFragment,
+            bundleOf(EXTRA_ARTIST_ID to artistId),
+            null,
+            FragmentNavigatorExtras(view to artistId.toString())
+        )
+        reenterTransition = null
     }
 
     private fun setupItemTouchHelper() {
@@ -257,6 +255,13 @@ class ArtistsFragment : AbsCustomFragment<ArtistAdapter, GridLayoutManager>(),
     }
 
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
+        try {
+            val menuBuilder = menu.javaClass.getDeclaredMethod("setOptionalIconsVisible", Boolean::class.javaPrimitiveType)
+            menuBuilder.isAccessible = true
+            menuBuilder.invoke(menu, true)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
         super.onCreateMenu(menu, inflater)
         val gridSizeItem: MenuItem = menu.findItem(R.id.action_grid_size)
         if (RetroUtil.isLandscape) {
@@ -275,6 +280,7 @@ class ArtistsFragment : AbsCustomFragment<ArtistAdapter, GridLayoutManager>(),
         menu.add(0, R.id.action_album_artist, 0, R.string.show_album_artists).apply {
             isCheckable = true
             isChecked = PreferenceUtil.albumArtistsOnly
+            setIcon(R.drawable.ic_album_artist)
         }
     }
 

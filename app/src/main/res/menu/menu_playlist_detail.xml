@@ -20,24 +20,44 @@
     <item
         android:id="@+id/action_play"
         android:title="@string/action_play"
+        android:icon="@drawable/ic_play_arrow"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_play_next"
         android:title="@string/action_play_next"
+        android:icon="@drawable/ic_redo"
         app:showAsAction="never" />
+
+
     <item
-        android:id="@+id/action_add_to_current_playing"
-        android:title="@string/action_add_to_playing_queue"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_add_to_playlist"
-        android:title="@string/action_add_to_playlist" />
+        android:id="@+id/menu_playlist_details_add_to"
+        android:orderInCategory="3"
+        android:title="Add to"
+        android:icon="@drawable/ic_add_to">
+        <menu>
+            <item
+                android:id="@+id/action_add_to_current_playing"
+                android:title="@string/action_add_to_playing_queue"
+                android:icon="@drawable/ic_add_to_queue"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/action_add_to_playlist"
+                android:title="@string/action_add_to_playlist"
+                android:icon="@drawable/ic_add"/>
+        </menu>
+    </item>
+
+
     <item
         android:id="@+id/action_rename_playlist"
+        android:orderInCategory="4"
         android:title="@string/action_rename"
+        android:icon="@drawable/ic_file_edit"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_delete_playlist"
+        android:orderInCategory="5"
         android:title="@string/action_delete"
+        android:icon="@drawable/ic_delete"
         app:showAsAction="never" />
 </menu>

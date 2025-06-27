@@ -30,7 +30,8 @@
     <item
         android:id="@+id/action_effects"
         android:orderInCategory="4"
-        android:title="@string/effects">
+        android:title="@string/effects"
+        android:icon="@drawable/ic_equalizer">
         <menu>
             <item
                 android:id="@+id/action_playback_speed"
@@ -51,7 +52,8 @@
     <item
         android:id="@+id/action_navigate"
         android:orderInCategory="5"
-        android:title="@string/navigate">
+        android:title="@string/navigate"
+        android:icon="@drawable/ic_folder">
         <menu>
             <item
                 android:id="@+id/action_go_to_album"
@@ -71,7 +73,8 @@
     <item
         android:id="@+id/action_add_to_playlist"
         android:orderInCategory="7"
-        android:title="@string/action_add_to_playlist" />
+        android:title="@string/action_add_to_playlist"
+        android:icon="@drawable/ic_add"/>
     <item
         android:id="@+id/action_playing_queue_group"
         android:orderInCategory="8"
@@ -91,11 +94,13 @@
     <item
         android:id="@+id/action_share"
         android:orderInCategory="9"
-        android:title="@string/action_share" />
+        android:title="@string/action_share"
+        android:icon="@drawable/ic_share"/>
     <item
         android:id="@+id/action_device_options"
         android:orderInCategory="10"
-        android:title="@string/device">
+        android:title="@string/device"
+        android:icon="@drawable/ic_device">
         <menu>
             <item
                 android:id="@+id/action_set_as_ringtone"
@@ -107,12 +112,31 @@
                 android:title="@string/action_delete_from_device" />
         </menu>
     </item>
+
+
+
+
     <item
-        android:id="@+id/action_details"
+        android:id="@+id/menu_player_info"
         android:orderInCategory="11"
-        android:title="@string/action_details" />
+        android:title="Info"
+        android:icon="@drawable/ic_info_outline">
+        <menu>
+            <item
+                android:id="@+id/action_tag_editor"
+                android:title="@string/action_tag_editor"
+                android:icon="@drawable/ic_edit"/>
+            <item
+                android:id="@+id/action_details"
+                android:title="@string/action_details"
+                android:icon="@drawable/ic_info_outline"/>
+        </menu>
+    </item>
+
+
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="12"
-        android:title="@string/settings" />
+        android:title="@string/settings"
+        android:icon="@drawable/ic_settings"/>
 </menu>
