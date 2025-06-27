@@ -130,6 +130,14 @@ class SongsFragment : AbsRecyclerViewCustomGridSizeFragment<SongAdapter, GridLay
         }
     }
 
+    override fun setCustomOrder(songs: List<Long>) {
+        // Not needed for SongsFragment as it doesn't have custom sorting
+    }
+
+    override fun getCustomOrder(): List<Long> {
+        return emptyList()
+    }
+
     override fun setSortOrder(sortOrder: String) {
         libraryViewModel.forceReload(ReloadType.Songs)
     }

@@ -27,18 +27,22 @@ import code.name.monkey.retromusic.adapter.artist.ArtistAdapter
 import code.name.monkey.retromusic.extensions.setUpMediaRouteButton
 import code.name.monkey.retromusic.fragments.GridStyle
 import code.name.monkey.retromusic.fragments.ReloadType
-import code.name.monkey.retromusic.fragments.base.AbsRecyclerViewCustomGridSizeFragment
+import code.name.monkey.retromusic.fragments.base.AbsCustomFragment
 import code.name.monkey.retromusic.helper.MusicPlayerRemote
 import code.name.monkey.retromusic.helper.SortOrder.ArtistSortOrder
 import code.name.monkey.retromusic.interfaces.IAlbumArtistClickListener
 import code.name.monkey.retromusic.interfaces.IArtistClickListener
 import code.name.monkey.retromusic.service.MusicService
 import code.name.monkey.retromusic.util.PreferenceUtil
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import code.name.monkey.retromusic.util.RetroUtil
 import android.content.SharedPreferences
 
-class ArtistsFragment : AbsRecyclerViewCustomGridSizeFragment<ArtistAdapter, GridLayoutManager>(),
+class ArtistsFragment : AbsCustomFragment<ArtistAdapter, GridLayoutManager>(),
     IArtistClickListener, IAlbumArtistClickListener, SharedPreferences.OnSharedPreferenceChangeListener {
+
+    private var itemTouchHelper: ItemTouchHelper? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +63,7 @@ class ArtistsFragment : AbsRecyclerViewCustomGridSizeFragment<ArtistAdapter, Gri
             else
                 adapter?.swapDataSet(listOf())
         }
+        setupItemTouchHelper()
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
@@ -108,35 +113,29 @@ class ArtistsFragment : AbsRecyclerViewCustomGridSizeFragment<ArtistAdapter, Gri
 
     override fun setSortOrder(sortOrder: String) {
         libraryViewModel.forceReload(ReloadType.Artists)
+        setupItemTouchHelper()
     }
 
-    override fun createLayoutManager(): GridLayoutManager {
-        return GridLayoutManager(requireActivity(), getGridSize())
-    }
+    override fun createLayoutManager(): GridLayoutManager =
+        GridLayoutManager(requireActivity(), getGridSize())
 
-    override fun createAdapter(): ArtistAdapter {
-        val dataSet = if (adapter == null) ArrayList() else adapter!!.dataSet
-        return ArtistAdapter(
+    override fun createAdapter(): ArtistAdapter =
+        ArtistAdapter(
             requireActivity(),
-            dataSet,
+            ArrayList(),
             itemLayoutRes(),
             this,
             this,
             true
         )
-    }
 
-    override fun loadGridSize(): Int {
-        return PreferenceUtil.artistGridSize
-    }
+    override fun loadGridSize(): Int = PreferenceUtil.artistGridSize
 
     override fun saveGridSize(gridColumns: Int) {
         PreferenceUtil.artistGridSize = gridColumns
     }
 
-    override fun loadGridSizeLand(): Int {
-        return PreferenceUtil.artistGridSizeLand
-    }
+    override fun loadGridSizeLand(): Int = PreferenceUtil.artistGridSizeLand
 
     override fun saveGridSizeLand(gridColumns: Int) {
         PreferenceUtil.artistGridSizeLand = gridColumns
@@ -147,22 +146,26 @@ class ArtistsFragment : AbsRecyclerViewCustomGridSizeFragment<ArtistAdapter, Gri
         adapter?.notifyDataSetChanged()
     }
 
-    override fun loadSortOrder(): String {
-        return PreferenceUtil.artistSortOrder
-    }
+    override fun loadSortOrder(): String = PreferenceUtil.artistSortOrder
 
     override fun saveSortOrder(sortOrder: String) {
         PreferenceUtil.artistSortOrder = sortOrder
     }
 
-    override fun loadLayoutRes(): Int {
-        return PreferenceUtil.artistGridStyle.layoutResId
-    }
+    override fun loadLayoutRes(): Int = PreferenceUtil.artistGridStyle.layoutResId
 
     override fun saveLayoutRes(layoutRes: Int) {
         PreferenceUtil.artistGridStyle = GridStyle.values().first { gridStyle ->
             gridStyle.layoutResId == layoutRes
         }
+    }
+
+    override fun setCustomOrder(songs: List<Long>) {
+        PreferenceUtil.artistCustomOrder = songs
+    }
+
+    override fun getCustomOrder(): List<Long> {
+        return PreferenceUtil.artistCustomOrder
     }
 
     companion object {
@@ -173,13 +176,74 @@ class ArtistsFragment : AbsRecyclerViewCustomGridSizeFragment<ArtistAdapter, Gri
     }
 
     override fun onArtist(artistId: Long, view: View) {
-        findNavController().navigate(
-            R.id.artistDetailsFragment,
-            bundleOf(EXTRA_ARTIST_ID to artistId),
-            null,
-            FragmentNavigatorExtras(view to artistId.toString())
-        )
-        reenterTransition = null
+        if (PreferenceUtil.artistSortOrder != ArtistSortOrder.ARTIST_CUSTOM) {
+            findNavController().navigate(
+                R.id.artistDetailsFragment,
+                bundleOf(EXTRA_ARTIST_ID to artistId),
+                null,
+                FragmentNavigatorExtras(view to artistId.toString())
+            )
+            reenterTransition = null
+        }
+    }
+
+    private fun setupItemTouchHelper() {
+        if (PreferenceUtil.artistSortOrder == ArtistSortOrder.ARTIST_CUSTOM) {
+            if (itemTouchHelper == null) {
+                itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.Callback() {
+                    override fun getMovementFlags(
+                        recyclerView: RecyclerView,
+                        viewHolder: RecyclerView.ViewHolder
+                    ): Int {
+                        val dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN or ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+                        return makeMovementFlags(dragFlags, 0)
+                    }
+
+                    override fun onMove(
+                        recyclerView: RecyclerView,
+                        viewHolder: RecyclerView.ViewHolder,
+                        target: RecyclerView.ViewHolder
+                    ): Boolean {
+                        val fromPosition = viewHolder.adapterPosition
+                        val toPosition = target.adapterPosition
+                        adapter?.onItemMove(fromPosition, toPosition)
+                        return true
+                    }
+
+                    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                        // Not needed for this task
+                    }
+
+                    override fun isLongPressDragEnabled(): Boolean {
+                        return true
+                    }
+
+                    override fun isItemViewSwipeEnabled(): Boolean {
+                        return false
+                    }
+
+                    override fun clearView(
+                        recyclerView: RecyclerView,
+                        viewHolder: RecyclerView.ViewHolder
+                    ) {
+                        super.clearView(recyclerView, viewHolder)
+                        saveCustomOrder()
+                    }
+                })
+            }
+            itemTouchHelper?.attachToRecyclerView(recyclerView)
+        } else {
+            itemTouchHelper?.attachToRecyclerView(null)
+        }
+    }
+
+    private fun saveCustomOrder() {
+        adapter?.let {
+            val customOrder = it.dataSet.map { artist ->
+                artist.id
+            }
+            setCustomOrder(customOrder)
+        }
     }
 
     override fun onAlbumArtist(artistName: String, view: View) {
@@ -231,6 +295,12 @@ class ArtistsFragment : AbsRecyclerViewCustomGridSizeFragment<ArtistAdapter, Gri
             1,
             R.string.sort_order_z_a
         ).isChecked = currentSortOrder.equals(ArtistSortOrder.ARTIST_Z_A)
+        sortOrderMenu.add(
+            0,
+            R.id.action_artist_sort_order_custom,
+            2,
+            R.string.sort_order_custom
+        ).isChecked = currentSortOrder.equals(ArtistSortOrder.ARTIST_CUSTOM)
         sortOrderMenu.setGroupCheckable(0, true, true)
     }
 
@@ -319,6 +389,7 @@ class ArtistsFragment : AbsRecyclerViewCustomGridSizeFragment<ArtistAdapter, Gri
         val sortOrder: String = when (item.itemId) {
             R.id.action_artist_sort_order_asc -> ArtistSortOrder.ARTIST_A_Z
             R.id.action_artist_sort_order_desc -> ArtistSortOrder.ARTIST_Z_A
+            R.id.action_artist_sort_order_custom -> ArtistSortOrder.ARTIST_CUSTOM
             else -> PreferenceUtil.artistSortOrder
         }
         if (sortOrder != PreferenceUtil.artistSortOrder) {

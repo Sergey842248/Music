@@ -16,6 +16,8 @@ package code.name.monkey.retromusic.util
 import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Point
+import android.os.Handler
+import android.os.Looper
 import code.name.monkey.retromusic.App.Companion.getContext
 import java.net.InetAddress
 import java.net.NetworkInterface
@@ -24,6 +26,10 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 object RetroUtil {
+    fun runOnMainThread(runnable: () -> Unit) {
+        Handler(Looper.getMainLooper()).post(runnable)
+    }
+
     fun formatValue(numValue: Float): String {
         var value = numValue
         val arr = arrayOf("", "K", "M", "B", "T", "P", "E")

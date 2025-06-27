@@ -96,6 +96,10 @@ class RealAlbumRepository(private val songRepository: RealSongRepository) :
             SortOrder.AlbumSortOrder.ALBUM_NUMBER_OF_SONGS -> {
                 grouped.sortedByDescending { it.songCount }
             }
+            SortOrder.AlbumSortOrder.ALBUM_CUSTOM -> {
+                val customOrder = PreferenceUtil.albumCustomOrder
+                grouped.sortedBy { customOrder.indexOf(it.id) }
+            }
             else -> grouped
         }
     }
@@ -122,7 +126,7 @@ class RealAlbumRepository(private val songRepository: RealSongRepository) :
 
     private fun getSongLoaderSortOrder(): String {
         var albumSortOrder = PreferenceUtil.albumSortOrder
-        if (albumSortOrder == SortOrder.AlbumSortOrder.ALBUM_NUMBER_OF_SONGS)
+        if (albumSortOrder == SortOrder.AlbumSortOrder.ALBUM_NUMBER_OF_SONGS || albumSortOrder == SortOrder.AlbumSortOrder.ALBUM_CUSTOM)
             albumSortOrder = SortOrder.AlbumSortOrder.ALBUM_A_Z
         return albumSortOrder + ", " +
                 PreferenceUtil.albumSongSortOrder

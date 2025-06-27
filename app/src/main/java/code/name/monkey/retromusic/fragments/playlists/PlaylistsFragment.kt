@@ -389,15 +389,21 @@ class PlaylistsFragment :
         //Save layout
     }
 
+    override fun setCustomOrder(songs: List<Long>) {
+        PreferenceUtil.playlistCustomOrder = songs
+    }
+
+    override fun getCustomOrder(): List<Long> {
+        return PreferenceUtil.playlistCustomOrder
+    }
+
     override fun onPlaylistClick(playlistWithSongs: PlaylistWithSongs, view: View) {
-        if (PreferenceUtil.playlistSortOrder != PlaylistSortOrder.PLAYLIST_CUSTOM) {
-            exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).addTarget(requireView())
-            reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false)
-            findNavController().navigate(
-                R.id.playlistDetailsFragment,
-                bundleOf(EXTRA_PLAYLIST_ID to playlistWithSongs.playlistEntity.playListId)
-            )
-        }
+        exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).addTarget(requireView())
+        reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false)
+        findNavController().navigate(
+            R.id.playlistDetailsFragment,
+            bundleOf(EXTRA_PLAYLIST_ID to playlistWithSongs.playlistEntity.playListId)
+        )
     }
 
     private fun setupItemTouchHelper() {
@@ -434,11 +440,28 @@ class PlaylistsFragment :
                     override fun isItemViewSwipeEnabled(): Boolean {
                         return false
                     }
+
+                    override fun clearView(
+                        recyclerView: RecyclerView,
+                        viewHolder: RecyclerView.ViewHolder
+                    ) {
+                        super.clearView(recyclerView, viewHolder)
+                        saveCustomOrder()
+                    }
                 })
             }
             itemTouchHelper?.attachToRecyclerView(recyclerView)
         } else {
             itemTouchHelper?.attachToRecyclerView(null)
+        }
+    }
+
+    private fun saveCustomOrder() {
+        adapter?.let {
+            val customOrder = it.dataSet.map { playlist ->
+                playlist.playlistEntity.playListId
+            }
+            setCustomOrder(customOrder)
         }
     }
 }

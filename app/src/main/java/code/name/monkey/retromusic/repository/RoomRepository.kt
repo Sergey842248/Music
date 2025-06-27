@@ -74,8 +74,18 @@ class RealRoomRepository(
             PLAYLIST_SONG_COUNT -> playlistDao.playlistsWithSongs().sortedBy { it.songs.size }
             PLAYLIST_SONG_COUNT_DESC -> playlistDao.playlistsWithSongs()
                 .sortedByDescending { it.songs.size }
-            else -> playlistDao.playlistsWithSongs().sortedBy {
-                it.playlistEntity.playlistName
+            else -> {
+                val customOrder = PreferenceUtil.playlistCustomOrder
+                if (customOrder.isNotEmpty()) {
+                    val playlists = playlistDao.playlistsWithSongs()
+                    playlists.sortedBy { playlistWithSongs ->
+                        customOrder.indexOf(playlistWithSongs.playlistEntity.playListId)
+                    }
+                } else {
+                    playlistDao.playlistsWithSongs().sortedBy {
+                        it.playlistEntity.playlistName
+                    }
+                }
             }
         }
 

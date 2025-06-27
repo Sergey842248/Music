@@ -42,7 +42,11 @@ class RealArtistRepository(
 ) : ArtistRepository {
 
     private fun getSongLoaderSortOrder(): String {
-        return PreferenceUtil.artistSortOrder + ", " +
+        var artistSortOrder = PreferenceUtil.artistSortOrder
+        if (artistSortOrder == SortOrder.ArtistSortOrder.ARTIST_CUSTOM) {
+            artistSortOrder = SortOrder.ArtistSortOrder.ARTIST_A_Z
+        }
+        return artistSortOrder + ", " +
                 PreferenceUtil.artistAlbumSortOrder + ", " +
                 PreferenceUtil.artistSongSortOrder
     }
@@ -182,6 +186,10 @@ class RealArtistRepository(
             }
             SortOrder.ArtistSortOrder.ARTIST_Z_A -> {
                 artists.sortedWith { a1, a2 -> collator.compare(a2.name, a1.name) }
+            }
+            SortOrder.ArtistSortOrder.ARTIST_CUSTOM -> {
+                val customOrder = PreferenceUtil.artistCustomOrder
+                artists.sortedBy { customOrder.indexOf(it.id) }
             }
             else -> artists
         }

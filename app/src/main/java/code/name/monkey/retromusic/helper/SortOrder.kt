@@ -37,6 +37,9 @@ class SortOrder {
 
             /* Artist sort order number of albums */
             const val ARTIST_NUMBER_OF_ALBUMS = MediaStore.Audio.Artists.NUMBER_OF_ALBUMS + " DESC"
+
+            /* Artist sort order custom */
+            const val ARTIST_CUSTOM = "artist_custom"
         }
     }
 
@@ -62,6 +65,9 @@ class SortOrder {
 
             /* Album sort order year */
             const val ALBUM_YEAR = MediaStore.Audio.Media.YEAR + " DESC"
+
+            /* Album sort order custom */
+            const val ALBUM_CUSTOM = "album_custom"
         }
     }
 

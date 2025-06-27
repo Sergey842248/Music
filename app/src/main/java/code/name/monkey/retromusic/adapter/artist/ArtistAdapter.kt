@@ -41,16 +41,17 @@ import code.name.monkey.retromusic.util.PreferenceUtil
 import code.name.monkey.retromusic.util.color.MediaNotificationProcessor
 import com.bumptech.glide.Glide
 import me.zhanghai.android.fastscroll.PopupTextProvider
+import java.util.*
 
 class ArtistAdapter(
     override val activity: FragmentActivity,
-    var dataSet: List<Artist>,
+    override var dataSet: List<Artist>,
     var itemLayoutRes: Int,
     val IArtistClickListener: IArtistClickListener,
     val IAlbumArtistClickListener: IAlbumArtistClickListener? = null,
     private val showCovers: Boolean
 ) : AbsMultiSelectAdapter<ArtistAdapter.ViewHolder, Artist>(activity, R.menu.menu_media_selection),
-    PopupTextProvider {
+    PopupTextProvider, code.name.monkey.retromusic.adapter.base.AbsCustomAdapter<Artist, ArtistAdapter.ViewHolder> {
 
     var albumArtistsOnly = false
 
@@ -59,10 +60,16 @@ class ArtistAdapter(
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun swapDataSet(dataSet: List<Artist>) {
+    override fun swapDataSet(dataSet: List<Artist>) {
         this.dataSet = dataSet
         notifyDataSetChanged()
         albumArtistsOnly = PreferenceUtil.albumArtistsOnly
+    }
+
+    override fun onItemMove(fromPosition: Int, toPosition: Int): Boolean {
+        Collections.swap(dataSet, fromPosition, toPosition)
+        notifyItemMoved(fromPosition, toPosition)
+        return true
     }
 
     override fun getItemId(position: Int): Long {

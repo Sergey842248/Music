@@ -121,4 +121,8 @@ abstract class AbsRecyclerViewCustomGridSizeFragment<A : RecyclerView.Adapter<*>
     protected abstract fun loadLayoutRes(): Int
 
     protected abstract fun saveLayoutRes(layoutRes: Int)
+
+    protected abstract fun setCustomOrder(songs: List<Long>)
+
+    protected abstract fun getCustomOrder(): List<Long>
 }

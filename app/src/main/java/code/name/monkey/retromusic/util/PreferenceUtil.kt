@@ -883,6 +883,9 @@ object PreferenceUtil {
     const val SHOW_OPTIONS_MENU = "show_options_menu"
     const val NOW_PLAYING_METADATA = "now_playing_metadata"
     const val SHOW_CAST_BUTTON = "show_cast_button"
+    const val ALBUM_CUSTOM_ORDER = "album_custom_order"
+    const val ARTIST_CUSTOM_ORDER = "artist_custom_order"
+    const val PLAYLIST_CUSTOM_ORDER = "playlist_custom_order"
 
     val showNowPlayingQueueButton: Boolean
         get() = sharedPreferences.getBoolean(
@@ -1082,6 +1085,53 @@ object PreferenceUtil {
         set(value) {
             val json = Gson().toJson(value)
             sharedPreferences.edit { putString(NOW_PLAYING_METADATA_VISIBILITY, json) }
+        }
+
+    private val customOrderType = object : TypeToken<List<Long>>() {}.type
+
+    var albumCustomOrder: List<Long>
+        get() {
+            val json = sharedPreferences.getStringOrDefault(ALBUM_CUSTOM_ORDER, "[]")
+            return try {
+                Gson().fromJson(json, customOrderType)
+            } catch (e: JsonSyntaxException) {
+                e.printStackTrace()
+                emptyList()
+            }
+        }
+        set(value) {
+            val json = Gson().toJson(value)
+            sharedPreferences.edit { putString(ALBUM_CUSTOM_ORDER, json) }
+        }
+
+    var artistCustomOrder: List<Long>
+        get() {
+            val json = sharedPreferences.getStringOrDefault(ARTIST_CUSTOM_ORDER, "[]")
+            return try {
+                Gson().fromJson(json, customOrderType)
+            } catch (e: JsonSyntaxException) {
+                e.printStackTrace()
+                emptyList()
+            }
+        }
+        set(value) {
+            val json = Gson().toJson(value)
+            sharedPreferences.edit { putString(ARTIST_CUSTOM_ORDER, json) }
+        }
+
+    var playlistCustomOrder: List<Long>
+        get() {
+            val json = sharedPreferences.getStringOrDefault(PLAYLIST_CUSTOM_ORDER, "[]")
+            return try {
+                Gson().fromJson(json, customOrderType)
+            } catch (e: JsonSyntaxException) {
+                e.printStackTrace()
+                emptyList()
+            }
+        }
+        set(value) {
+            val json = Gson().toJson(value)
+            sharedPreferences.edit { putString(PLAYLIST_CUSTOM_ORDER, json) }
         }
 }
 
