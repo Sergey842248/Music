@@ -17,6 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import android.net.Uri
 import java.io.File
 import java.io.InputStream
 import java.text.SimpleDateFormat
@@ -28,33 +29,28 @@ object BackupHelper : KoinComponent {
     private val repository by inject<Repository>()
     private val songRepository by inject<SongRepository>()
 
-    suspend fun createBackup(context: Context, name: String) {
-        val backupFile =
-            File(getBackupRoot(), name + APPEND_EXTENSION)
-        if (backupFile.parentFile?.exists() != true) {
-            backupFile.parentFile?.mkdirs()
-        }
+    suspend fun createBackup(context: Context, uri: Uri) {
         val zipItems = mutableListOf<ZipItem>()
         zipItems.addAll(getPlaylistZipItems(context))
         zipItems.addAll(getSettingsZipItems(context))
         getUserImageZipItems(context)?.let { zipItems.addAll(it) }
         zipItems.addAll(getCustomArtistZipItems(context))
-        zipAll(context, zipItems, backupFile)
+        zipAll(context, zipItems, uri)
         // Clean Cache Playlist Directory
         File(context.filesDir, PLAYLISTS_PATH).deleteRecursively()
     }
 
-    private suspend fun zipAll(context: Context, zipItems: List<ZipItem>, backupFile: File) =
+    private suspend fun zipAll(context: Context, zipItems: List<ZipItem>, uri: Uri) =
         withContext(Dispatchers.IO) {
             runCatching {
-                backupFile.outputStream().buffered().zipOutputStream().use { out ->
+                context.contentResolver.openOutputStream(uri)?.buffered()?.zipOutputStream().use { out ->
                     for (zipItem in zipItems) {
                         val file = File(zipItem.filePath)
                         if (file.exists()) {
                             file.inputStream().buffered().use { origin ->
                                 val entry = ZipEntry(zipItem.zipPath)
-                                out.putNextEntry(entry)
-                                origin.copyTo(out)
+                                out?.putNextEntry(entry)
+                                origin.copyTo(out!!)
                             }
                         } else {
                             println("File not found, skipping: ${zipItem.filePath}")

@@ -26,6 +26,7 @@ import code.name.monkey.retromusic.util.Share
 import com.afollestad.materialdialogs.input.input
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.File
 
 class BackupFragment : Fragment(R.layout.fragment_backup), BackupAdapter.BackupClickedListener {
@@ -47,7 +48,6 @@ class BackupFragment : Fragment(R.layout.fragment_backup), BackupAdapter.BackupC
             else
                 backupAdapter?.swapDataset(listOf())
         }
-        backupViewModel.loadBackups()
         val openFilePicker = registerForActivityResult(ActivityResultContracts.OpenDocument()) {
             lifecycleScope.launch(Dispatchers.IO) {
                 it?.let {
@@ -57,10 +57,20 @@ class BackupFragment : Fragment(R.layout.fragment_backup), BackupAdapter.BackupC
                 }
             }
         }
+        val createFilePicker = registerForActivityResult(ActivityResultContracts.CreateDocument("application/octet-stream")) { uri ->
+            lifecycleScope.launch(Dispatchers.IO) {
+                uri?.let {
+                    BackupHelper.createBackup(requireContext(), it)
+                    withContext(Dispatchers.Main) {
+                        backupViewModel.loadBackups()
+                    }
+                }
+            }
+        }
         binding.createBackup.accentOutlineColor()
         binding.restoreBackup.accentColor()
         binding.createBackup.setOnClickListener {
-            showCreateBackupDialog()
+            createFilePicker.launch(BackupHelper.getTimeStamp())
         }
         binding.restoreBackup.setOnClickListener {
             openFilePicker.launch(arrayOf("application/octet-stream"))
@@ -87,23 +97,6 @@ class BackupFragment : Fragment(R.layout.fragment_backup), BackupAdapter.BackupC
         binding.backupRecyclerview.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = backupAdapter
-        }
-    }
-
-    @SuppressLint("CheckResult")
-    private fun showCreateBackupDialog() {
-        materialDialog().show {
-            title(res = R.string.action_rename)
-            input(prefill = BackupHelper.getTimeStamp()) { _, text ->
-                // Text submitted with the action button
-                lifecycleScope.launch {
-                    BackupHelper.createBackup(requireContext(), text.sanitize())
-                    backupViewModel.loadBackups()
-                }
-            }
-            positiveButton(android.R.string.ok)
-            negativeButton(R.string.action_cancel)
-            setTitle(R.string.title_new_backup)
         }
     }
 
