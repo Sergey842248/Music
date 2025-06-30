@@ -49,14 +49,20 @@ object BackupHelper : KoinComponent {
             runCatching {
                 backupFile.outputStream().buffered().zipOutputStream().use { out ->
                     for (zipItem in zipItems) {
-                        File(zipItem.filePath).inputStream().buffered().use { origin ->
-                            val entry = ZipEntry(zipItem.zipPath)
-                            out.putNextEntry(entry)
-                            origin.copyTo(out)
+                        val file = File(zipItem.filePath)
+                        if (file.exists()) {
+                            file.inputStream().buffered().use { origin ->
+                                val entry = ZipEntry(zipItem.zipPath)
+                                out.putNextEntry(entry)
+                                origin.copyTo(out)
+                            }
+                        } else {
+                            println("File not found, skipping: ${zipItem.filePath}")
                         }
                     }
                 }
             }.onFailure {
+                it.printStackTrace()
                 withContext(Dispatchers.Main) {
                     context.showToast(R.string.error_create_backup)
                 }
