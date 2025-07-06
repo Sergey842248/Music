@@ -5,7 +5,7 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/Sergey842248/EMusic/" style="text-decoration:none" area-label="Android">
+  <a href="https://github.com/Sergey842248/Music/" style="text-decoration:none" area-label="Android">
     <img src="https://img.shields.io/badge/Platform-Android-green.svg">
   </a>
 
