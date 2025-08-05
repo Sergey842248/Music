@@ -13,7 +13,7 @@ android {
 
         vectorDrawables.useSupportLibrary = true
 
-        applicationId "com.Sergey842248.music"
+        applicationId "com.future842248.music"
         versionCode 850
         versionName '8.5.0'
     }
