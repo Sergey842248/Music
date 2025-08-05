@@ -5,6 +5,7 @@ apply plugin: 'kotlin-parcelize'
 apply plugin: 'com.google.devtools.ksp'
 
 android {
+    compileSdk 35
     namespace "code.name.monkey.retromusic"
 
     defaultConfig {
