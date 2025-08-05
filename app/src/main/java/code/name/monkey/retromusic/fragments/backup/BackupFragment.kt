@@ -61,6 +61,16 @@ class BackupFragment : Fragment(R.layout.fragment_backup), BackupAdapter.BackupC
             lifecycleScope.launch(Dispatchers.IO) {
                 uri?.let {
                     BackupHelper.createBackup(requireContext(), it)
+                    val backupRoot = BackupHelper.getBackupRoot()
+                    if (!backupRoot.exists()) {
+                        backupRoot.mkdirs()
+                    }
+                    val file = File(backupRoot, "${BackupHelper.getTimeStamp()}.rmbak")
+                    requireContext().contentResolver.openInputStream(it)?.use { inputStream ->
+                        file.outputStream().use { outputStream ->
+                            inputStream.copyTo(outputStream)
+                        }
+                    }
                     withContext(Dispatchers.Main) {
                         backupViewModel.loadBackups()
                     }
