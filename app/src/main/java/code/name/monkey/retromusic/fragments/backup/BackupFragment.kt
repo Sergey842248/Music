@@ -40,6 +40,7 @@ class BackupFragment : Fragment(R.layout.fragment_backup), BackupAdapter.BackupC
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentBackupBinding.bind(view)
+        backupViewModel.loadBackups()
         initAdapter()
         setupRecyclerview()
         backupViewModel.backupsLiveData.observe(viewLifecycleOwner) {
