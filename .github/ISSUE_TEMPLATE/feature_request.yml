@@ -1,7 +1,7 @@
 name: Feature request
-description: Suggest an idea for Music
+description: Suggest an idea for the app
 labels: [enhancement]
-assignees: "effinmr"
+assignees: "Sergey842248"
 body:
   - type: textarea
     id: feature-description
