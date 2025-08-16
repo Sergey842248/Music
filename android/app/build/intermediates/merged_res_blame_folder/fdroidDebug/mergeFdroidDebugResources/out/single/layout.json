@@ -1,0 +1,646 @@
+[
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/dialog_sleep_timer.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/dialog_sleep_timer.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_permission.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_permission.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/card_retro_info.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/card_retro_info.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_fit.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_fit.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_simple_player.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_simple_player.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/dialog_playback_speed.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/dialog_playback_speed.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_blur_player_playback_controls.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_blur_player_playback_controls.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_suggestions.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_suggestions.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_flat_player_playback_controls.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_flat_player_playback_controls.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_list_no_image.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_list_no_image.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/app_widget_md3.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/app_widget_md3.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_list_quick_actions.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_list_quick_actions.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/list_item_view_no_title.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/list_item_view_no_title.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/app_widget_circle.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/app_widget_circle.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_favourite_card.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_favourite_card.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_lock_screen_playback_controls.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_lock_screen_playback_controls.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_image.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_image.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/sliding_music_panel_layout.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/sliding_music_panel_layout.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_main_settings.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_main_settings.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_artist_square.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_artist_square.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_card_blur_player_playback_controls.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_card_blur_player_playback_controls.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/layout_notification_collapsed.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/layout_notification_collapsed.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_song.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_song.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/sub_header.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/sub_header.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/layout_notification_expanded.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/layout_notification_expanded.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_about_content.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_about_content.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_album_card.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_album_card.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/list_item_view_seekbar.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/list_item_view_seekbar.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/user_image_layout.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/user_image_layout.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_playlist_detail.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_playlist_detail.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_storage.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_storage.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_home.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_plain_controls_fragment.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_plain_controls_fragment.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_card_player.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_card_player.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/home_content.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/home_content.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_contributor_header.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_contributor_header.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_grid_genre.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_grid_genre.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_user_info.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_user_info.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_peek_player.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_peek_player.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/dialog_playlist.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/dialog_playlist.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/bread_crumb.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/bread_crumb.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/list_item_metadata_field_setting.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/list_item_metadata_field_setting.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/section_recycler_view.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/section_recycler_view.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/abs_playlists.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/abs_playlists.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/image.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/image.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_full.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_full.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/media_button.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/media_button.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/activity_license.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/activity_license.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/preference_dialog_now_playing_screen.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/preference_dialog_now_playing_screen.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/preference_category_title.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/preference_category_title.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_contributor.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_contributor.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/list_item_view.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/list_item_view.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_classic_player.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_classic_player.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_classic_controls.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_classic_controls.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_album_card_cover.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_album_card_cover.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/activity_permission.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/activity_permission.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_gradient_player.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_gradient_player.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/dialog_file_details.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/dialog_file_details.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/preference_dialog_library_categories.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/preference_dialog_library_categories.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_player_album_cover.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_player_album_cover.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_queue.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_queue.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_cover_lyrics.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_cover_lyrics.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/loading.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/loading.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_grid_circle.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_grid_circle.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_artist_card.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_artist_card.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_simple_controls_fragment.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_simple_controls_fragment.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_player_playback_controls.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_player_playback_controls.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_material_playback_controls.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_material_playback_controls.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_card.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_card.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/activity_restore.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/activity_restore.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/shadow_statusbar_toolbar.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/shadow_statusbar_toolbar.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/activity_song_tag_editor.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/activity_song_tag_editor.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/list_item_view_switch_no_title.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/list_item_view_switch_no_title.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/bug_report_card_device_info.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/bug_report_card_device_info.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_artist.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_artist.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_adaptive_player.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_adaptive_player.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_tiny_player.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_tiny_player.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_adaptive_player_playback_controls.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_adaptive_player_playback_controls.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/app_widget_card.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/app_widget_card.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/dialog_player_action_buttons.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/dialog_player_action_buttons.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/activity_album_tag_editor.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/activity_album_tag_editor.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/banner_image_layout.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/banner_image_layout.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/list_item_color_view.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/list_item_color_view.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_card_color.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_card_color.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_library.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_library.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_equalizer.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_equalizer.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/preference_time_display_options.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/preference_time_display_options.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_grid.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_grid.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/app_widget_small.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/app_widget_small.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/activity_donation.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/activity_donation.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_blur.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_blur.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/app_widget_classic.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/app_widget_classic.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_simple_text.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_simple_text.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/list_setting_item_view.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/list_setting_item_view.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_album_full_cover.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_album_full_cover.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_full_player_controls.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_full_player_controls.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_album_circle_cover.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_album_circle_cover.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_peek_control_player.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_peek_control_player.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/card_other.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/card_other.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_search.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_search.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_image_gradient.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_image_gradient.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/simple_appbar_layout.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/simple_appbar_layout.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_donation_option.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_donation_option.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_playlist_detail_new.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_playlist_detail_new.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/app_widget_text.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/app_widget_text.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_album_cover.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_album_cover.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_genre.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_genre.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/activity_drive_mode.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/activity_drive_mode.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/activity_share_instagram.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/activity_share_instagram.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_artist_content.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_artist_content.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_md3_player.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_md3_player.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/app_widget_big.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/app_widget_big.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_circle_player.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_circle_player.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_lyrics.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_lyrics.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_album_carousel_cover.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_album_carousel_cover.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_gradient_controls.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_gradient_controls.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_list.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_list.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_list_big.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_list_big.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/activity_bug_report.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/activity_bug_report.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_flat_player.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_flat_player.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_backup.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_backup.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_artist_details.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_artist_details.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_color_player_playback_controls.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_color_player_playback_controls.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_card_blur_player.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_card_blur_player.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_mini_player.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_mini_player.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/preference_dialog_audio_fade.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/preference_dialog_audio_fade.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_tiny_controls_fragment.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_tiny_controls_fragment.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_about.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_about.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_peek_album_cover.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_peek_album_cover.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/activity_lock_screen.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/activity_lock_screen.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/item_list_backup.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/item_list_backup.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_album_content.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_album_content.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/card_credit.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/card_credit.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/list_item_action_button_reorderable.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/list_item_action_button_reorderable.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_fit_playback_controls.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_fit_playback_controls.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_album_details.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_album_details.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_plain_player.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_plain_player.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_album_flat_cover.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_album_flat_cover.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/number_roll_view.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/number_roll_view.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_md3_player_playback_controls.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_md3_player_playback_controls.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/list_item_view_no_card.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/list_item_view_no_card.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_card_player_playback_controls.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_card_player_playback_controls.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/collapsing_appbar_layout.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/collapsing_appbar_layout.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_home_player.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_home_player.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/preference_dialog_library_categories_listitem.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/preference_dialog_library_categories_listitem.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_material.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_material.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_main_recycler.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_main_recycler.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_folder.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_folder.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_playing_queue.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_playing_queue.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/preference_dialog_now_playing_metadata.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/preference_dialog_now_playing_metadata.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_album_full_card_cover.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_album_full_card_cover.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_player.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_player.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_settings.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_settings.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_volume.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_volume.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/list_item_action_button_setting.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/list_item_action_button_setting.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_color_player.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_color_player.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/preference_now_playing_screen_item.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/preference_now_playing_screen_item.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/list_item_view_switch.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/list_item_view_switch.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/status_bar.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/status_bar.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_simple_slide_large_image.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_simple_slide_large_image.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout/fragment_whats_new.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout/fragment_whats_new.xml"
+    }
+]

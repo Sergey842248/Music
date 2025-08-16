@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-75:/values-sw720dp-land-v13/values-sw720dp-land-v13.xml",
+            "map": [
+                {
+                    "source": "/home/parsa/.gradle/caches/8.13/transforms/a1537cd48660d0c324aca40432f7a765/transformed/core-3.3.0/res/values-sw720dp-land-v13/values-sw720dp-land-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "51",
+                        "endOffsets": "102"
+                    }
+                }
+            ]
+        }
+    ]
+}

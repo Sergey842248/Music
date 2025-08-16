@@ -1,0 +1,4 @@
+code.name.monkey.retromusic.test.app-fdroid-0 /home/parsa/Documents/AndroidStudioProjects/Music/app/build/generated/res/resValues/androidTest/fdroid/debug
+code.name.monkey.retromusic.test.app-mergeFdroidDebugAndroidTestResources-1 /home/parsa/Documents/AndroidStudioProjects/Music/app/build/intermediates/incremental/fdroidDebugAndroidTest/mergeFdroidDebugAndroidTestResources/merged.dir
+code.name.monkey.retromusic.test.app-mergeFdroidDebugAndroidTestResources-2 /home/parsa/Documents/AndroidStudioProjects/Music/app/build/intermediates/incremental/fdroidDebugAndroidTest/mergeFdroidDebugAndroidTestResources/stripped.dir
+code.name.monkey.retromusic.test.app-fdroidDebugAndroidTest-3 /home/parsa/Documents/AndroidStudioProjects/Music/app/build/intermediates/merged_res/fdroidDebugAndroidTest/mergeFdroidDebugAndroidTestResources

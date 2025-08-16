@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout-sw600dp-v13/fragment_playing_queue.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout-sw600dp/fragment_playing_queue.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout-sw600dp-v13/item_list_big.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout-sw600dp/item_list_big.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout-sw600dp-v13/item_list.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout-sw600dp/item_list.xml"
+    },
+    {
+        "merged": "code.name.monkey.retromusic.app-mergeFdroidDebugResources-76:/layout-sw600dp-v13/item_queue.xml",
+        "source": "code.name.monkey.retromusic.app-main-81:/layout-sw600dp/item_queue.xml"
+    }
+]

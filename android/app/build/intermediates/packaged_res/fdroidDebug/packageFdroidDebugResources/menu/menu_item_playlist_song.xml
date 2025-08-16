@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_play_next"
+        android:title="@string/action_play_next"
+        android:icon="@drawable/ic_redo"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_playlist_item_add_to"
+        android:title="Add to"
+        android:icon="@drawable/ic_add_to">
+        <menu>
+            <item
+                android:id="@+id/action_add_to_current_playing"
+                android:title="@string/action_add_to_playing_queue"
+                android:icon="@drawable/ic_add_to_queue"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/action_add_to_playlist"
+                android:title="@string/action_add_to_playlist"
+                android:icon="@drawable/ic_add"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+
+
+
+    <item
+        android:id="@+id/menu_playlist_item_navigate"
+        android:title="Navigate"
+        android:icon="@drawable/ic_folder">
+        <menu>
+            <item
+                android:id="@+id/action_go_to_album"
+                android:title="@string/action_go_to_album"
+                android:icon="@drawable/ic_album"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/action_go_to_artist"
+                android:title="@string/action_go_to_artist"
+                android:icon="@drawable/ic_artist"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+
+
+
+    <item
+        android:id="@+id/action_share"
+        android:title="@string/action_share"
+        android:icon="@drawable/ic_share"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_remove_from_playlist"
+        android:title="@string/action_remove_from_playlist"
+        android:icon="@drawable/ic_remove"
+        app:showAsAction="never" />
+
+
+    <item
+        android:id="@+id/menu_playlist_item_info"
+        android:title="Info"
+        android:icon="@drawable/ic_info_outline">
+        <menu>
+            <item
+                android:id="@+id/action_tag_editor"
+                android:title="@string/action_tag_editor"
+                android:icon="@drawable/ic_edit"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/action_details"
+                android:title="@string/action_details"
+                android:icon="@drawable/ic_info_outline"
+                app:showAsAction="never" />
+
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/menu_playlist_item_device"
+        android:title="Device"
+        android:icon="@drawable/ic_device">
+        <menu>
+            <item
+                android:id="@+id/action_set_as_ringtone"
+                android:title="@string/action_set_as_ringtone"
+                android:icon="@drawable/ic_phonelink_ring"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/action_delete_from_device"
+                android:title="@string/action_delete_from_device"
+                android:icon="@drawable/ic_delete"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+
+
+
+
+</menu>
