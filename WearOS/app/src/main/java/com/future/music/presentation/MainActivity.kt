@@ -21,14 +21,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.wear.compose.material.Button
+import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.Text
+import coil.compose.rememberAsyncImagePainter
 import com.google.android.gms.wearable.MessageClient
+import com.google.android.gms.wearable.MessageEvent
 import com.google.android.gms.wearable.Wearable
+import com.future.music.R
 import com.future.music.presentation.theme.MusicTheme
 
-class MainActivity : ComponentActivity() {
+class MainActivity : ComponentActivity(), MessageClient.OnMessageReceivedListener {
 
     private lateinit var messageClient: MessageClient
+    private val isPlaying = mutableStateOf(false)
+    private val songTitle = mutableStateOf("No song playing")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +43,8 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             WearApp(
+                isPlaying = isPlaying.value,
+                songTitle = songTitle.value,
                 onPlayPause = {
                     sendMessage("/play_pause", "")
                 },
@@ -50,6 +58,16 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        Wearable.getMessageClient(this).addListener(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Wearable.getMessageClient(this).removeListener(this)
+    }
+
     private fun sendMessage(path: String, message: String) {
         Wearable.getNodeClient(this).connectedNodes.addOnSuccessListener { nodes ->
             for (node in nodes) {
@@ -57,22 +75,34 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+    override fun onMessageReceived(messageEvent: MessageEvent) {
+        when (messageEvent.path) {
+            "/is_playing" -> {
+                isPlaying.value = messageEvent.data.toString(Charsets.UTF_8).toBoolean()
+            }
+            "/song_title" -> {
+                songTitle.value = messageEvent.data.toString(Charsets.UTF_8)
+            }
+        }
+    }
 }
 
 @Composable
 fun WearApp(
+    isPlaying: Boolean,
+    songTitle: String,
     onPlayPause: () -> Unit,
     onVolumeUp: () -> Unit,
     onVolumeDown: () -> Unit
 ) {
-    val isPlaying = remember { mutableStateOf(false) }
-
     MusicTheme {
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Text(text = songTitle)
             Row(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
@@ -81,11 +111,13 @@ fun WearApp(
                     Text("-")
                 }
                 Spacer(modifier = Modifier.width(16.dp))
-                Button(onClick = {
-                    isPlaying.value = !isPlaying.value
-                    onPlayPause()
-                }) {
-                    Text(if (isPlaying.value) "Pause" else "Play")
+                Button(onClick = onPlayPause) {
+                    Icon(
+                        painter = rememberAsyncImagePainter(
+                            if (isPlaying) R.drawable.ic_pause else R.drawable.ic_play
+                        ),
+                        contentDescription = if (isPlaying) "Pause" else "Play"
+                    )
                 }
                 Spacer(modifier = Modifier.width(16.dp))
                 Button(onClick = onVolumeUp) {

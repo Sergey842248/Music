@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.horologist.compose.tools)
     implementation(libs.horologist.tiles)
     implementation(libs.watchface.complications.data.source.ktx)
+    implementation("io.coil-kt:coil-compose:2.2.2")
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.ui.test.junit4)
     debugImplementation(libs.ui.tooling)
