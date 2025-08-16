@@ -124,6 +124,7 @@
 
     <style name="MaterialPopupMenuStyle" parent="Widget.Material3.PopupMenu">
         <item name="android:popupBackground">@drawable/popup_background</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="CenteredCheckBoxTheme">

@@ -33,6 +33,8 @@ import code.name.monkey.retromusic.fragments.NowPlayingScreen.*
 import code.name.monkey.retromusic.util.PreferenceUtil
 import com.afollestad.materialdialogs.color.colorChooser
 import com.google.android.material.color.DynamicColors
+import android.content.Intent
+import code.name.monkey.retromusic.activities.MainActivity
 
 /**
  * @author Hemanth S (h4h13).
@@ -51,7 +53,10 @@ class ThemeSettingsFragment : AbsSettingsFragment() {
                 if (VersionUtils.hasNougatMR()) {
                     DynamicShortcutManager(requireContext()).updateDynamicShortcuts()
                 }
-                restartActivity()
+                val intent = Intent(requireActivity(), MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+                requireActivity().finish()
                 true
             }
         }
@@ -70,7 +75,10 @@ class ThemeSettingsFragment : AbsSettingsFragment() {
                     ThemeStore.editTheme(requireContext()).accentColor(color).commit()
                     if (VersionUtils.hasNougatMR())
                         DynamicShortcutManager(requireContext()).updateDynamicShortcuts()
-                    restartActivity()
+                    val intent = Intent(requireActivity(), MainActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                    requireActivity().finish()
                 }
             }
             return@setOnPreferenceClickListener true
@@ -79,10 +87,12 @@ class ThemeSettingsFragment : AbsSettingsFragment() {
         blackTheme?.setOnPreferenceChangeListener { _, _ ->
             ThemeStore.markChanged(requireContext())
             if (VersionUtils.hasNougatMR()) {
-                requireActivity().setTheme(PreferenceUtil.themeResFromPrefValue("black"))
                 DynamicShortcutManager(requireContext()).updateDynamicShortcuts()
             }
-            restartActivity()
+            val intent = Intent(requireActivity(), MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            requireActivity().finish()
             true
         }
 
@@ -93,7 +103,10 @@ class ThemeSettingsFragment : AbsSettingsFragment() {
                 putBoolean("desaturated_color", desaturated)
             }
             PreferenceUtil.isDesaturatedColor = desaturated
-            restartActivity()
+            val intent = Intent(requireActivity(), MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            requireActivity().finish()
             true
         }
 
@@ -114,17 +127,26 @@ class ThemeSettingsFragment : AbsSettingsFragment() {
             if (newValue as Boolean) {
                 DynamicColors.applyToActivitiesIfAvailable(App.getContext())
             }
-            restartActivity()
+            val intent = Intent(requireActivity(), MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            requireActivity().finish()
             true
         }
         val wallpaperAccent: ATESwitchPreference? = findPreference(WALLPAPER_ACCENT)
         wallpaperAccent?.setOnPreferenceChangeListener { _, _ ->
-            restartActivity()
+            val intent = Intent(requireActivity(), MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            requireActivity().finish()
             true
         }
         val customFont: ATESwitchPreference? = findPreference(CUSTOM_FONT)
         customFont?.setOnPreferenceChangeListener { _, _ ->
-            restartActivity()
+            val intent = Intent(requireActivity(), MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            requireActivity().finish()
             true
         }
 

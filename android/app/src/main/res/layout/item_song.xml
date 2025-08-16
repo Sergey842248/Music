@@ -41,6 +41,7 @@
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:scaleType="centerCrop"
+            app:tint="?attr/colorControlNormal"
             tools:src="@tools:sample/avatars" />
     </com.google.android.material.card.MaterialCardView>
 
