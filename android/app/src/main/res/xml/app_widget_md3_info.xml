@@ -3,7 +3,7 @@
     android:initialLayout="@layout/app_widget_classic"
     android:minWidth="@dimen/app_widget_classic_min_width"
     android:minHeight="@dimen/app_widget_classic_min_height"
-    android:previewImage="@drawable/widget_classic"
+    android:previewImage="@drawable/ic_notification_classic"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="0"
     android:widgetCategory="keyguard|home_screen" />

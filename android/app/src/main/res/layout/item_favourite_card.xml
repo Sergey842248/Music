@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/default_album_art"
+            app:srcCompat="@drawable/ic_album"
             tools:src="@tools:sample/avatars" />
 
         <com.google.android.material.textview.MaterialTextView

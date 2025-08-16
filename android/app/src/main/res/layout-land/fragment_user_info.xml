@@ -44,7 +44,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/circleImageView"
-            app:srcCompat="@drawable/material_design_default" />
+            app:srcCompat="@drawable/ic_image" />
 
         <code.name.monkey.retromusic.views.RetroShapeableImageView
             android:id="@+id/userImage"
