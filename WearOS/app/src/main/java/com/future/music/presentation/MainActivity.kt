@@ -1,0 +1,97 @@
+/* While this template provides a good starting point for using Wear Compose, you can always
+ * take a look at https://github.com/android/wear-os-samples/tree/main/ComposeStarter to find the
+ * most up to date changes to the libraries and their usages.
+ */
+
+package com.future.music.presentation
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.width
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.wear.compose.material.Button
+import androidx.wear.compose.material.Text
+import com.google.android.gms.wearable.MessageClient
+import com.google.android.gms.wearable.Wearable
+import com.future.music.presentation.theme.MusicTheme
+
+class MainActivity : ComponentActivity() {
+
+    private lateinit var messageClient: MessageClient
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        messageClient = Wearable.getMessageClient(this)
+
+        setContent {
+            WearApp(
+                onPlayPause = {
+                    sendMessage("/play_pause", "")
+                },
+                onVolumeUp = {
+                    sendMessage("/volume_up", "")
+                },
+                onVolumeDown = {
+                    sendMessage("/volume_down", "")
+                }
+            )
+        }
+    }
+
+    private fun sendMessage(path: String, message: String) {
+        Wearable.getNodeClient(this).connectedNodes.addOnSuccessListener { nodes ->
+            for (node in nodes) {
+                messageClient.sendMessage(node.id, path, message.toByteArray())
+            }
+        }
+    }
+}
+
+@Composable
+fun WearApp(
+    onPlayPause: () -> Unit,
+    onVolumeUp: () -> Unit,
+    onVolumeDown: () -> Unit
+) {
+    val isPlaying = remember { mutableStateOf(false) }
+
+    MusicTheme {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Row(
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Button(onClick = onVolumeDown) {
+                    Text("-")
+                }
+                Spacer(modifier = Modifier.width(16.dp))
+                Button(onClick = {
+                    isPlaying.value = !isPlaying.value
+                    onPlayPause()
+                }) {
+                    Text(if (isPlaying.value) "Pause" else "Play")
+                }
+                Spacer(modifier = Modifier.width(16.dp))
+                Button(onClick = onVolumeUp) {
+                    Text("+")
+                }
+            }
+        }
+    }
+}
