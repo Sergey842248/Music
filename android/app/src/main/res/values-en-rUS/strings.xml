@@ -161,7 +161,7 @@
 
     <string name="currently_listening_to_x_by_x">Currently listening to %1$s by %2$s.</string>
 
-    <string name="dark_theme_name">Kinda Dark</string>
+    <string name="dark_theme_name">Dark</string>
 
     <string name="delete_playlist_title">Delete playlist</string>
     <string name="delete_playlist_x"><![CDATA[Delete the playlist <b>%1$s</b>?]]></string>
@@ -273,7 +273,7 @@
 
     <string name="licenses">Licenses</string>
 
-    <string name="light_theme_name">Clearly White</string>
+    <string name="light_theme_name">Light</string>
 
     <string name="listeners_label">Listeners</string>
 

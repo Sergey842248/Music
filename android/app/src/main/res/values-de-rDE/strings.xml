@@ -144,7 +144,7 @@
     <string name="currently_listening_to_x_by_x">Du hörst gerade %1$s von %2$s.</string>
     <string name="custom_artist_images">Benutzerdefinierte Interpretenbilder</string>
     <string name="customactivityoncrash_error_activity_error_details_share">Absturzbericht teilen</string>
-    <string name="dark_theme_name">Irgendwie dunkel</string>
+    <string name="dark_theme_name">Dunkel</string>
     <string name="delete_playlist_title">Playlist löschen</string>
     <string name="delete_playlist_x"><![CDATA[Die Playlist <b>%1$s</b> löschen?]]></string>
     <string name="delete_playlists_title">Playlists löschen</string>
@@ -240,7 +240,7 @@
     <string name="lets_go">Los</string>
     <string name="library_categories">Bibliothekkategorien</string>
     <string name="licenses">Lizenzen</string>
-    <string name="light_theme_name">Deutlich weiß</string>
+    <string name="light_theme_name">Hell</string>
     <string name="listeners_label">Zuhörer</string>
     <string name="listing_files">Dateien auflisten</string>
     <string name="loading_products">Produkte werden geladen…</string>
