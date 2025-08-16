@@ -1,7 +1,0 @@
-#Tue Aug 05 12:29:55 CEST 2025
-base.0=/home/parsa/Documents/AndroidStudioProjects/Music/app/build/intermediates/dex/fdroidDebugAndroidTest/mergeProjectDexFdroidDebugAndroidTest/0/classes.dex
-base.1=/home/parsa/Documents/AndroidStudioProjects/Music/app/build/intermediates/dex/fdroidDebugAndroidTest/mergeProjectDexFdroidDebugAndroidTest/7/classes.dex
-path.0=0/classes.dex
-path.1=7/classes.dex
-renamed.0=classes.dex
-renamed.1=classes2.dex

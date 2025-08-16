@@ -29,6 +29,7 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -44,6 +45,7 @@ import java.util.List;
 
 import code.name.monkey.retromusic.BuildConfig;
 import code.name.monkey.retromusic.R;
+import code.name.monkey.retromusic.helper.MusicPlayerRemote;
 
 /**
  * 歌词 Created by wcy on 2015/11/9.
@@ -144,6 +146,7 @@ public class LrcView extends View {
                 public boolean onSingleTapConfirmed(MotionEvent e) {
                     if (hasLrc() && mOnPlayClickListener != null) {
                         float y = e.getY() - mOffset;
+                        Log.d("LrcView", "y: " + y);
                         int tappedLine = getTappedLine(y);
                         if (tappedLine >= 0 && tappedLine < mLrcEntryList.size()) {
                             long tappedLineTime = mLrcEntryList.get(tappedLine).getTime();
@@ -507,6 +510,7 @@ public class LrcView extends View {
 
         initEntryList();
         invalidate();
+        updateTime(MusicPlayerRemote.INSTANCE.getSongProgressMillis());
     }
 
     private void initPlayDrawable() {
