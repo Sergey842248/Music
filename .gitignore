@@ -33,6 +33,8 @@ android/.gradle
 android/app/build/
 WearOS/app/build/
 WearOS/.gradle
+WearOS/build
+android/build
 #NDK
 obj/
 
