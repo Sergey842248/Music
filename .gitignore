@@ -29,10 +29,10 @@ Thumbs.db
 *.iml
 .idea
 #.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
-.gradle
+android/.gradle
 android/app/build/
 WearOS/app/build/
-
+WearOS/.gradle
 #NDK
 obj/
 
