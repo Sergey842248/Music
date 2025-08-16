@@ -14,7 +14,7 @@
 
 
 ## Download
-[<img src="https://raw.githubusercontent.com/Sergey842248/Music/refs/heads/main/app/src/main/assets/get-it-on-github.png"
+[<img src="https://raw.githubusercontent.com/Sergey842248/Music/refs/heads/main/android/app/src/main/assets/get-it-on-github.png"
       alt='Get it on GitHub'
       height="80">](https://github.com/Sergey842248/Music/releases/latest)
 
