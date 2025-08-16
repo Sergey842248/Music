@@ -37,6 +37,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:retroCornerSize="21dp"
             app:srcCompat="@drawable/ic_album"
+            app:tint="?attr/colorControlNormal"
             tools:src="@tools:sample/avatars" />
 
         <com.google.android.material.textview.MaterialTextView
