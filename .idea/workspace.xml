@@ -9,8 +9,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21478801-61e3-4a8e-97f7-81e483207604" name="Changes" comment="add WearOS App">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="21478801-61e3-4a8e-97f7-81e483207604" name="Changes" comment="updated gitignore">
+      <change beforePath="$PROJECT_DIR$/WearOS/app/src/main/java/com/future/music/tile/MainTileService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/WearOS/app/src/main/java/com/future/music/tile/MainTileService.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,12 +57,12 @@
     &quot;assignee&quot;: &quot;Sergey842248&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Sergey842248/Music.git",
-    "accountId": "090c09a2-58dc-4fc5-a781-e257d767a467"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Sergey842248/Music.git&quot;,
+    &quot;accountId&quot;: &quot;090c09a2-58dc-4fc5-a781-e257d767a467&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -282,7 +282,23 @@
       <option name="project" value="LOCAL" />
       <updated>1755317285793</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="added tile for wearos and improved wearos version overall">
+      <option name="closed" value="true" />
+      <created>1755335512243</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1755335512243</updated>
+    </task>
+    <task id="LOCAL-00016" summary="updated gitignore">
+      <option name="closed" value="true" />
+      <created>1755341644629</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1755341644629</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -299,7 +315,9 @@
     <MESSAGE value="updated Package name" />
     <MESSAGE value="fixed Bug where Backups weren't in List after reentering in menu" />
     <MESSAGE value="Fixed Landscape crash" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Landscape crash" />
+    <MESSAGE value="added tile for wearos and improved wearos version overall" />
+    <MESSAGE value="updated gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated gitignore" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
