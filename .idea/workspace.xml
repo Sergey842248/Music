@@ -10,6 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21478801-61e3-4a8e-97f7-81e483207604" name="Changes" comment="updated gitignore">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WearOS/app/src/main/java/com/future/music/presentation/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/WearOS/app/src/main/java/com/future/music/presentation/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WearOS/app/src/main/java/com/future/music/tile/MainTileService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/WearOS/app/src/main/java/com/future/music/tile/MainTileService.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

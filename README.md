@@ -96,3 +96,8 @@ Please read the FAQ [here](https://github.com/Sergey842248/Music/blob/main/FAQ.m
 
 Retro Music Player is released under the GNU General Public License v3.0
 (GPLv3), which can be found [here](LICENSE.md)
+
+
+## 🙏 Acknowledgements
+
+**Original Project:** A big thank you to the original project [expandiware](https://github.com/badbryany/expandiware) by @badbryany, on which this app is based.

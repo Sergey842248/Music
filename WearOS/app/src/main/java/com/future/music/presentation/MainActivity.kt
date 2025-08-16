@@ -46,6 +46,7 @@ class MainActivity : ComponentActivity(), MessageClient.OnMessageReceivedListene
                 isPlaying = isPlaying.value,
                 songTitle = songTitle.value,
                 onPlayPause = {
+                    isPlaying.value = !isPlaying.value
                     sendMessage("/play_pause", "")
                 },
                 onVolumeUp = {
@@ -61,6 +62,7 @@ class MainActivity : ComponentActivity(), MessageClient.OnMessageReceivedListene
     override fun onResume() {
         super.onResume()
         Wearable.getMessageClient(this).addListener(this)
+        sendMessage("/request_update", "")
     }
 
     override fun onPause() {
@@ -79,10 +81,13 @@ class MainActivity : ComponentActivity(), MessageClient.OnMessageReceivedListene
     override fun onMessageReceived(messageEvent: MessageEvent) {
         when (messageEvent.path) {
             "/is_playing" -> {
-                isPlaying.value = messageEvent.data.toString(Charsets.UTF_8).toBoolean()
+                isPlaying.value = String(messageEvent.data, Charsets.UTF_8).toBoolean()
             }
             "/song_title" -> {
-                songTitle.value = messageEvent.data.toString(Charsets.UTF_8)
+                val title = String(messageEvent.data, Charsets.UTF_8)
+                if (title.isNotEmpty()) {
+                    songTitle.value = title
+                }
             }
         }
     }
