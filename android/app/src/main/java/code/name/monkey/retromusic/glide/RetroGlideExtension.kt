@@ -41,13 +41,13 @@ import java.io.File
 object RetroGlideExtension {
 
     private val DEFAULT_ARTIST_IMAGE
-        get() = R.drawable.default_artist_art
+        get() = R.drawable.ic_artist
     private val DEFAULT_SONG_IMAGE: Int
-        get() = R.drawable.default_audio_art
+        get() = R.drawable.ic_audiotrack
     private val DEFAULT_ALBUM_IMAGE
-        get() = R.drawable.default_album_art
+        get() = R.drawable.ic_album
     private val DEFAULT_ERROR_IMAGE_BANNER
-        get() = R.drawable.material_design_default
+        get() = R.drawable.ic_album
 
     private val DEFAULT_DISK_CACHE_STRATEGY_ARTIST = DiskCacheStrategy.RESOURCE
     private val DEFAULT_DISK_CACHE_STRATEGY = DiskCacheStrategy.NONE

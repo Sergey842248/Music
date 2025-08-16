@@ -55,7 +55,7 @@ class AppWidgetMD3 : BaseAppWidget() {
         val appWidgetView = RemoteViews(context.packageName, R.layout.app_widget_md3)
 
         appWidgetView.setViewVisibility(R.id.media_titles, View.INVISIBLE)
-        appWidgetView.setImageViewResource(R.id.image, R.drawable.default_audio_art)
+        appWidgetView.setImageViewResource(R.id.image, R.drawable.ic_audiotrack)
         val secondaryColor = MaterialValueHelper.getSecondaryTextColor(context, true)
         appWidgetView.setImageViewBitmap(
             R.id.button_next,

@@ -54,7 +54,7 @@ class AppWidgetSmall : BaseAppWidget() {
         val appWidgetView = RemoteViews(context.packageName, R.layout.app_widget_small)
 
         appWidgetView.setViewVisibility(R.id.media_titles, View.INVISIBLE)
-        appWidgetView.setImageViewResource(R.id.image, R.drawable.default_audio_art)
+        appWidgetView.setImageViewResource(R.id.image, R.drawable.ic_audiotrack)
         appWidgetView.setImageViewBitmap(
             R.id.button_next,
             context.getTintedDrawable(

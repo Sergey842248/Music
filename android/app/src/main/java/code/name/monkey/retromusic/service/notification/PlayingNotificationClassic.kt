@@ -155,11 +155,11 @@ class PlayingNotificationClassic(
                     } else {
                         contentView.setImageViewResource(
                             R.id.largeIcon,
-                            R.drawable.default_audio_art
+                            R.drawable.ic_audiotrack
                         )
                         bigContentView.setImageViewResource(
                             R.id.largeIcon,
-                            R.drawable.default_audio_art
+                            R.drawable.ic_audiotrack
                         )
                     }
 

@@ -30,6 +30,7 @@ import code.name.monkey.appthemehelper.util.VersionUtils
 import code.name.monkey.retromusic.R
 import code.name.monkey.retromusic.model.Song
 import code.name.monkey.retromusic.service.MusicService
+import code.name.monkey.retromusic.util.ImageUtil
 import code.name.monkey.retromusic.service.MusicService.Companion.APP_WIDGET_UPDATE
 import code.name.monkey.retromusic.service.MusicService.Companion.EXTRA_APP_WIDGET_NAME
 import code.name.monkey.retromusic.service.MusicService.Companion.FAVORITE_STATE_CHANGED
@@ -115,7 +116,7 @@ abstract class BaseAppWidget : AppWidgetProvider() {
 
     protected fun getAlbumArtDrawable(context: Context, bitmap: Bitmap?): Drawable {
         return if (bitmap == null) {
-            ContextCompat.getDrawable(context, R.drawable.default_audio_art)!!
+            context.getDrawable(R.drawable.ic_audiotrack)!!
         } else {
             BitmapDrawable(context.resources, bitmap)
         }

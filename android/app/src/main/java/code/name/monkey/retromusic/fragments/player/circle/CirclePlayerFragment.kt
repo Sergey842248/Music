@@ -275,7 +275,7 @@ class CirclePlayerFragment : AbsPlayerFragment(R.layout.fragment_circle_player),
             .load(RetroGlideExtension.getSongModel(MusicPlayerRemote.currentSong))
             .simpleSongCoverOptions(MusicPlayerRemote.currentSong)
             .thumbnail(lastRequest)
-            .error(Glide.with(this).load(R.drawable.default_audio_art).fitCenter())
+            .error(Glide.with(this).load(R.drawable.ic_audiotrack).fitCenter())
             .fitCenter().also {
                 lastRequest = it.clone()
                 it.crossfadeListener()

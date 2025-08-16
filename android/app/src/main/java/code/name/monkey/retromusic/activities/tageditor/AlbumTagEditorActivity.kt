@@ -125,7 +125,7 @@ class AlbumTagEditorActivity : AbsTagEditorActivity<ActivityAlbumTagEditorBindin
 
     override fun deleteImage() {
         setImageBitmap(
-            BitmapFactory.decodeResource(resources, R.drawable.default_audio_art),
+            BitmapFactory.decodeResource(resources, R.drawable.ic_audiotrack),
             defaultFooterColor()
         )
         deleteAlbumArt = true

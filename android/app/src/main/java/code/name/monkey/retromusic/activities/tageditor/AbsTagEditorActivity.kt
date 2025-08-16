@@ -343,7 +343,7 @@ abstract class AbsTagEditorActivity<VB : ViewBinding> : AbsBaseActivity() {
 
     protected fun setImageBitmap(bitmap: Bitmap?, bgColor: Int) {
         if (bitmap == null) {
-            editorImage.setImageResource(drawable.default_audio_art)
+            editorImage.setImageResource(drawable.ic_audiotrack)
         } else {
             editorImage.setImageBitmap(bitmap)
         }

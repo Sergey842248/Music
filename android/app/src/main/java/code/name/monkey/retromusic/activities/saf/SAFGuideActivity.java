@@ -49,7 +49,7 @@ public class SAFGuideActivity extends IntroActivity {
                 Build.VERSION.SDK_INT <= Build.VERSION_CODES.N_MR1
                     ? R.string.saf_guide_slide1_description_before_o
                     : R.string.saf_guide_slide1_description)
-            .image(R.drawable.saf_guide_1)
+            .image(R.drawable.ic_folder)
             .background(code.name.monkey.appthemehelper.R.color.md_deep_purple_300)
             .backgroundDark(code.name.monkey.appthemehelper.R.color.md_deep_purple_400)
             .layout(R.layout.fragment_simple_slide_large_image)
@@ -58,7 +58,7 @@ public class SAFGuideActivity extends IntroActivity {
         new SimpleSlide.Builder()
             .title(R.string.saf_guide_slide2_title)
             .description(R.string.saf_guide_slide2_description)
-            .image(R.drawable.saf_guide_2)
+            .image(R.drawable.ic_folder)
             .background(code.name.monkey.appthemehelper.R.color.md_deep_purple_500)
             .backgroundDark(code.name.monkey.appthemehelper.R.color.md_deep_purple_600)
             .layout(R.layout.fragment_simple_slide_large_image)
@@ -67,7 +67,7 @@ public class SAFGuideActivity extends IntroActivity {
         new SimpleSlide.Builder()
             .title(R.string.saf_guide_slide3_title)
             .description(R.string.saf_guide_slide3_description)
-            .image(R.drawable.saf_guide_3)
+            .image(R.drawable.ic_folder)
             .background(code.name.monkey.appthemehelper.R.color.md_deep_purple_700)
             .backgroundDark(code.name.monkey.appthemehelper.R.color.md_deep_purple_800)
             .layout(R.layout.fragment_simple_slide_large_image)

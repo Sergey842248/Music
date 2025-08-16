@@ -1088,7 +1088,7 @@ class MusicService : MediaBrowserServiceCompat(),
                         MediaMetadataCompat.METADATA_KEY_ALBUM_ART,
                         BitmapFactory.decodeResource(
                             resources,
-                            R.drawable.default_audio_art
+                            R.drawable.ic_audiotrack
                         )
                     )
                     mediaSession?.setMetadata(metaData.build())

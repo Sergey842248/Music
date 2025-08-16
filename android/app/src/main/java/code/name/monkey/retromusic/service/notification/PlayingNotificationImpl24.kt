@@ -155,7 +155,7 @@ class PlayingNotificationImpl24(
 
     private fun setAlbumArtImage(image: Bitmap?) {
         if (image == null) {
-            setLargeIcon(BitmapFactory.decodeResource(context.resources, R.drawable.default_audio_art))
+            setLargeIcon(BitmapFactory.decodeResource(context.resources, R.drawable.ic_audiotrack))
         } else {
             setLargeIcon(image)
         }
