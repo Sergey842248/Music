@@ -12,8 +12,8 @@ android {
         applicationId = "com.future.music"
         minSdk = 30
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 900
+        versionName = "9.0.0"
 
     }
 
