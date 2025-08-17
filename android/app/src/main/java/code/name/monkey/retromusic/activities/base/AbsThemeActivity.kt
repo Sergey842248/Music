@@ -45,10 +45,9 @@ abstract class AbsThemeActivity : ATHToolbarActivity(), Runnable {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         updateLocale()
+        super.onCreate(savedInstanceState)
         updateTheme()
         hideStatusBar()
-        super.onCreate(savedInstanceState)
-        getTheme().applyStyle(getThemeResValue(), true) // Re-apply theme style to ensure resources are resolved
         setEdgeToEdgeOrImmersive()
         maybeSetScreenOn()
         maybeShowWhenLocked()
@@ -63,8 +62,9 @@ abstract class AbsThemeActivity : ATHToolbarActivity(), Runnable {
         setTheme(getThemeResValue())
         if (PreferenceUtil.materialYou) {
             setDefaultNightMode(getNightMode())
+        } else {
+            setDefaultNightMode(getNightMode())
         }
-
         if (PreferenceUtil.isCustomFont) {
             setTheme(R.style.FontThemeOverlay)
         }

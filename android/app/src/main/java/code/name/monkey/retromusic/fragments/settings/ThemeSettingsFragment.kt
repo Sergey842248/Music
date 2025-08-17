@@ -53,10 +53,7 @@ class ThemeSettingsFragment : AbsSettingsFragment() {
                 if (VersionUtils.hasNougatMR()) {
                     DynamicShortcutManager(requireContext()).updateDynamicShortcuts()
                 }
-                val intent = Intent(requireActivity(), MainActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                startActivity(intent)
-                requireActivity().finish()
+                requireActivity().recreate()
                 true
             }
         }
@@ -75,10 +72,7 @@ class ThemeSettingsFragment : AbsSettingsFragment() {
                     ThemeStore.editTheme(requireContext()).accentColor(color).commit()
                     if (VersionUtils.hasNougatMR())
                         DynamicShortcutManager(requireContext()).updateDynamicShortcuts()
-                    val intent = Intent(requireActivity(), MainActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(intent)
-                    requireActivity().finish()
+                    requireActivity().recreate()
                 }
             }
             return@setOnPreferenceClickListener true
@@ -89,10 +83,7 @@ class ThemeSettingsFragment : AbsSettingsFragment() {
             if (VersionUtils.hasNougatMR()) {
                 DynamicShortcutManager(requireContext()).updateDynamicShortcuts()
             }
-            val intent = Intent(requireActivity(), MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-            requireActivity().finish()
+            requireActivity().recreate()
             true
         }
 
@@ -103,10 +94,8 @@ class ThemeSettingsFragment : AbsSettingsFragment() {
                 putBoolean("desaturated_color", desaturated)
             }
             PreferenceUtil.isDesaturatedColor = desaturated
-            val intent = Intent(requireActivity(), MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-            requireActivity().finish()
+            ThemeStore.markChanged(requireContext())
+            requireActivity().recreate()
             true
         }
 
@@ -127,26 +116,20 @@ class ThemeSettingsFragment : AbsSettingsFragment() {
             if (newValue as Boolean) {
                 DynamicColors.applyToActivitiesIfAvailable(App.getContext())
             }
-            val intent = Intent(requireActivity(), MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-            requireActivity().finish()
+            ThemeStore.markChanged(requireContext())
+            requireActivity().recreate()
             true
         }
         val wallpaperAccent: ATESwitchPreference? = findPreference(WALLPAPER_ACCENT)
         wallpaperAccent?.setOnPreferenceChangeListener { _, _ ->
-            val intent = Intent(requireActivity(), MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-            requireActivity().finish()
+            ThemeStore.markChanged(requireContext())
+            requireActivity().recreate()
             true
         }
         val customFont: ATESwitchPreference? = findPreference(CUSTOM_FONT)
         customFont?.setOnPreferenceChangeListener { _, _ ->
-            val intent = Intent(requireActivity(), MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-            requireActivity().finish()
+            ThemeStore.markChanged(requireContext())
+            requireActivity().recreate()
             true
         }
 
