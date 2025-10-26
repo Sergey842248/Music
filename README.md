@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/Sergey842248/Music/">
-    <img src="app\src\main\ic_launcher.svg" height="256">
+    <img src="android\app\src\main\ic_launcher.svg" height="256">
     <h1 align="center">Music Player</h1>
   </a>
 </p>
@@ -100,4 +100,4 @@ Retro Music Player is released under the GNU General Public License v3.0
 
 ## 🙏 Acknowledgements
 
-**Original Project:** A big thank you to the original project [expandiware](https://github.com/badbryany/expandiware) by @badbryany, on which this app is based.
+**Original Project:** A big thank you to the original project [Retro Music Player](https://github.com/RetroMusicPlayer/RetroMusicPlayer), on which this app is based.
