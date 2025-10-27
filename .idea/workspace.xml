@@ -9,13 +9,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21478801-61e3-4a8e-97f7-81e483207604" name="Changes" comment="updated gitignore">
-      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="21478801-61e3-4a8e-97f7-81e483207604" name="Changes" comment="updated kotlin devtools">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.github/ISSUE_TEMPLATE/bug_report.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.github/ISSUE_TEMPLATE/feature_request.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle/libs.versions.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +85,7 @@
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/parsa/Documents/AndroidStudioProjects/Music",
+    "last_opened_file_path": "/home/parsa/Documents/StudioProjects/Music/android",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
@@ -304,7 +299,23 @@
       <option name="project" value="LOCAL" />
       <updated>1755341644629</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="updated git structure">
+      <option name="closed" value="true" />
+      <created>1761581597703</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1761581597703</updated>
+    </task>
+    <task id="LOCAL-00018" summary="updated kotlin devtools">
+      <option name="closed" value="true" />
+      <created>1761581851967</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1761581851967</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -326,7 +337,9 @@
     <MESSAGE value="Fixed Landscape crash" />
     <MESSAGE value="added tile for wearos and improved wearos version overall" />
     <MESSAGE value="updated gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated gitignore" />
+    <MESSAGE value="updated git structure" />
+    <MESSAGE value="updated kotlin devtools" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated kotlin devtools" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
