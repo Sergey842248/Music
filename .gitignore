@@ -31,6 +31,7 @@ Thumbs.db
 #.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
 android/.gradle
 android/app/build/
+android/appthemehelper/build/
 WearOS/app/build/
 WearOS/.gradle
 WearOS/build
@@ -43,7 +44,3 @@ app/normal/release/
 /models/
 /app/release/
 
-
-android/build
-android/app/build
-android/appthemehelper/build
