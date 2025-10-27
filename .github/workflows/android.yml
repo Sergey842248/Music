@@ -40,6 +40,11 @@ jobs:
           key: ${{ runner.os }}-build-${{ hashFiles('android/**/*.gradle*', 'android/**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-build
+      - name: Debug current path
+        run: |
+          pwd
+          ls -la
+        working-directory: android
 
       - name: Set Executable Permission for Gradle Wrapper
         run: chmod +x gradlew
