@@ -42,3 +42,8 @@ captures
 app/normal/release/
 /models/
 /app/release/
+
+
+android/build
+android/app/build
+android/appthemehelper/build
