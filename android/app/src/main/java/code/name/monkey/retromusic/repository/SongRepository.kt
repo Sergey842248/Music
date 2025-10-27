@@ -188,6 +188,11 @@ class RealSongRepository(private val context: Context) : SongRepository {
             .distinct()
             .joinToString(", ")
         val year = cursor.getStringOrNull(AudioColumns.YEAR)
+        val bitrate = try {
+            cursor.getStringOrNull(AudioColumns.BITRATE)
+        } catch (e: Exception) {
+            null
+        }
 
         return Song(
             id,
@@ -203,7 +208,8 @@ class RealSongRepository(private val context: Context) : SongRepository {
             artistName ?: "",
             composer ?: "",
             albumArtist ?: "",
-            allArtists ?: ""
+            allArtists ?: "",
+            bitrate ?: ""
         )
     }
 

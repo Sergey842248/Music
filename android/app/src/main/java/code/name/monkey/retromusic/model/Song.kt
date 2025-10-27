@@ -32,7 +32,8 @@ open class Song(
     open val artistName: String,
     open val composer: String?,
     open val albumArtist: String?,
-    open val allArtists: String? = null
+    open val allArtists: String? = null,
+    open val bitrate: String? = null
 ) : Parcelable {
 
 
@@ -57,6 +58,7 @@ open class Song(
         if (composer != other.composer) return false
         if (albumArtist != other.albumArtist) return false
         if (allArtists != other.allArtists) return false
+        if (bitrate != other.bitrate) return false
 
         return true
     }
@@ -76,6 +78,7 @@ open class Song(
         result = 31 * result + (composer?.hashCode() ?: 0)
         result = 31 * result + (albumArtist?.hashCode() ?: 0)
         result = 31 * result + (allArtists?.hashCode() ?: 0)
+        result = 31 * result + (bitrate?.hashCode() ?: 0)
         return result
     }
 
@@ -97,7 +100,8 @@ open class Song(
             artistName = "",
             composer = "",
             albumArtist = "",
-            allArtists = ""
+            allArtists = "",
+            bitrate = ""
         )
     }
 }
