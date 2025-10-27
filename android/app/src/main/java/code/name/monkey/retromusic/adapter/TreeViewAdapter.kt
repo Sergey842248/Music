@@ -35,8 +35,14 @@ class TreeViewAdapter(
     inner class ViewHolder(private val binding: ItemFolderTreeBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TreeItem) {
             binding.folderName.text = item.file.name
-            binding.root.setOnClickListener {
-                listener.onItemClick(item.file)
+            if (item.isDirectory) {
+                binding.root.setOnClickListener {
+                    listener.onExpansionToggle(item.file)
+                }
+            } else {
+                binding.root.setOnClickListener {
+                    listener.onItemClick(item.file)
+                }
             }
             binding.expandCollapseIcon.setOnClickListener {
                 if (item.isDirectory) {
@@ -45,9 +51,29 @@ class TreeViewAdapter(
             }
             binding.expandCollapseIcon.isVisible = item.hasChildren
             binding.expandCollapseIcon.rotation = if (item.isExpanded) 90f else 0f
-            // Add indentation based on depth, but since arrow is at start, indent from after arrow
-            val paddingLeft = (item.depth * 24) + 32 // Roughly for arrow
-            binding.root.setPadding(paddingLeft, 0, 0, 0)
+
+            val density = binding.root.context.resources.displayMetrics.density
+            val indentation = (item.depth * 24 * density).toInt() // 24dp per depth level
+
+            val expandCollapseIconParams = binding.expandCollapseIcon.layoutParams as ViewGroup.MarginLayoutParams
+            val folderIconParams = binding.folderIcon.layoutParams as ViewGroup.MarginLayoutParams
+
+            val chevronWidth = (24 * density).toInt() // Width of the chevron icon in pixels
+            val gapBetweenChevronAndFolder = (8 * density).toInt() // Gap between chevron and folder icon in pixels
+
+            if (item.hasChildren) {
+                binding.expandCollapseIcon.isVisible = true
+                expandCollapseIconParams.marginStart = indentation
+                folderIconParams.marginStart = gapBetweenChevronAndFolder
+            } else {
+                binding.expandCollapseIcon.isVisible = false
+                // If no children, the folder icon needs to take the place of the chevron + its gap
+                expandCollapseIconParams.marginStart = 0 // Not visible, so margin doesn't matter for it
+                folderIconParams.marginStart = indentation + chevronWidth + gapBetweenChevronAndFolder
+            }
+
+            binding.expandCollapseIcon.layoutParams = expandCollapseIconParams
+            binding.folderIcon.layoutParams = folderIconParams
         }
     }
 
