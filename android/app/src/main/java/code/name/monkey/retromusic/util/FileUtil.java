@@ -41,6 +41,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.StringTokenizer;
+import android.util.Log;
 
 import code.name.monkey.retromusic.Constants;
 import code.name.monkey.retromusic.adapter.Storage;
@@ -126,9 +127,25 @@ public final class FileUtil {
   @NonNull
   public static List<File> listFiles(@NonNull File directory, @Nullable FileFilter fileFilter) {
     List<File> fileList = new LinkedList<>();
-    File[] found = directory.listFiles(fileFilter);
+    Log.d("FileUtil", "Listing files for directory: " + directory.getAbsolutePath());
+    Log.d("FileUtil", "Directory exists: " + directory.exists());
+    Log.d("FileUtil", "Is directory: " + directory.isDirectory());
+
+    File[] found = directory.listFiles();
     if (found != null) {
-      Collections.addAll(fileList, found);
+      Log.d("FileUtil", "Files found: " + found.length);
+      for (File f : found) {
+        // Always add folders
+        if (f.isDirectory()) {
+          fileList.add(f);
+        }
+        // Only add files if filter matches or no filter
+        else if (fileFilter == null || fileFilter.accept(f)) {
+          fileList.add(f);
+        }
+      }
+    } else {
+      Log.d("FileUtil", "No files found or directory is inaccessible/not a directory.");
     }
     return fileList;
   }
@@ -161,6 +178,7 @@ public final class FileUtil {
     if (found != null) {
       for (File file : found) {
         if (file.isDirectory()) {
+          files.add(file); // Add folder to the list
           internalListFilesDeep(files, file, fileFilter);
         } else {
           files.add(file);

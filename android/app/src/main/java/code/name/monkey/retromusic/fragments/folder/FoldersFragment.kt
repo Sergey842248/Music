@@ -40,6 +40,7 @@ import code.name.monkey.retromusic.adapter.SongFileAdapter
 import code.name.monkey.retromusic.adapter.Storage
 import code.name.monkey.retromusic.adapter.StorageAdapter
 import code.name.monkey.retromusic.adapter.StorageClickListener
+import code.name.monkey.retromusic.adapter.TreeViewAdapter
 import code.name.monkey.retromusic.databinding.FragmentFolderBinding
 import code.name.monkey.retromusic.extensions.dip
 import code.name.monkey.retromusic.extensions.showToast
@@ -57,6 +58,7 @@ import code.name.monkey.retromusic.misc.WrappedAsyncTaskLoader
 import code.name.monkey.retromusic.model.Song
 import code.name.monkey.retromusic.providers.BlacklistStore
 import code.name.monkey.retromusic.util.FileUtil
+import code.name.monkey.retromusic.util.PreferenceUtil
 import code.name.monkey.retromusic.util.PreferenceUtil.startDirectory
 import code.name.monkey.retromusic.util.ThemedFastScroller.create
 import code.name.monkey.retromusic.util.getExternalStorageDirectory
@@ -77,13 +79,15 @@ import java.util.*
 
 class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
     IMainActivityFragmentCallbacks, SelectionCallback, ICallbacks,
-    LoaderManager.LoaderCallbacks<List<Song>>, StorageClickListener, IScrollHelper {
+    LoaderManager.LoaderCallbacks<List<Song>>, StorageClickListener, IScrollHelper,
+    TreeViewAdapter.OnFolderClickListener {
     private var _binding: FragmentFolderBinding? = null
     private val binding get() = _binding!!
 
     val toolbar: Toolbar get() = binding.appBarLayout.toolbar
 
-    private var adapter: SongFileAdapter? = null
+    private var songFileAdapter: SongFileAdapter? = null
+    private var treeViewAdapter: TreeViewAdapter? = null
     private var storageAdapter: StorageAdapter? = null
     private val fileComparator = Comparator { lhs: File, rhs: File ->
         if (lhs.isDirectory && !rhs.isDirectory) {
@@ -95,6 +99,10 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
         }
     }
     private var storageItems = ArrayList<Storage>()
+
+    override fun onFolderClick(file: File) {
+        onFileSelected(file)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -157,7 +165,7 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
     override fun onPause() {
         super.onPause()
         saveScrollPosition()
-        adapter?.actionMode?.finish()
+        songFileAdapter?.actionMode?.finish() // Assuming actionMode is only relevant for SongFileAdapter
     }
 
     override fun handleBackPress(): Boolean {
@@ -259,7 +267,10 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
             val field = popupMenu.javaClass.getDeclaredField("mPopup")
             field.isAccessible = true
             val menuPopupHelper = field.get(popupMenu)
-            val showIcons = menuPopupHelper.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.javaPrimitiveType)
+            val showIcons = menuPopupHelper.javaClass.getDeclaredMethod(
+                "setForceShowIcon",
+                Boolean::class.javaPrimitiveType
+            )
             showIcons.invoke(menuPopupHelper, true)
         } catch (e: Exception) {
             e.printStackTrace()
@@ -326,6 +337,7 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
 
     override fun onLoadFinished(loader: Loader<List<Song>>, data: List<Song>) {
         updateAdapter(data)
+        checkIsEmpty() // Call checkIsEmpty after data is loaded for songFileAdapter
     }
 
     override fun onLoaderReset(loader: Loader<List<Song>>) {
@@ -352,7 +364,10 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
 
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
         try {
-            val menuBuilder = menu.javaClass.getDeclaredMethod("setOptionalIconsVisible", Boolean::class.javaPrimitiveType)
+            val menuBuilder = menu.javaClass.getDeclaredMethod(
+                "setOptionalIconsVisible",
+                Boolean::class.javaPrimitiveType
+            )
             menuBuilder.isAccessible = true
             menuBuilder.invoke(menu, true)
         } catch (e: Exception) {
@@ -369,6 +384,9 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
             .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
         menu.add(0, R.id.action_settings, 3, R.string.action_settings)
             .setIcon(R.drawable.ic_settings)
+            .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
+        menu.add(0, R.id.action_toggle_folder_view, 4, R.string.action_toggle_folder_view)
+            .setIcon(R.drawable.ic_tree_view) // Assuming an icon for tree view exists or will be added
             .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
         menu.removeItem(R.id.action_grid_size)
         menu.removeItem(R.id.action_layout_type)
@@ -421,6 +439,12 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
                 )
                 return true
             }
+
+            R.id.action_toggle_folder_view -> {
+                PreferenceUtil.folderViewType = if (PreferenceUtil.folderViewType == 0) 1 else 0
+                updateFolderView()
+                return true
+            }
         }
         return false
     }
@@ -440,7 +464,11 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
 
     private fun checkIsEmpty() {
         if (_binding != null) {
-            binding.empty.isVisible = adapter?.itemCount == 0
+            binding.empty.isVisible = when (PreferenceUtil.folderViewType) {
+                0 -> songFileAdapter?.itemCount == 0
+                1 -> treeViewAdapter?.itemCount == 0
+                else -> true
+            }
         }
     }
 
@@ -493,7 +521,15 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
     }
 
     private fun setUpAdapter() {
-        switchToFileAdapter()
+        updateFolderView()
+    }
+
+    private fun updateFolderView() {
+        if (PreferenceUtil.folderViewType == 0) {
+            switchToFileAdapter()
+        } else {
+            switchToTreeAdapter()
+        }
     }
 
     private fun setUpBreadCrumbs() {
@@ -515,12 +551,30 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
     }
 
     private fun updateAdapter(songs: List<Song>) {
-        adapter?.swapDataSet(songs)
+        if (PreferenceUtil.folderViewType == 0) {
+            songFileAdapter?.swapDataSet(songs)
+        } else {
+            // Tree view adapter doesn't use songs directly, it uses TreeItems
+            // We need to rebuild the tree view data
+            val crumb = activeCrumb
+            if (crumb != null) {
+                lifecycleScope.launch(Dispatchers.IO) {
+                    val treeItems = buildTreeItems(crumb.file, 0)
+                    withContext(Dispatchers.Main) {
+                        treeViewAdapter?.submitList(treeItems)
+                        (binding.recyclerView.layoutManager as LinearLayoutManager)
+                            .scrollToPositionWithOffset(crumb.scrollPosition, 0)
+                        checkIsEmpty() // Call checkIsEmpty after data is submitted
+                    }
+                }
+            }
+        }
         val crumb = activeCrumb
         if (crumb != null) {
             (binding.recyclerView.layoutManager as LinearLayoutManager)
                 .scrollToPositionWithOffset(crumb.scrollPosition, 0)
         }
+        checkIsEmpty() // Also call here for general updates
     }
 
     override fun onDestroyView() {
@@ -570,16 +624,52 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
                     directory = crumb.file
                 }
             }
-            return if (directory != null) {
-                val files = FileUtil.listFiles(
-                    directory,
-                    AUDIO_FILE_FILTER
-                )
-                Collections.sort(files, foldersFragment!!.fileComparator)
-                FileUtil.matchFilesWithMediaStore(foldersFragment.requireContext(), files)
-            } else {
-                LinkedList()
+            if (directory == null) {
+                return LinkedList()
             }
+
+            val files = FileUtil.listFiles(directory, AUDIO_FILE_FILTER)
+            foldersFragment?.fileComparator?.let { Collections.sort(files, it) }
+
+            val songs = LinkedList<Song>()
+            for (file in files) {
+                songs.add(
+                    if (file.isDirectory) {
+                        Song(
+                            id = -file.absolutePath.hashCode().toLong(),
+                            title = file.name,
+                            trackNumber = 0,
+                            year = null,
+                            duration = 0L,
+                            data = file.absolutePath,
+                            dateModified = file.lastModified(),
+                            albumId = -1,
+                            albumName = "Folder",
+                            artistId = -1,
+                            artistName = "Folder",
+                            composer = null,
+                            albumArtist = null
+                        )
+                    } else {
+                        Song(
+                            id = -file.absolutePath.hashCode().toLong(),
+                            title = FileUtil.stripExtension(file.name),
+                            trackNumber = 0,
+                            year = null,
+                            duration = 0L,
+                            data = file.absolutePath,
+                            dateModified = file.lastModified(),
+                            albumId = -1,
+                            albumName = "Unknown Album",
+                            artistId = -1,
+                            artistName = "Unknown Artist",
+                            composer = null,
+                            albumArtist = null
+                        )
+                    }
+                )
+            }
+            return songs
         }
     }
 
@@ -619,16 +709,46 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
     }
 
     private fun switchToFileAdapter() {
-        adapter = SongFileAdapter(mainActivity, LinkedList(), R.layout.item_list, this)
-        adapter!!.registerAdapterDataObserver(
+        songFileAdapter = SongFileAdapter(mainActivity, LinkedList(), R.layout.item_list, this)
+        songFileAdapter!!.registerAdapterDataObserver(
             object : RecyclerView.AdapterDataObserver() {
                 override fun onChanged() {
                     super.onChanged()
                     checkIsEmpty()
                 }
             })
-        binding.recyclerView.adapter = adapter
+        binding.recyclerView.adapter = songFileAdapter
+        val crumb = activeCrumb
+        if (crumb != null) {
+            LoaderManager.getInstance(this).restartLoader(LOADER_ID, null, this)
+        }
         checkIsEmpty()
+        showToast(R.string.standard_view_enabled)
+    }
+
+    private fun switchToTreeAdapter() {
+        treeViewAdapter = TreeViewAdapter(this)
+        treeViewAdapter!!.registerAdapterDataObserver(
+            object : RecyclerView.AdapterDataObserver() {
+                override fun onChanged() {
+                    super.onChanged()
+                    checkIsEmpty()
+                }
+            })
+        binding.recyclerView.adapter = treeViewAdapter
+        showToast(R.string.tree_view_enabled)
+        val crumb = activeCrumb
+        if (crumb != null) {
+            lifecycleScope.launch(Dispatchers.IO) {
+                val treeItems = buildTreeItems(crumb.file, 0)
+                withContext(Dispatchers.Main) {
+                    treeViewAdapter?.submitList(treeItems)
+                    checkIsEmpty() // Call checkIsEmpty after data is submitted
+                }
+            }
+        } else {
+            checkIsEmpty() // If no crumb, still check if empty
+        }
     }
 
     private fun switchToStorageAdapter() {
@@ -658,21 +778,35 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
         private const val CRUMBS = "crumbs"
         private const val LOADER_ID = 5
 
+        private fun buildTreeItems(rootFile: File, depth: Int): List<TreeViewAdapter.TreeItem> {
+            if (depth > 10) return emptyList()  // Prevent deep recursion
+            val treeItems = mutableListOf<TreeViewAdapter.TreeItem>()
+            val files = rootFile.listFiles(FileFilter { !it.isHidden && it.isDirectory })?.sortedWith(Comparator { lhs, rhs ->
+                lhs.name.compareTo(rhs.name, ignoreCase = true)
+            }) ?: emptyList()
+
+            for (file in files) {
+                treeItems.add(TreeViewAdapter.TreeItem(file, depth))
+                if (file.isDirectory) {
+                    treeItems.addAll(buildTreeItems(file, depth + 1))
+                }
+            }
+            return treeItems
+        }
+
         // root
         val defaultStartDirectory: File
             get() {
                 val musicDir =
                     getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
-                val startFolder = if (musicDir.exists() && musicDir.isDirectory) {
-                    musicDir
-                } else {
-                    val externalStorage = getExternalStorageDirectory()
-                    if (externalStorage.exists() && externalStorage.isDirectory) {
-                        externalStorage
-                    } else {
-                        File("/") // root
-                    }
+                val externalStorage = getExternalStorageDirectory()
+
+                val startFolder = when {
+                    musicDir.exists() && musicDir.isDirectory && musicDir.listFiles() != null -> musicDir
+                    externalStorage.exists() && externalStorage.isDirectory && externalStorage.listFiles() != null -> externalStorage
+                    else -> File("/") // root
                 }
+
                 return startFolder
             }
 

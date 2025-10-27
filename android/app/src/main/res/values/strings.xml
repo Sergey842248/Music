@@ -54,6 +54,7 @@
     <string name="action_tag_editor">Tag editor</string>
     <string name="action_toggle_favorite">Toggle favorite</string>
     <string name="action_toggle_lyrics">Toggle lyrics</string>
+    <string name="action_toggle_folder_view">Toggle Folder View</string>
     <string name="show_lyrics">Show lyrics</string>
     <string name="do_nothing">Do nothing</string>
     <string name="action_toggle_shuffle">Toggle shuffle mode</string>
@@ -202,6 +203,8 @@
     <string name="fit">Fit</string>
     <string name="flat">Flat</string>
     <string name="folders">Folders</string>
+    <string name="standard_view_enabled">Standard view enabled</string>
+    <string name="tree_view_enabled">Tree view enabled</string>
     <string name="follow_system">Follow system</string>
     <string name="for_you">For you</string>
     <string name="free">Free</string>

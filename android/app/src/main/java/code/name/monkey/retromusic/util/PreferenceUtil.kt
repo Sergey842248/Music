@@ -836,6 +836,7 @@ object PreferenceUtil {
     const val OFFLINE_MODE = "offline_mode"
 
     const val SHOW_SONG_ONLY = "show_song_only"
+    const val FOLDER_VIEW_TYPE = "folder_view_type" // New constant for folder view type
 
     var playerActionButtonsOrder: String
         get() = sharedPreferences.getStringOrDefault(PLAYER_ACTION_BUTTONS_ORDER, "")
@@ -878,6 +879,10 @@ object PreferenceUtil {
     var showSongOnly: Boolean
         get() = sharedPreferences.getBoolean(SHOW_SONG_ONLY, false)
         set(value) = sharedPreferences.edit { putBoolean(SHOW_SONG_ONLY, value) }
+
+    var folderViewType: Int
+        get() = sharedPreferences.getInt(FOLDER_VIEW_TYPE, 1) // 0 for standard, 1 for tree view
+        set(value) = sharedPreferences.edit { putInt(FOLDER_VIEW_TYPE, value) }
 
     const val SHOW_NOW_PLAYING_QUEUE_BUTTON = "show_now_playing_queue_button"
     const val SHOW_OPTIONS_MENU = "show_options_menu"

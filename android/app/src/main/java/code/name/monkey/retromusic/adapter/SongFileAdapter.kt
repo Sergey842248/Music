@@ -54,7 +54,11 @@ class SongFileAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return FILE
+        return if (dataSet[position].albumName == "Folder") {
+            FOLDER
+        } else {
+            FILE
+        }
     }
 
     override fun getItemId(position: Int): Long {
@@ -74,9 +78,21 @@ class SongFileAdapter(
         val song = dataSet[index]
         holder.itemView.isActivated = isChecked(song)
         holder.title?.text = song.title
-        holder.text?.text = song.artistName
-        if (holder.image != null) {
-            loadFileImage(song, holder)
+        if (getItemViewType(index) == FOLDER) {
+            holder.text?.isVisible = false
+            holder.image?.setImageResource(R.drawable.ic_folder)
+            holder.image?.setColorFilter(
+                ATHUtil.resolveColor(
+                    activity,
+                    androidx.appcompat.R.attr.colorControlNormal
+                ), PorterDuff.Mode.SRC_IN
+            )
+        } else {
+            holder.text?.isVisible = true
+            holder.text?.text = song.artistName
+            if (holder.image != null) {
+                loadFileImage(song, holder)
+            }
         }
     }
 
