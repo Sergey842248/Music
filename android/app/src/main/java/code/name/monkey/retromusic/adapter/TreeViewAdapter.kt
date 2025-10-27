@@ -1,13 +1,15 @@
 package code.name.monkey.retromusic.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import code.name.monkey.retromusic.databinding.ItemFolderTreeBinding
 import java.io.File
 
 class TreeViewAdapter(
-    private val listener: TreeViewAdapter.OnFolderClickListener
+    private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<TreeViewAdapter.ViewHolder>() {
 
     private val items = mutableListOf<TreeItem>()
@@ -36,15 +38,21 @@ class TreeViewAdapter(
             binding.root.setOnClickListener {
                 listener.onFolderClick(item.file)
             }
-            // Add indentation based on depth
-            val paddingLeft = item.depth * 30 // 30 pixels per level of depth
+            binding.expandCollapseIcon.setOnClickListener {
+                listener.onExpansionToggle(item.file)
+            }
+            binding.expandCollapseIcon.isVisible = item.hasChildren
+            binding.expandCollapseIcon.rotation = if (item.isExpanded) 90f else 0f
+            // Add indentation based on depth, but since arrow is at start, indent from after arrow
+            val paddingLeft = (item.depth * 24) + 32 // Roughly for arrow
             binding.root.setPadding(paddingLeft, 0, 0, 0)
         }
     }
 
-    interface OnFolderClickListener {
+    interface OnItemClickListener {
         fun onFolderClick(file: File)
+        fun onExpansionToggle(file: File)
     }
 
-    data class TreeItem(val file: File, val depth: Int)
+    data class TreeItem(val file: File, val depth: Int, val hasChildren: Boolean = false, val isExpanded: Boolean = false)
 }

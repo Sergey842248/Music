@@ -77,10 +77,11 @@ import java.io.IOException
 import java.lang.ref.WeakReference
 import java.util.*
 
+
 class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
     IMainActivityFragmentCallbacks, SelectionCallback, ICallbacks,
     LoaderManager.LoaderCallbacks<List<Song>>, StorageClickListener, IScrollHelper,
-    TreeViewAdapter.OnFolderClickListener {
+    TreeViewAdapter.OnItemClickListener {
     private var _binding: FragmentFolderBinding? = null
     private val binding get() = _binding!!
 
@@ -99,9 +100,20 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
         }
     }
     private var storageItems = ArrayList<Storage>()
+    private val expandedPaths = mutableSetOf<String>()
 
     override fun onFolderClick(file: File) {
         onFileSelected(file)
+    }
+
+    override fun onExpansionToggle(file: File) {
+        val path = file.absolutePath
+        if (expandedPaths.contains(path)) {
+            expandedPaths.remove(path)
+        } else {
+            expandedPaths.add(path)
+        }
+        updateTree()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -554,27 +566,8 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
         if (PreferenceUtil.folderViewType == 0) {
             songFileAdapter?.swapDataSet(songs)
         } else {
-            // Tree view adapter doesn't use songs directly, it uses TreeItems
-            // We need to rebuild the tree view data
-            val crumb = activeCrumb
-            if (crumb != null) {
-                lifecycleScope.launch(Dispatchers.IO) {
-                    val treeItems = buildTreeItems(crumb.file, 0)
-                    withContext(Dispatchers.Main) {
-                        treeViewAdapter?.submitList(treeItems)
-                        (binding.recyclerView.layoutManager as LinearLayoutManager)
-                            .scrollToPositionWithOffset(crumb.scrollPosition, 0)
-                        checkIsEmpty() // Call checkIsEmpty after data is submitted
-                    }
-                }
-            }
+            updateTree()
         }
-        val crumb = activeCrumb
-        if (crumb != null) {
-            (binding.recyclerView.layoutManager as LinearLayoutManager)
-                .scrollToPositionWithOffset(crumb.scrollPosition, 0)
-        }
-        checkIsEmpty() // Also call here for general updates
     }
 
     override fun onDestroyView() {
@@ -735,17 +728,18 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
             })
         binding.recyclerView.adapter = treeViewAdapter
         showToast(R.string.tree_view_enabled)
-        val crumb = activeCrumb
-        if (crumb != null) {
-            lifecycleScope.launch(Dispatchers.IO) {
-                val treeItems = buildTreeItems(crumb.file, 0)
-                withContext(Dispatchers.Main) {
-                    treeViewAdapter?.submitList(treeItems)
-                    checkIsEmpty() // Call checkIsEmpty after data is submitted
-                }
+        updateTree()
+    }
+
+    private fun updateTree() {
+        val crumb = activeCrumb ?: return
+        lifecycleScope.launch(Dispatchers.IO) {
+            val treeItems = buildTreeItems(crumb.file, 0, expandedPaths)
+            withContext(Dispatchers.Main) {
+                treeViewAdapter?.submitList(treeItems)
+                (binding.recyclerView.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(crumb.scrollPosition, 0)
+                checkIsEmpty()
             }
-        } else {
-            checkIsEmpty() // If no crumb, still check if empty
         }
     }
 
@@ -776,7 +770,7 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
         private const val CRUMBS = "crumbs"
         private const val LOADER_ID = 5
 
-        private fun buildTreeItems(rootFile: File, depth: Int): List<TreeViewAdapter.TreeItem> {
+        private fun buildTreeItems(rootFile: File, depth: Int, expandedPaths: Set<String>): List<TreeViewAdapter.TreeItem> {
             if (depth > 10) return emptyList()  // Prevent deep recursion
             val treeItems = mutableListOf<TreeViewAdapter.TreeItem>()
             val files = rootFile.listFiles(FileFilter { !it.isHidden && it.isDirectory })?.sortedWith(Comparator { lhs, rhs ->
@@ -784,9 +778,11 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
             }) ?: emptyList()
 
             for (file in files) {
-                treeItems.add(TreeViewAdapter.TreeItem(file, depth))
-                if (file.isDirectory) {
-                    treeItems.addAll(buildTreeItems(file, depth + 1))
+                val hasChildren = file.listFiles()?.any { it.isDirectory && !it.isHidden } ?: false
+                val isExpanded = expandedPaths.contains(file.absolutePath)
+                treeItems.add(TreeViewAdapter.TreeItem(file, depth, hasChildren, isExpanded))
+                if (file.isDirectory && isExpanded) {
+                    treeItems.addAll(buildTreeItems(file, depth + 1, expandedPaths))
                 }
             }
             return treeItems
