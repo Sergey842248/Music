@@ -371,6 +371,9 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
 
     override fun onPrepareMenu(menu: Menu) {
         ToolbarContentTintHelper.handleOnPrepareOptionsMenu(requireActivity(), toolbar)
+        val navController = findNavController()
+        val isFolderTab = navController.currentDestination?.id == R.id.action_folder
+        menu.findItem(R.id.action_toggle_folder_view)?.isVisible = isFolderTab
     }
 
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {

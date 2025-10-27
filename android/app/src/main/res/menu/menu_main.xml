@@ -95,11 +95,6 @@
         android:title="@string/action_settings"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_toggle_folder_view"
-        android:icon="@drawable/ic_tree_view"
-        android:title="@string/action_toggle_folder_view"
-        app:showAsAction="never" />
-    <item
         android:id="@+id/action_cast"
         android:title="@string/action_cast"
         app:actionProviderClass="androidx.mediarouter.app.MediaRouteActionProvider"
