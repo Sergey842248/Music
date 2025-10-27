@@ -29,36 +29,42 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          key: ${{ runner.os }}-gradle-${{ hashFiles('android/**/*.gradle*', 'android/**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle
 
       - name: Cache Android Build Outputs
         uses: actions/cache@v4
         with:
-          path: app/build
-          key: ${{ runner.os }}-build-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          path: android/app/build
+          key: ${{ runner.os }}-build-${{ hashFiles('android/**/*.gradle*', 'android/**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-build
 
       - name: Set Executable Permission for Gradle Wrapper
         run: chmod +x gradlew
+        working-directory: android
 
       - name: Validate Gradle Wrapper
         uses: gradle/actions/wrapper-validation@v4
+        with:
+          working-directory: android
 
       - name: Run Code Linting
         run: ./gradlew lint
+        working-directory: android
 
       - name: Run Unit Tests
         run: ./gradlew test
+        working-directory: android
 
       - name: Build APK (Debug)
         id: gradle_build_debug
         run: ./gradlew assembleDebug
+        working-directory: android
 
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
           name: app-debug
-          path: app/build/outputs/apk/debug/
+          path: android/app/build/outputs/apk/debug/
