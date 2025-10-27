@@ -15,7 +15,7 @@ chrisbanes_insetter_version = "0.6.1"
 jaudiotagger = "2.3.15"
 yslibrary_keyboardvisibilityevent_version = "3.0.0-RC3"
 koinAndroid = "3.5.6"
-kotlinGradlePlugin = "1.9.22"
+kotlinGradlePlugin = "2.1.0"
 
 kotlinxCoroutinesAndroid = "1.10.2"
 android_tab_library_version = "2.2.0"
@@ -39,7 +39,7 @@ room_version = "2.6.1"
 core_version = "1.16.0"
 
 #plugins
-devTools_ksp_version = "1.9.22-1.0.17"
+devTools_ksp_version = "2.1.0-1.0.25"
 ben_manes_versoin = "0.46.0"
 slidableactivity = "2.1.0"
 

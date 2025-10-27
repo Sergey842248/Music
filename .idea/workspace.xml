@@ -10,10 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21478801-61e3-4a8e-97f7-81e483207604" name="Changes" comment="updated gitignore">
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WearOS/app/src/main/java/com/future/music/presentation/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/WearOS/app/src/main/java/com/future/music/presentation/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WearOS/app/src/main/java/com/future/music/tile/MainTileService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/WearOS/app/src/main/java/com/future/music/tile/MainTileService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.github/ISSUE_TEMPLATE/bug_report.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.github/ISSUE_TEMPLATE/feature_request.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle/libs.versions.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +25,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=RFCX5052FRE)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -62,8 +64,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Sergey842248/Music.git&quot;,
-    &quot;accountId&quot;: &quot;090c09a2-58dc-4fc5-a781-e257d767a467&quot;
+    &quot;url&quot;: &quot;https://github.com/Sergey842248/Music&quot;,
+    &quot;accountId&quot;: &quot;34caf796-95d5-43a9-a1ea-639c0cd6d946&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -74,23 +76,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;ResourceManagerPrefKey.ResourceType&quot;: &quot;MIPMAP&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/parsa/Documents/AndroidStudioProjects/Music&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.kotlinCompiler&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Android App.app.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "ResourceManagerPrefKey.ResourceType": "MIPMAP",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/parsa/Documents/AndroidStudioProjects/Music",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Music.app" />
@@ -305,6 +308,9 @@
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/android" />
+    </ignored-roots>
     <MESSAGE value="Updated Gradle to 8.12.0" />
     <MESSAGE value="Updated dependencies" />
     <MESSAGE value="fixed some build issues" />
