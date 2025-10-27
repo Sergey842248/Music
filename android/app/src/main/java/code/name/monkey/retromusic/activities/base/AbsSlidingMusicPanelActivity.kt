@@ -21,6 +21,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.ColorStateList
 import android.graphics.Color
+import androidx.core.content.ContextCompat
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -128,7 +129,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsMusicServiceActivity(),
     private var miniPlayerFragment: MiniPlayerFragment? = null
     private var nowPlayingScreen: NowPlayingScreen? = null
     private var taskColor: Int = 0
-    private var paletteColor: Int = Color.WHITE
+    private var paletteColor: Int = android.graphics.Color.WHITE
     private var navigationBarColor = 0
 
     private val panelState: Int
@@ -439,8 +440,8 @@ abstract class AbsSlidingMusicPanelActivity : AbsMusicServiceActivity(),
                 setLightNavigationBar(true)
                 setLightStatusBar(isColorLight)
             } else if (nowPlayingScreen == Card || nowPlayingScreen == Blur || nowPlayingScreen == BlurCard) {
-                animateNavigationBarColor(Color.BLACK)
-                navigationBarColor = Color.BLACK
+                animateNavigationBarColor(android.graphics.Color.BLACK)
+                navigationBarColor = android.graphics.Color.BLACK
                 setLightStatusBar(false)
                 setLightNavigationBar(true)
             } else if (nowPlayingScreen == Color || nowPlayingScreen == Tiny || nowPlayingScreen == Gradient) {

@@ -32,6 +32,8 @@ Thumbs.db
 android/.gradle
 android/app/build/
 android/appthemehelper/build/
+android/.continue/
+android/.kotlin/
 WearOS/app/build/
 WearOS/.gradle
 WearOS/build
