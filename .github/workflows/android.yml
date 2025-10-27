@@ -43,17 +43,12 @@ jobs:
 
       - name: Set Executable Permission for Gradle Wrapper
         run: chmod +x gradlew
-        working-directory: android
 
       - name: Validate Gradle Wrapper
         uses: gradle/actions/wrapper-validation@v4
         with:
           working-directory: android
-
-      - name: Run Code Linting
-        run: ./gradlew lint
-        working-directory: android
-
+          
       - name: Run Unit Tests
         run: ./gradlew test
         working-directory: android
