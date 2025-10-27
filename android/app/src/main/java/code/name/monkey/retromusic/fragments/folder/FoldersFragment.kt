@@ -102,7 +102,7 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
     private var storageItems = ArrayList<Storage>()
     private val expandedPaths = mutableSetOf<String>()
 
-    override fun onFolderClick(file: File) {
+    override fun onItemClick(file: File) {
         onFileSelected(file)
     }
 
@@ -770,18 +770,27 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
         private const val CRUMBS = "crumbs"
         private const val LOADER_ID = 5
 
-        private fun buildTreeItems(rootFile: File, depth: Int, expandedPaths: Set<String>): List<TreeViewAdapter.TreeItem> {
-            if (depth > 10) return emptyList()  // Prevent deep recursion
-            val treeItems = mutableListOf<TreeViewAdapter.TreeItem>()
-            val files = rootFile.listFiles(FileFilter { !it.isHidden && it.isDirectory })?.sortedWith(Comparator { lhs, rhs ->
-                lhs.name.compareTo(rhs.name, ignoreCase = true)
-            }) ?: emptyList()
+    private fun buildTreeItems(rootFile: File, depth: Int, expandedPaths: Set<String>): List<TreeViewAdapter.TreeItem> {
+        if (depth > 10) return emptyList()  // Prevent deep recursion
+        val treeItems = mutableListOf<TreeViewAdapter.TreeItem>()
 
-            for (file in files) {
-                val hasChildren = file.listFiles()?.any { it.isDirectory && !it.isHidden } ?: false
+        // Get all directories and audio files
+        val allFiles = rootFile.listFiles(FileFilter { file ->
+            !file.isHidden && (file.isDirectory || AUDIO_FILE_FILTER.accept(file))
+        })?.sortedWith(compareBy<File> { !it.isDirectory }.thenBy { it.name.lowercase() }) ?: emptyList()
+
+            for (file in allFiles) {
+                val isDirectory = file.isDirectory
+                val hasChildren = if (isDirectory) {
+                    file.listFiles()?.any { it.isDirectory && !it.isHidden || AUDIO_FILE_FILTER.accept(it) } ?: false
+                } else {
+                    false // Files don't have children
+                }
                 val isExpanded = expandedPaths.contains(file.absolutePath)
-                treeItems.add(TreeViewAdapter.TreeItem(file, depth, hasChildren, isExpanded))
-                if (file.isDirectory && isExpanded) {
+                treeItems.add(TreeViewAdapter.TreeItem(file, depth, hasChildren, isExpanded, isDirectory))
+
+                // Only recurse into directories that are expanded
+                if (isDirectory && isExpanded) {
                     treeItems.addAll(buildTreeItems(file, depth + 1, expandedPaths))
                 }
             }

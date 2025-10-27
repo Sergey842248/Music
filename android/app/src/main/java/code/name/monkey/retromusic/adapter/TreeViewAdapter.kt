@@ -36,10 +36,12 @@ class TreeViewAdapter(
         fun bind(item: TreeItem) {
             binding.folderName.text = item.file.name
             binding.root.setOnClickListener {
-                listener.onFolderClick(item.file)
+                listener.onItemClick(item.file)
             }
             binding.expandCollapseIcon.setOnClickListener {
-                listener.onExpansionToggle(item.file)
+                if (item.isDirectory) {
+                    listener.onExpansionToggle(item.file)
+                }
             }
             binding.expandCollapseIcon.isVisible = item.hasChildren
             binding.expandCollapseIcon.rotation = if (item.isExpanded) 90f else 0f
@@ -50,9 +52,9 @@ class TreeViewAdapter(
     }
 
     interface OnItemClickListener {
-        fun onFolderClick(file: File)
+        fun onItemClick(file: File)
         fun onExpansionToggle(file: File)
     }
 
-    data class TreeItem(val file: File, val depth: Int, val hasChildren: Boolean = false, val isExpanded: Boolean = false)
+    data class TreeItem(val file: File, val depth: Int, val hasChildren: Boolean = false, val isExpanded: Boolean = false, val isDirectory: Boolean = true)
 }
