@@ -694,13 +694,11 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
     }
 
     override fun onStorageClicked(storage: Storage) {
-        switchToFileAdapter()
-        setCrumb(
-            Crumb(
-                FileUtil.safeGetCanonicalFile(storage.file)
-            ),
-            true
-        )
+        val file = FileUtil.safeGetCanonicalFile(storage.file)
+        val crumb = Crumb(file)
+        binding.breadCrumbs.setActiveOrAdd(crumb, false)
+        binding.breadCrumbs.addHistory(crumb)
+        updateFolderView()
     }
 
     override fun scrollToTop() {

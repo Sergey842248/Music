@@ -881,7 +881,7 @@ object PreferenceUtil {
         set(value) = sharedPreferences.edit { putBoolean(SHOW_SONG_ONLY, value) }
 
     var folderViewType: Int
-        get() = sharedPreferences.getInt(FOLDER_VIEW_TYPE, 1) // 0 for standard, 1 for tree view
+        get() = sharedPreferences.getInt(FOLDER_VIEW_TYPE, 0) // 0 for standard, 1 for tree view
         set(value) = sharedPreferences.edit { putInt(FOLDER_VIEW_TYPE, value) }
 
     const val SHOW_NOW_PLAYING_QUEUE_BUTTON = "show_now_playing_queue_button"
