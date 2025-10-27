@@ -141,7 +141,6 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
                 }
             })
         if (savedInstanceState == null) {
-            switchToFileAdapter()
             setCrumb(
                 Crumb(
                     FileUtil.safeGetCanonicalFile(startDirectory)
@@ -528,7 +527,13 @@ class FoldersFragment : AbsMainActivityFragment(R.layout.fragment_folder),
             if (addToHistory) {
                 binding.breadCrumbs.addHistory(crumb)
             }
-            LoaderManager.getInstance(this).restartLoader(LOADER_ID, null, this)
+
+            if (PreferenceUtil.folderViewType == 1) { // If TreeView is active
+                expandedPaths.add(crumb.file.absolutePath) // Automatically expand the current crumb
+                updateTree() // Update the tree to reflect the expansion
+            } else { // Standard view
+                LoaderManager.getInstance(this).restartLoader(LOADER_ID, null, this)
+            }
         }
     }
 
