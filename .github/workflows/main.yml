@@ -1,0 +1,22 @@
+name: 'Auto renovate labeling'
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  label_bot_prs:
+    if: github.event.pull_request.user.login == 'renovate'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: add label
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['automerge']
+            })
