@@ -13,7 +13,7 @@ tilesMaterial = "1.4.0"
 tilesTooling = "1.4.0"
 tilesToolingPreview = "1.4.0"
 horologistComposeTools = "0.6.17"
-horologistTiles = "0.6.17"
+horologistTiles = "0.7.15"
 watchfaceComplicationsDataSourceKtx = "1.2.1"
 
 [libraries]
