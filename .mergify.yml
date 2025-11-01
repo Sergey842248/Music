@@ -5,6 +5,14 @@ conditions:
 actions:
   merge:
 pull_request_rules:
+  - name: close PRs when build check fails
+    conditions:
+      - check-failure=Build Debug APK
+      - label = automerge
+    actions:
+      close:
+        message: This pull request has been automatically closed by Mergify due to
+          failed build check.
   - name: Automatic merge
     description: Merge when PR passes all branch protection and has label automerge
     conditions:
