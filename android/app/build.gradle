@@ -74,8 +74,8 @@ android {
     }
     configurations.configureEach {
         resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.2'
-        resolutionStrategy.force 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0'
-        resolutionStrategy.force 'org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.8.0'
+        resolutionStrategy.force 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2'
+        resolutionStrategy.force 'org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.10.2'
     }
 }
 
