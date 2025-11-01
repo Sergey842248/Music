@@ -15,8 +15,8 @@ android {
         vectorDrawables.useSupportLibrary = true
 
         applicationId "com.future.music"
-        versionCode 905
-        versionName '9.0.5'
+        versionCode 906
+        versionName '9.0.6'
     }
     def signingProperties = getProperties('retro.properties')
     def theSigningConfig
