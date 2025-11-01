@@ -12,7 +12,7 @@ pull_request_rules:
       label:
         add:
           - automerge
-  - name: close PRs when build check fails
+  - name: Close PRs when build check fails
     conditions:
       - check-failure=Build Debug APK
       - label = automerge
