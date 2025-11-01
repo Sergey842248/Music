@@ -5,6 +5,13 @@ conditions:
 actions:
   merge:
 pull_request_rules:
+  - name: Label PRs from renovate to automerge
+    conditions:
+      - author=renovate[bot]
+    actions:
+      label:
+        add:
+          - automerge
   - name: close PRs when build check fails
     conditions:
       - check-failure=Build Debug APK
