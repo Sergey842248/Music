@@ -1,9 +1,3 @@
-name: Automatic merge
-description: Merge when PR passes all branch protection and has label automerge
-conditions:
-  - label = automerge
-actions:
-  merge:
 pull_request_rules:
   - name: Label PRs from renovate to automerge
     conditions:
@@ -18,7 +12,7 @@ pull_request_rules:
       - label = automerge
     actions:
       close:
-        message: This pull request has been automatically closed by Mergify due to
+        message: This pull request has been automatically closed by Mergify due to 
           failed build check.
   - name: Automatic merge
     description: Merge when PR passes all branch protection and has label automerge
