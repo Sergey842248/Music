@@ -78,7 +78,7 @@
 -  Create, edit and import playlists
 -  Playing queue with reorder
 -  User profile
--  30+ languages support (help translate the project: [Translate](https://github.com/Sergey842248/Music/blob/main/CONTRIBUTING.md)
+-  30+ languages support (help translate the project: [Translate](https://github.com/Sergey842248/Music/blob/main/CONTRIBUTING.md))
 -  Browse and play your music by songs, albums, artists, playlists and
   genres
 -  Smart Playlists - Recently played, most played and history
