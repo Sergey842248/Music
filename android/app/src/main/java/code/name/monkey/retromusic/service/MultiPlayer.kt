@@ -52,9 +52,28 @@ class MultiPlayer(context: Context) : LocalPlayback(context) {
         releaseAudioEffects()
 
         val sessionId = mCurrentMediaPlayer.audioSessionId
-        equalizer = Equalizer(0, sessionId).apply { enabled = true }
-        bassBoost = BassBoost(0, sessionId).apply { enabled = true }
-        virtualizer = Virtualizer(0, sessionId).apply { enabled = true }
+
+        // Initialize audio effects with proper error handling
+        try {
+            equalizer = Equalizer(0, sessionId).apply { enabled = true }
+        } catch (e: Exception) {
+            logE("Failed to initialize equalizer: ${e.message}")
+            equalizer = null
+        }
+
+        try {
+            bassBoost = BassBoost(0, sessionId).apply { enabled = true }
+        } catch (e: Exception) {
+            logE("Failed to initialize bass boost: ${e.message}")
+            bassBoost = null
+        }
+
+        try {
+            virtualizer = Virtualizer(0, sessionId).apply { enabled = true }
+        } catch (e: Exception) {
+            logE("Failed to initialize virtualizer: ${e.message}")
+            virtualizer = null
+        }
 
         registerPrefListener()
     }
