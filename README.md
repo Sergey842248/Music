@@ -1,20 +1,19 @@
-<p align="center">
-  <a href="https://github.com/Sergey842248/Music/">
-    <img src=https://raw.githubusercontent.com/Sergey842248/Music/main/android/app/src/main/ic_launcher.svg height="256">
-    <h1 align="center">Music Player</h1>
-  </a>
-</p>
-<p align="center">
-  <a href="https://github.com/Sergey842248/Music/" style="text-decoration:none" area-label="Android">
-    <img src="https://img.shields.io/badge/Platform-Android-green.svg">
-  </a>
-</p>
-<p align="center">
-A simple but powerful and feature rich music player with many extra features.
-</p>
+<div align="center">
 
-<br>
-<br>
+<a href="https://github.com/Sergey842248/Music/">
+  <img src="https://raw.githubusercontent.com/Sergey842248/Music/main/android/app/src/main/ic_launcher.svg" height="256">
+</a>
+
+# Music Player
+
+<a href="https://github.com/Sergey842248/Music/" style="text-decoration:none" aria-label="Android">
+  <img src="https://img.shields.io/badge/Platform-Android-green.svg">
+</a>
+
+A simple but powerful and feature rich music player with many extra features.
+
+</div>
+
 
 ## Download
 [<img src="https://raw.githubusercontent.com/Sergey842248/Music/refs/heads/main/android/app/src/main/assets/get-it-on-github.png"
