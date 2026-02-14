@@ -1,0 +1,23 @@
+# .github/workflows/mirror-to-gitlab.yml
+name: Mirror to GitLab
+on:
+  push:
+    branches:
+      - main        # nur main synchronisieren (oder mehrere Branches)
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # wichtig für vollständige History
+
+      - name: Mirror to GitLab (HTTPS)
+        uses: yesolutions/mirror-action@master
+        with:
+          REMOTE: 'https://gitlab.com/open-nexor/music.git'
+          GIT_USERNAME: ${{ secrets.GITLAB_USER }}
+          GIT_PASSWORD: ${{ secrets.GITLAB_PAT }}
