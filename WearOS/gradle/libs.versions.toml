@@ -2,7 +2,7 @@
 agp = "9.0.1"
 kotlin = "2.2.21"
 playServicesWearable = "19.0.0"
-composeBom = "2026.02.00"
+composeBom = "2026.02.01"
 composeMaterial = "1.5.6"
 composeFoundation = "1.5.6"
 wearToolingPreview = "1.0.0"
