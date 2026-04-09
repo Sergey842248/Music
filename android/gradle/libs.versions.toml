@@ -113,7 +113,7 @@ nanohttpd = { group = "org.nanohttpd", name = "nanohttpd", version.ref = "nanoht
 
 #androidx
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat_version" }
-androidx-annotation = { group = "androidx.annotation", name = "annotation", version = "1.9.1" }
+androidx-annotation = { group = "androidx.annotation", name = "annotation", version = "1.10.0" }
 androidx-constraintLayout = { group = "androidx.constraintlayout", name = "constraintlayout", version = "2.2.1" }
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version = "1.4.0" }
 androidx-preference-ktx = { group = "androidx.preference", name = "preference-ktx", version.ref = "preference_version" }
