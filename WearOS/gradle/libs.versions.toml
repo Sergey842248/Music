@@ -1,7 +1,7 @@
 [versions]
 agp = "9.2.0"
 kotlin = "2.2.21"
-playServicesWearable = "19.0.0"
+playServicesWearable = "20.0.1"
 composeBom = "2026.04.01"
 composeMaterial = "1.6.1"
 composeFoundation = "1.6.1"
