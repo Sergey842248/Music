@@ -1,3 +1,8 @@
+> [!Important]
+> **This project is discontinued, feel free to fork it.**
+
+
+
 <div align="center">
 
 <a href="https://github.com/Sergey842248/Music/">
